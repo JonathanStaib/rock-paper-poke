@@ -1,2 +1,5 @@
 # rock-paper-poke
-Contributors:
+Contributors: Lewis, Raphael, Jonathan, Nú;
+
+
+ 
