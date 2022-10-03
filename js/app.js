@@ -35,8 +35,9 @@ PlayerDeck.prototype.getName = function () {
 };
 
 /* DOM MANIPULATION */
-let div = document.querySelector('#opponents');
-div = document.querySelector('div'); //! THIS NEEDS THE VARIABLE NAME UPDATED AND SELECTOR CHANGED TO THE CORRECT ONE
+let opponentDiv= document.querySelector('#opponents');
+opponentDiv = document.querySelector('opponents');
+let userSection = document.getElementById('user-choice');
 /* UTILITY FUNCTIONS */
 
 function randomPokemon(element) {
@@ -60,7 +61,7 @@ function renderRandom() {
   let pokemon = pickRandomType();
   img.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemon[0]}.png`;
   img.className = 'exists';
-  div.appendChild(img);
+  opponentDiv.appendChild(img);
   return pokemon[1];
 }
 
