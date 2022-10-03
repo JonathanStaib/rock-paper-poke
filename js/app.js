@@ -67,10 +67,10 @@ function renderRandom() {
 function removePreviousImg() {
   let checkForImage = document.querySelector('.exists');
   if (checkForImage === null)
-  if (checkForImage?.src) {
-    // The ? is to check for null first, otherwise it will break.
-    checkForImage.remove();
-  }
+    if (checkForImage?.src) {
+      // The ? is to check for null first, otherwise it will break.
+      checkForImage.remove();
+    }
 }
 
 function winChecker(usersChoice) {
@@ -83,4 +83,4 @@ function playersChoice() {
 }
 
 /* EVENT LISTENER METHODS */
-div.addEventListener('click', playersChoice); //! div NEEDS UPDATED VARIABLE NAME FOR ACTUAL HTML ELEMENT
+// div.addEventListener('click', playersChoice); //! div NEEDS UPDATED VARIABLE NAME FOR ACTUAL HTML ELEMENT
