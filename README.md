@@ -1,5 +1,8 @@
 # rock-paper-poke
 
+
+
+
 Contributors: Lewis, Raphael, Jonathan, Monica;
 
 A Pokemon Themed Rock Paper Scissors game using 5 objects
@@ -52,3 +55,16 @@ Create an interactive rock, paper, scissors, game that engages the user through 
 
 - Expanding the variety of Pokemon for each type.
 - Displaying all viewed Pokemon on local storage. 
+
+## Wireframe
+
+![Flow of the site](assets/Flowchart.png)
+![Landing Page](assets/Landing-Page.png)
+![Game Page](assets/Game.png)
+![About Page](assets/About.png)
+![Pokedex Page](assets/Pokedex.png)
+
+## Game Logic
+
+![How a Winner is decided](assets/how-win.png)
+
