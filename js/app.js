@@ -62,7 +62,7 @@ function renderRandom() {
   let pokemon = pickRandomType();
   img.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemon[0]}.png`;
   img.className = 'exists';
-  div.appendChild(img);
+  opponentDiv.appendChild(img);
   return pokemon[1];
 }
 
