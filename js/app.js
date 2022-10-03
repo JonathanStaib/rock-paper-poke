@@ -5,6 +5,7 @@ const ice = ['087', '091', '124', '131', '144', '215', '220', '221'];
 const electric = ['025', '026', '081', '082', '100', '101', '125', '135'];
 const ground = ['027', '028', '031', '034', '050', '051', '074', '075'];
 const grass = ['001', '002', '003', '043', '044', '045', '046', '047'];
+let playersPokemon = [];
 
 const types = {
   fire: fire,
@@ -37,6 +38,7 @@ PlayerDeck.prototype.getName = function () {
 /* DOM MANIPULATION */
 let div = document.querySelector('#opponents');
 div = document.querySelector('div'); //! THIS NEEDS THE VARIABLE NAME UPDATED AND SELECTOR CHANGED TO THE CORRECT ONE
+const parentPlayerImgs = document.querySelectorAll('li>figure>img');
 /* UTILITY FUNCTIONS */
 
 function randomPokemon(element) {
@@ -64,13 +66,26 @@ function renderRandom() {
   return pokemon[1];
 }
 
+function renderPlayerRandom() {
+  let imgOne = document.querySelector('#imgOne');
+  let imgTwo = document.querySelector('#imgTwo');
+  let imgThree = document.querySelector('#imgThree');
+  let imgFour = document.querySelector('#imgFour');
+  let imgFive = document.querySelector('#imgFive');
+  let randomFire = randomPokemon(fire);
+  let randomIce = randomPokemon(ice);
+  playersPokemon.push(randomFire, randomIce);
+  console.log(playersPokemon);
+  imgOne.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${randomFire}}.png`;
+}
+
 function removePreviousImg() {
   let checkForImage = document.querySelector('.exists');
-  if (checkForImage === null)
-    if (checkForImage?.src) {
-      // The ? is to check for null first, otherwise it will break.
-      checkForImage.remove();
-    }
+  if (checkForImage?.src) {
+    // The ? is to check for null first, otherwise it will break.
+    checkForImage.remove();
+    playersPokemon = []; // reset playersPokemon to empty array for next game.
+  }
 }
 
 function winChecker(usersChoice) {
