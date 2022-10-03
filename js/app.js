@@ -16,13 +16,34 @@ const types = {
 
 /* CONSTRUCTORS */
 
+const PlayerDeck = function () {
+  this.fire = '004';
+  this.ice = '087';
+  this.electric = '025';
+  this.ground = '027';
+  this.grass = '001';
+};
+
+/* PROTOTYPE METHODS */
+
+PlayerDeck.prototype.newHand = {
+  //TODO THIS WILL CREATE 5 RANDOM POKEMON IN THE PLAYERS HAND
+};
+
+PlayerDeck.prototype.getName = function () {
+  //TODO THIS WILL GET THE NAME OF THE POKEMON FOR THE ACCOICATED IMAGE
+};
+
 /* DOM MANIPULATION */
 let div = document.querySelector('#opponents');
-
+div = document.querySelector('div'); //! THIS NEEDS THE VARIABLE NAME UPDATED AND SELECTOR CHANGED TO THE CORRECT ONE
 /* UTILITY FUNCTIONS */
 
 function randomPokemon(element) {
   return Math.floor(Math.random() * element.length);
+}
+function storeToLocal() {
+  //TODO WINS AND LOSS SAVE TO LOCAL STORAGE
 }
 
 /* GAME FUNCTIONS */
@@ -46,6 +67,19 @@ function renderRandom() {
 function removePreviousImg() {
   let checkForImage = document.querySelector('.exists');
   if (checkForImage?.src) {
+    // The ? is to check for null first, otherwise it will break.
     checkForImage.remove();
   }
 }
+
+function winChecker(usersChoice) {
+  //TODO THIS IS WHERE THE SWITCH STATEMENT LOGIC WILL LIVE
+}
+
+/* EVENT HANDLER FUNCTIONS */
+function playersChoice() {
+  //TODO THIS IS WHERE THE LOGIC FOR THE PLAYERS CHOICE WILL LIVE
+}
+
+/* EVENT LISTENER METHODS */
+div.addEventListener('click', playersChoice); //! div NEEDS UPDATED VARIABLE NAME FOR ACTUAL HTML ELEMENT
