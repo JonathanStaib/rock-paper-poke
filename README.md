@@ -25,3 +25,30 @@ Hannah and Willow are sisters and their mom had told them to take the trash out 
 ### Little Gregory And His Family
 
 Little Greg is a big pokemon fan and often plays with his brother and sister. They are trying to decide whether they should eat at home or get fast food. They opt to rock paper poke because little Greg loves this webpage! Greg will play and if he wins they will get fast food, if he loses then they will eat at home!
+
+## Software Requirements
+
+The vision of this project is to create a Pokemon-themed rock, paper, scissors game that allows the user to select their character to go up against a randomly selected character. The game can be for entertainment or to make decisions based on the outcome of the game like you would with traditional rock, paper, scissors. It's a fun engaging game.
+
+### Scope:
+
+In:
+
+- Users can choose their character out of five choices.
+- Three rounds of the game will be played.
+- Winning and losing stats will be stored on a separate page.
+
+Out:
+
+- The game will not make life-changing decisions, it's for fun.
+- The game will be an IOS or Android App.
+- The web application will not be connected to a database.
+
+### MVP:
+
+Create an interactive rock, paper, scissors, game that engages the user through the user's choice of Pokemon and plays it against randomly selected opposing pokemon.  The user's wins and losses will be stored locally. The web application will contain a minimum of four web pages.
+
+### Stretch Goals:
+
+- Expanding the variety of Pokemon for each type.
+- Displaying all viewed Pokemon on local storage. 
