@@ -66,6 +66,7 @@ function renderRandom() {
 
 function removePreviousImg() {
   let checkForImage = document.querySelector('.exists');
+  if (checkForImage === null)
   if (checkForImage?.src) {
     // The ? is to check for null first, otherwise it will break.
     checkForImage.remove();
