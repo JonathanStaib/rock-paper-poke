@@ -50,11 +50,28 @@ function storeToLocal() {
 
 /* GAME FUNCTIONS */
 
-function pickRandomType() {
+function pickRandomType(typeOfElement = 'all') {
   let elementNames = Object.keys(types);
-  let pickAnElement = elementNames[randomPokemon(elementNames)];
-  let pickApokemon = types[pickAnElement][randomPokemon(pickAnElement)];
-  return [pickApokemon, pickAnElement];
+  if (typeOfElement === 'all') {
+    let pickAnElement = elementNames[randomPokemon(elementNames)];
+    let pickApokemon = types[pickAnElement][randomPokemon(pickAnElement)];
+    return [pickApokemon, pickAnElement];
+  } else if (typeOfElement === 'fire') {
+    let pickApokemon = types['fire'][randomPokemon(fire)];
+    return [pickApokemon, 'fire'];
+  } else if (typeOfElement === 'ice') {
+    let pickApokemon = types['ice'][randomPokemon(ice)];
+    return [pickApokemon, 'ice'];
+  } else if (typeOfElement === 'electric') {
+    let pickApokemon = types['electric'][randomPokemon(electric)];
+    return [pickApokemon, 'electric'];
+  } else if (typeOfElement === 'ground') {
+    let pickApokemon = types['ground'][randomPokemon(ground)];
+    return [pickApokemon, 'ground'];
+  } else if (typeOfElement === 'grass') {
+    let pickApokemon = types['grass'][randomPokemon(grass)];
+    return [pickApokemon, 'grass'];
+  }
 }
 
 function renderRandom() {
@@ -72,11 +89,24 @@ function renderPlayerRandom() {
   let imgThree = document.querySelector('#imgThree');
   let imgFour = document.querySelector('#imgFour');
   let imgFive = document.querySelector('#imgFive');
-  let randomFire = randomPokemon(fire);
-  let randomIce = randomPokemon(ice);
-  playersPokemon.push(randomFire, randomIce);
-  console.log(playersPokemon);
-  imgOne.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${randomFire}}.png`;
+  let randomFire = pickRandomType('fire');
+  let randomIce = pickRandomType('ice');
+  let randomElectric = pickRandomType('electric');
+  let randomGround = pickRandomType('ground');
+  let randomGrass = pickRandomType('grass');
+
+  playersPokemon.push(
+    randomFire,
+    randomIce,
+    randomElectric,
+    randomGround,
+    randomGrass
+  );
+  imgOne.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${randomFire[0]}.png`;
+  imgTwo.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${randomIce[0]}.png`;
+  imgThree.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${randomElectric[0]}.png`;
+  imgFour.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${randomGround[0]}.png`;
+  imgFive.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${randomGrass[0]}.png`;
 }
 
 function removePreviousImg() {
