@@ -2,7 +2,7 @@
 
 ## Wireframe
 
-![Flow of the site](assets/Flowcart.png)
+![Flow of the site](assets/Flowchart.png)
 ![Landing Page](assets/Landing-Page.png)
 ![Game Page](assets/Game.png)
 ![About Page](assets/About.png)
