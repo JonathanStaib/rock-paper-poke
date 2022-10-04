@@ -1,133 +1,159 @@
-
-body{
-  /* background-color: rgba(255, 60, 0, 0.97); */
-  color:whitesmoke;
+body {
+  color: whitesmoke;
   font-family: 'Abel', sans-serif;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: minmax(100px, auto);
-  grid-template-areas: 
-  "header header header"
-  "game-outer game-outer game-outer"
-  "footer footer footer";
+  grid-template-areas:
+    "header header header"
+    "game-outer game-outer game-outer"
+    "footer footer footer";
   gap: 20px;
 }
 
-header{
+header {
   grid-area: header;
   grid-column: 1/-1;
   grid-row: 1/2;
 }
 
-h1{
+h1 {
   font-family: 'Glegoo', serif;
   font-size: 30px;
   text-align: center;
   padding-left: 20px;
- }
- 
- nav{
-   padding-bottom: 10px;
- }
+}
 
- /* *div housing all game play for grid layout applied to body*/
-.game-outer{
+nav {
+  padding-bottom: 10px;
+}
+
+/* *div housing all game play for grid layout applied to body*/
+.game-outer {
   grid-area: game-outer;
   grid-column: 1/-1;
-  grid-row:2/6;
-  object-fit:scale-down;
+  grid-row: 2/6;
+  object-fit: scale-down;
 }
 
 /* *div housing game play content with own grid */
-.game-inner{
+.game-inner {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-auto-rows: minmax(50px, auto);
-  grid-template-areas: 
-  ". h2 h2 h2 ."
-  " . opponents oppponents.  game rules "
-  ". . . . ."
-  " image-container image-container image-container image-container image-container";
+  grid-template-areas:
+    ". h2 h2 h2 ."
+    " . opponents oppponents.  game rules "
+    ". . . . ."
+    " image-container image-container image-container image-container image-container";
   gap: 20px;
 }
 
-h2{
-  grid-area:h2;
+h2 {
+  grid-area: h2;
   grid-column: 1/-1;
-  grid-row:1/2;
+  grid-row: 1/2;
   text-align: center;
   font-size: 60px;
   padding: 20px;
 }
 
 /* *game play grid: opponents images  */
-#opponents{
+#opponents {
   /* *might have to adjust column to 2/3 and  */
   grid-column: 3/4;
-  grid-row:2/3;
+  grid-row: 2/3;
   text-align: center;
- justify-content: center;
- font-family: "Silkscreen", Arial, Helvetica, sans-serif;
- /* background-color: blue;
- border: none;
- border-radius: 90px; */
+  justify-content: center;
+  font-family: "Silkscreen", Arial, Helvetica, sans-serif;
+
 }
 
-.opponents-inner{
+.opponents-inner {
   display: flex;
   flex-direction: column;
   justify-content: center;
   font-family: "Silkscreen", Arial, Helvetica, sans-serif;
+  align-items: center;
 }
 
-.opponents-inner>h3{
+.opponents-inner>h3 {
   font-size: 40px;
   padding: 10px;
 }
 
-button{
+button {
   font-family: "Silkscreen", Arial, Helvetica, sans-serif;
   padding: 20px;
   margin: 20px;
   border-radius: 70px;
-  border:none;
-  text-align:center;
-  color: rgb(55,71,79);
+  border: none;
+  text-align: center;
+  color: rgb(55, 71, 79);
   font-size: large;
 }
 
-button:hover{
+button:hover {
   background-color: rgb(255, 236, 81);
-  border:none;
+  border: none;
 }
 
-#game-rules{
-  grid-column:5/6;
-  grid-row:2/3;
-  font-size: xx-large;
-  text-align: justify;
+#game-rules {
+  grid-column: 5/6;
+  grid-row: 2/3;
+  align-self: end;
+  margin-bottom: 20px;
+}
+
+#game-rules>section {
+  text-align: center;
+  padding: 20px;
+  color: rgb(55, 71, 79);
+  background-color: whitesmoke;
+  padding: 5px 5px 5px 5px;
+  border-radius: 70px;
+  height: 50px;
+  width: 50%;
+  margin: 5px 1% 5px 1%;
+  position: relative;
+  transition: height 0.8s;
+  overflow: hidden;
+  transition: 1s;
+  font-family: "Silkscreen", Arial, Helvetica, sans-serif;
+
+}
+
+#game-rules>section:hover {
+  height: auto;
+  width: auto;
+  background-color: yellow;
+  transform: scale(1.2);
+}
+
+
+
+#rule-section>h3 {
+  padding: 10px;
+  font-size: large;
+}
+
+#rule-section>p {
   padding: 20px;
 }
 
-#rules-hidden{
-  display:none;
-}
 
-#rules-section:hover>span{
-  display: block;
-}
 
-#image-container{
-  grid-area:image-container;
+#image-container {
+  grid-area: image-container;
   grid-column: 1/-1;
-  grid-row:4/5;
-  
-  
+  grid-row: 4/5;
+
+
 }
 
 /* *user image choice of 5  */
 
-#user-choice>ul{
+#user-choice>ul {
   display: flex;
   flex-wrap: wrap;
   flex-flow: row;
@@ -136,31 +162,31 @@ button:hover{
   padding-left: 20px;
 }
 
-#user-choice>p{
-  padding:20px;
+#user-choice>p {
+  padding: 20px;
   font-size: xx-large;
 }
 
 
-img{
-  background-color:pink;
+img {
+  background-color: pink;
   max-width: 80%;
-  
+
 }
 
-h5{
+h5 {
   font-family: "Silkscreen", Arial, Helvetica, sans-serif;
   font-size: x-large;
-  padding:5px;
+  padding: 5px;
 
 }
 
 
-footer{
-  grid-area:footer; 
+footer {
+  grid-area: footer;
   padding: 20px;
   grid-column: 1/-1;
-  grid-row:6/7;
+  grid-row: 6/7;
   text-align: center;
   align-items: center;
 
@@ -169,4 +195,3 @@ footer{
 .hidden {
   display: none;
 }
-
