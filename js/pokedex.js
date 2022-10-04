@@ -49,6 +49,6 @@ function renderChart() {
 }
 renderChart();
 
-let retreivedPokemon = localStorage.getItem('pokemon');
+let retrievedPokemon = localStorage.getItem('pokemon');
 
-let parsedPokemon = JSON.parse(retreivedPokemon);
+let parsedPokemon = JSON.parse(retrievedPokemon);
