@@ -152,8 +152,6 @@ function showOrHideCard() {
 }
 
 function winChecker(usersChoice) {
-  getOpponentName();
-
   computersType = computer.alt; //set computer type to whats stored in the pokemon img alt
   switch (computersType) {
     case 'fire':
@@ -214,6 +212,7 @@ function playersChoice(e) {
   showOrHideCard();
   userchoice.removeEventListener('click', playersChoice);
   winChecker(e.target.alt);
+  getOpponentName();
   console.log(pokemonSpotted);
 }
 
