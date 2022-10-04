@@ -57,7 +57,7 @@ PlayerDeck.prototype.newHand = function () {
 };
 
 /* DOM MANIPULATION */
-let opponents = document.querySelector('#opponents');
+let userchoice = document.querySelector('#user-choice');
 let computer = document.querySelector('#computer');
 let imgOne = document.querySelector('#imgOne');
 let imgTwo = document.querySelector('#imgTwo');
@@ -86,6 +86,7 @@ function pickRandomType(typeOfElement = 'all') {
     return [pickApokemon, pickAnElement];
   } else if (typeOfElement === 'fire') {
     playersHand.fire[0] = types['fire'][randomPokemon(fire)];
+
     return [playersHand.fire[0], 'fire'];
   } else if (typeOfElement === 'ice') {
     playersHand.ice[0] = types['ice'][randomPokemon(ice)];
@@ -119,12 +120,17 @@ function getOpponentName() {
 }
 /* This Function renders 5 images based on numbers stored in PlayerHand Object */
 function renderPlayerRandom() {
-  playersHand.newHand(); // grab data from the playerHand object to render images
+  // playersHand.newHand(); // grab data from the playerHand object to render images
   imgOne.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.fire[0]}.png`;
+
   imgTwo.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.ice[0]}.png`;
+  imgTwo.alt = playersHand.ice[1];
   imgThree.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.electric[0]}.png`;
+  imgThree.alt = playersHand.electric[1];
   imgFour.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.ground[0]}.png`;
+  imgFour.alt = playersHand.ground[1];
   imgFive.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.grass[0]}.png`;
+  imgFive.alt = playersHand.grass[1];
 }
 
 function showOrHideCard() {
@@ -143,11 +149,11 @@ function winChecker(usersChoice) {
 }
 
 /* EVENT HANDLER FUNCTIONS */
-function playersChoice() {
-  //TODO THIS IS WHERE THE LOGIC FOR THE PLAYERS CHOICE WILL LIVE
+function playersChoice(e) {
+  console.log(e.target.alt);
 }
 
 /* EVENT LISTENER METHODS */
-// div.addEventListener('click', playersChoice); //! div NEEDS UPDATED VARIABLE NAME FOR ACTUAL HTML ELEMENT
+userchoice.addEventListener('click', playersChoice);
 
 renderPlayerRandom();
