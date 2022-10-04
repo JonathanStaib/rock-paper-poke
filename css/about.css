@@ -26,6 +26,7 @@ h2 {
   position: relative;
   top: 30px;
   font-size: 25px;
+  margin-left: 21%;
 }
 
 #ball{
@@ -56,6 +57,12 @@ position: relative;
 bottom: 10px;
 border-radius: 15px;
 border: ridge yellow;
+transition: 0.5s all ease-in;
+}
+
+#Lewis img:hover{
+  transform: scale(1.5);
+ 
 }
 
  #Lewis p {
@@ -74,6 +81,12 @@ border: ridge yellow;
   bottom: 60px;
   border-radius: 15px;
   border: ridge yellow;
+  transition: 0.5s all ease-in;
+}
+
+#Monica img:hover{
+  transform: scale(1.5);
+ 
 }
 
 #Monica p {
@@ -90,6 +103,12 @@ border: ridge yellow;
   bottom: 80px;
   border-radius: 15px;
   border: ridge yellow;
+  transition: 0.5s all ease-in;
+}
+
+#Jonathan img:hover{
+  transform: scale(1.5);
+ 
 }
 
 #Jonathan p {
@@ -105,10 +124,17 @@ border: ridge yellow;
 
 #Raphael img {
   position: relative;
-  left: 810px;
-  bottom: 100px;
+  left: 800px;
+  bottom: 85px;
   border-radius: 15px;
   border: ridge yellow;
+  transition: 0.5s all ease-in;
+  width: 10rem;
+}
+
+#Raphael img:hover{
+  transform: scale(1.5);
+ 
 }
 
 #Raphael p {
@@ -118,4 +144,11 @@ border: ridge yellow;
   border: ridge yellow;
   border-radius: 15px;
   padding: 20px;
+}
+
+footer{
+  color: white;
+  text-align: center;
+  align-items: center;
+  padding-bottom: 3rem;
 }
