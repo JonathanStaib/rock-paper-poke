@@ -58,6 +58,7 @@ PlayerDeck.prototype.newHand = function () {
 
 /* DOM MANIPULATION */
 let opponents = document.querySelector('#opponents');
+let computer = document.querySelector('#computer');
 let imgOne = document.querySelector('#imgOne');
 let imgTwo = document.querySelector('#imgTwo');
 let imgThree = document.querySelector('#imgThree');
@@ -104,19 +105,15 @@ function pickRandomType(typeOfElement = 'all') {
 /* This function renders a random image for the computer to battle
 agaisnt the player*/
 function renderRandom() {
-  let img = document.createElement('img');
   let pokemon = pickRandomType();
-  img.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemon[0]}.png`;
-  img.className = 'exists';
-  opponents.appendChild(img);
-
-  //TODO Add a way to get the name of the computers pokemon.
+  computer.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemon[0]}.png`;
+  computer.alt = pokemon[0];
   return pokemon[1];
 }
 function getOpponentName() {
   fetch('pokedex.json')
     .then((response) => response.json())
-    .then((data) => (computersName = data[0].name.english));
+    .then((data) => (computersName = data[computer.alt].name.english));
 }
 /* This Function renders 5 images based on numbers stored in PlayerHand Object */
 function renderPlayerRandom() {
