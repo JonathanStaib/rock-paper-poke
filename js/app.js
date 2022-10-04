@@ -24,6 +24,8 @@ const PlayerDeck = function () {
   this.grass = '001';
 };
 
+/* CREATING NEW PLAYER HAND */
+const playersHand = new PlayerDeck();
 /* PROTOTYPE METHODS */
 
 PlayerDeck.prototype.newHand = {
@@ -35,9 +37,9 @@ PlayerDeck.prototype.getName = function () {
 };
 
 /* DOM MANIPULATION */
-let opponentDiv= document.querySelector('#opponents');
-opponentDiv = document.querySelector('opponents');
-let userSection = document.getElementById('user-choice');
+let div = document.querySelector('#opponents');
+div = document.querySelector('div'); //! THIS NEEDS THE VARIABLE NAME UPDATED AND SELECTOR CHANGED TO THE CORRECT ONE
+const parentPlayerImgs = document.querySelectorAll('li>figure>img');
 /* UTILITY FUNCTIONS */
 
 function randomPokemon(element) {
@@ -49,13 +51,35 @@ function storeToLocal() {
 
 /* GAME FUNCTIONS */
 
-function pickRandomType() {
+/* This function uses the random number function (named nandomPokemon)
+it grabs a random number based on Array size, and returns the number
+that matches a pokemon on pokemon.com and adds it to the players hand object */
+function pickRandomType(typeOfElement = 'all') {
   let elementNames = Object.keys(types);
-  let pickAnElement = elementNames[randomPokemon(elementNames)];
-  let pickApokemon = types[pickAnElement][randomPokemon(pickAnElement)];
-  return [pickApokemon, pickAnElement];
+  if (typeOfElement === 'all') {
+    let pickAnElement = elementNames[randomPokemon(elementNames)];
+    let pickApokemon = types[pickAnElement][randomPokemon(pickAnElement)];
+    return [pickApokemon, pickAnElement];
+  } else if (typeOfElement === 'fire') {
+    playersHand.fire = types['fire'][randomPokemon(fire)];
+    return [playersHand.fire, 'fire'];
+  } else if (typeOfElement === 'ice') {
+    playersHand.ice = types['ice'][randomPokemon(ice)];
+    return [playersHand.ice, 'ice'];
+  } else if (typeOfElement === 'electric') {
+    playersHand.electric = types['electric'][randomPokemon(electric)];
+    return [playersHand.electric, 'electric'];
+  } else if (typeOfElement === 'ground') {
+    playersHand.ground = types['ground'][randomPokemon(ground)];
+    return [playersHand.ground, 'ground'];
+  } else if (typeOfElement === 'grass') {
+    playersHand.grass = types['grass'][randomPokemon(grass)];
+    return [playersHand.grass, 'grass'];
+  }
 }
 
+/* This function renders a random image for the computer to battle
+agaisnt the player*/
 function renderRandom() {
   let img = document.createElement('img');
   let pokemon = pickRandomType();
@@ -65,13 +89,27 @@ function renderRandom() {
   return pokemon[1];
 }
 
+/* This Function renders 5 images based on numbers stored in PlayerHand Object */
+function renderPlayerRandom() {
+  let imgOne = document.querySelector('#imgOne');
+  let imgTwo = document.querySelector('#imgTwo');
+  let imgThree = document.querySelector('#imgThree');
+  let imgFour = document.querySelector('#imgFour');
+  let imgFive = document.querySelector('#imgFive');
+
+  imgOne.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.fire}.png`;
+  imgTwo.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.ice}.png`;
+  imgThree.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.electric}.png`;
+  imgFour.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.ground}.png`;
+  imgFive.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.grass}.png`;
+}
+
 function removePreviousImg() {
   let checkForImage = document.querySelector('.exists');
-  if (checkForImage === null)
-    if (checkForImage?.src) {
-      // The ? is to check for null first, otherwise it will break.
-      checkForImage.remove();
-    }
+  if (checkForImage?.src) {
+    // The ? is to check for null first, otherwise it will break.
+    checkForImage.remove();
+  }
 }
 
 function winChecker(usersChoice) {
