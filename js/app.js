@@ -141,7 +141,7 @@ function renderPlayerRandom() {
 function showOrHideCard() {
   /* This function will display the back of a card, or hide the image of the back of a card
   if its already being displayed, like a toggle. */
-  let cardBack = document.querySelector('#opponents>figure>img');
+  let cardBack = document.querySelector('.opponents-inner>figure>img');
   if (!cardBack.classList.contains('hidden')) {
     cardBack.classList.add('hidden');
     computer.classList.remove('hidden');
@@ -221,9 +221,9 @@ userchoice.addEventListener('click', playersChoice);
 
 renderPlayerRandom();
 
-let header = document.querySelector('header'); // TODO CHANGE TO BUTTON
+let button = document.querySelector('button'); // TODO CHANGE TO BUTTON
 
-header.addEventListener('click', () => {
+button.addEventListener('click', () => {
   showOrHideCard();
   playersHand.newHand();
   renderPlayerRandom();
