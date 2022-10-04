@@ -110,10 +110,12 @@ function renderRandom() {
   computer.alt = pokemon[0];
   return pokemon[1];
 }
+/* This function will search the pokedex file for the opponents pokemon's name
+It will store the name in a varable called computersName */
 function getOpponentName() {
   fetch('pokedex.json')
     .then((response) => response.json())
-    .then((data) => (computersName = data[computer.alt].name.english));
+    .then((data) => (computersName = data[+computer.alt - 1].name.english));
 }
 /* This Function renders 5 images based on numbers stored in PlayerHand Object */
 function renderPlayerRandom() {
@@ -126,6 +128,8 @@ function renderPlayerRandom() {
 }
 
 function showOrHideCard() {
+  /* This function will display the back of a card, or hide the image of the back of a card
+  if its already being displayed, like a toggle. */
   let cardBack = document.querySelector('#opponents>figure>img');
   if (cardBack.src.endsWith('.jpg')) {
     cardBack.src = '';
