@@ -1,12 +1,13 @@
+'use strict';
 /* GLOBALS */
-
+const pokemonSpotted = [];
 /* These Arrays are used to reference the Pokemon images on pokemon.com */
 const fire = ['004', '005', '006', '037', '038', '058', '069', '077'];
 const ice = ['087', '091', '124', '131', '144', '215', '220', '221'];
 const electric = ['025', '026', '081', '082', '100', '101', '125', '135'];
 const ground = ['027', '028', '031', '034', '050', '051', '074', '075'];
 const grass = ['001', '002', '003', '043', '044', '045', '046', '047'];
-let computersName; // Name of the Pokemon that the computer is going to send to battle
+let computersName = ''; // Name of the Pokemon that the computer is going to send to battle
 let computersType; // Type of the Pokemon that the computer is going to send to battle
 /* This object is used to reference the globals above, and have a string name to 
 reference later in conditionals such. Example: if('fire' === types.keyName) */
@@ -118,7 +119,9 @@ It will store the name in a varable called computersName */
 function getOpponentName() {
   fetch('pokedex.json')
     .then((response) => response.json())
-    .then((data) => (computersName = data[+computer.value - 1].name.english));
+    .then((data) =>
+      pokemonSpotted.push(data[+computer.value - 1].name.english)
+    );
 }
 /* This Function renders 5 images based on numbers stored in PlayerHand Object */
 function renderPlayerRandom() {
@@ -150,8 +153,8 @@ function showOrHideCard() {
 
 function winChecker(usersChoice) {
   getOpponentName();
+
   computersType = computer.alt; //set computer type to whats stored in the pokemon img alt
-  console.log(computersType);
   switch (computersType) {
     case 'fire':
       if (usersChoice === 'ice' || usersChoice === 'electric') {
@@ -211,6 +214,7 @@ function playersChoice(e) {
   showOrHideCard();
   userchoice.removeEventListener('click', playersChoice);
   winChecker(e.target.alt);
+  console.log(pokemonSpotted);
 }
 
 /* EVENT LISTENER METHODS */
