@@ -130,8 +130,11 @@ function pickRandomType(typeOfElement = 'all') {
 
 /* This function renders a random image for the computer to battle
 agaisnt the player*/
-function renderRandom() {
+function renderRandom(usersChoice) {
   let pokemon = pickRandomType();
+  while (pokemon[1] === usersChoice) {
+    pokemon = pickRandomType();
+  }
   computer.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemon[0]}.png`;
   computer.alt = pokemon[1]; // used to compair agaisnt the users choice (stores the element)
   computer.value = pokemon[0]; // used to reference to name in the pokedex file later (stores the number)
@@ -253,7 +256,7 @@ function newGameButton() {
 }
 
 function playersChoice(e) {
-  renderRandom();
+  renderRandom(e.target.alt);
   showOrHideCard();
   userchoice.removeEventListener('click', playersChoice);
   winChecker(e.target.alt);
