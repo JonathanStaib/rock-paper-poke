@@ -1,0 +1,113 @@
+main {
+  width: 960px;
+ margin: auto;
+ font-size: 18px;
+ font-family: Arial, Helvetica, sans-serif;
+ color: white;
+}
+
+h1{
+  font-family: 'Glegoo', serif;
+  font-size: 30px;
+  text-align: center;
+  padding-left: 20px;
+ }
+
+h2 {
+  text-align: center;
+  font-size: 50px;
+  color: white;
+  font-family: 'Glegoo', serif;
+}
+
+#bio p {
+  width: 600px;
+  margin: auto;
+  position: relative;
+  top: 30px;
+  font-size: 25px;
+}
+
+#ball{
+  width: 125px;
+  position: absolute;
+  top:150px
+}
+
+#ball:hover{
+  animation: shake 0.5s;
+  animation-iteration-count: 1.5;
+}
+/* https://www.w3schools.com/howto/howto_css_shake_image.asp */
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  20% { transform: translate(-1px, -2px) rotate(-1deg); }
+  40% { transform: translate(-3px, 0px) rotate(1deg); }
+  60% { transform: translate(3px, 2px) rotate(0deg); }
+  80% { transform: translate(1px, -1px) rotate(1deg); }
+  100% { transform: translate(-1px, 2px) rotate(-1deg); }
+}
+
+img {
+  width: 150px;
+}
+#Lewis img {
+position: relative;
+bottom: 10px;
+}
+
+ #Lewis p {
+  position: relative;
+  top: 125px;
+  left: 315px;
+  width: 600px;
+  border: ridge yellow;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+#Monica img {
+  position: relative;
+  left: 810px;
+  bottom: 60px;
+}
+
+#Monica p {
+  position: relative;
+  top: 75px;
+  width: 600px;
+  border: ridge yellow;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+#Jonathan img {
+  position: relative;
+  bottom: 80px;
+}
+
+#Jonathan p {
+    position: relative;
+    top: 50px;
+    left: 315px;
+    width: 600px;
+    border: ridge yellow;
+    border-radius: 15px;
+    padding: 20px;
+ 
+}
+
+#Raphael img {
+  position: relative;
+  left: 810px;
+  bottom: 100px;
+}
+
+#Raphael p {
+  position: relative;
+  top: 30px;
+  width: 600px;
+  border: ridge yellow;
+  border-radius: 15px;
+  padding: 20px;
+}

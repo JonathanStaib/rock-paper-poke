@@ -7,6 +7,7 @@ const electric = ['025', '026', '081', '082', '100', '101', '125', '135'];
 const ground = ['027', '028', '031', '034', '050', '051', '074', '075'];
 const grass = ['001', '002', '003', '043', '044', '045', '046', '047'];
 let computersName; // Name of the Pokemon that the computer is going to send to battle
+let computersType; // Type of the Pokemon that the computer is going to send to battle
 /* This object is used to reference the globals above, and have a string name to 
 reference later in conditionals such. Example: if('fire' === types.keyName) */
 const types = {
@@ -57,7 +58,7 @@ PlayerDeck.prototype.newHand = function () {
 };
 
 /* DOM MANIPULATION */
-let opponents = document.querySelector('#opponents');
+let userchoice = document.querySelector('#user-choice');
 let computer = document.querySelector('#computer');
 let imgOne = document.querySelector('#imgOne');
 let imgTwo = document.querySelector('#imgTwo');
@@ -86,6 +87,7 @@ function pickRandomType(typeOfElement = 'all') {
     return [pickApokemon, pickAnElement];
   } else if (typeOfElement === 'fire') {
     playersHand.fire[0] = types['fire'][randomPokemon(fire)];
+
     return [playersHand.fire[0], 'fire'];
   } else if (typeOfElement === 'ice') {
     playersHand.ice[0] = types['ice'][randomPokemon(ice)];
@@ -107,7 +109,8 @@ agaisnt the player*/
 function renderRandom() {
   let pokemon = pickRandomType();
   computer.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemon[0]}.png`;
-  computer.alt = pokemon[0];
+  computer.alt = pokemon[1]; // used to compair agaisnt the users choice (stores the element)
+  computer.value = pokemon[0]; // used to reference to name in the pokedex file later (stores the number)
   return pokemon[1];
 }
 /* This function will search the pokedex file for the opponents pokemon's name
@@ -115,41 +118,113 @@ It will store the name in a varable called computersName */
 function getOpponentName() {
   fetch('pokedex.json')
     .then((response) => response.json())
-    .then((data) => (computersName = data[+computer.alt - 1].name.english));
+    .then((data) => (computersName = data[+computer.value - 1].name.english));
 }
 /* This Function renders 5 images based on numbers stored in PlayerHand Object */
 function renderPlayerRandom() {
-  playersHand.newHand(); // grab data from the playerHand object to render images
+  // playersHand.newHand(); // grab data from the playerHand object to render images
   imgOne.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.fire[0]}.png`;
+  imgOne.alt = Object.keys(types)[0];
   imgTwo.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.ice[0]}.png`;
+  imgTwo.alt = Object.keys(types)[1];
   imgThree.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.electric[0]}.png`;
+  imgThree.alt = Object.keys(types)[2];
   imgFour.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.ground[0]}.png`;
+  imgFour.alt = Object.keys(types)[3];
   imgFive.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.grass[0]}.png`;
+  imgFive.alt = Object.keys(types)[4];
 }
 
 function showOrHideCard() {
   /* This function will display the back of a card, or hide the image of the back of a card
   if its already being displayed, like a toggle. */
   let cardBack = document.querySelector('#opponents>figure>img');
-  // *changed .jpg to png to match pokeball 
-  if (cardBack.src.endsWith('.png')) {
-    cardBack.src = '';
+
+  if (!cardBack.classList.contains('hidden')) {
+    cardBack.classList.add('hidden');
+    computer.classList.remove('hidden');
   } else {
-    //*changed file path to match new file type
-    cardBack.src = '../assets/tcg-card-back.png';
+    computer.classList.add('hidden');
+    cardBack.classList.remove('hidden');
+
   }
 }
 
 function winChecker(usersChoice) {
-  //TODO THIS IS WHERE THE SWITCH STATEMENT LOGIC WILL LIVE
+  getOpponentName();
+  computersType = computer.alt; //set computer type to whats stored in the pokemon img alt
+  console.log(computersType);
+  switch (computersType) {
+    case 'fire':
+      if (usersChoice === 'ice' || usersChoice === 'electric') {
+        console.log('user wins');
+      } else if (usersChoice === 'fire') {
+        console.log('it was a draw!');
+      } else {
+        console.log('User lost!');
+      }
+      break;
+
+    case 'ground':
+      if (usersChoice === 'fire' || usersChoice === 'grass') {
+        console.log('user wins');
+      } else if (usersChoice === 'ground') {
+        console.log('it was a draw!');
+      } else {
+        console.log('User lost!');
+      }
+      break;
+    case 'grass':
+      if (usersChoice === 'fire' || usersChoice === 'electric') {
+        console.log('user wins');
+      } else if (usersChoice === 'grass') {
+        console.log('it was a draw!');
+      } else {
+        console.log('User lost!');
+      }
+      break;
+
+    case 'electric':
+      if (usersChoice === 'ice' || usersChoice === 'ground') {
+        console.log('user wins');
+      } else if (usersChoice === 'electric') {
+        console.log('it was a draw!');
+      } else {
+        console.log('User lost!');
+      }
+      break;
+    case 'ice':
+      if (usersChoice === 'ground' || usersChoice === 'grass') {
+        console.log('user wins');
+      } else if (usersChoice === 'ice') {
+        console.log('it was a draw!');
+      } else {
+        console.log('User lost!');
+      }
+      break;
+    default:
+      console.log('error');
+  }
 }
 
 /* EVENT HANDLER FUNCTIONS */
-function playersChoice() {
-  //TODO THIS IS WHERE THE LOGIC FOR THE PLAYERS CHOICE WILL LIVE
+function playersChoice(e) {
+  renderRandom();
+  showOrHideCard();
+  userchoice.removeEventListener('click', playersChoice);
+  winChecker(e.target.alt);
 }
 
 /* EVENT LISTENER METHODS */
-// div.addEventListener('click', playersChoice); //! div NEEDS UPDATED VARIABLE NAME FOR ACTUAL HTML ELEMENT
+userchoice.addEventListener('click', playersChoice);
 
 renderPlayerRandom();
+
+let header = document.querySelector('header'); // TODO CHANGE TO BUTTON
+
+header.addEventListener('click', () => {
+  showOrHideCard();
+  playersHand.newHand();
+  renderPlayerRandom();
+  userchoice.addEventListener('click', playersChoice);
+});

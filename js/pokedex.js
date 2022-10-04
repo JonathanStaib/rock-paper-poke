@@ -4,9 +4,11 @@ let canvasElem = document.getElementById('my-chart').getContext('2d');
 
 function renderChart() {
 
-  let types = [];
-  let wins = [];
-  let losses = [];
+  let types = [2];
+  let wins = [5];
+  let losses = [5];
+
+  Chart.defaults.font.size = 16;
 
   let myChartObj = {
     type: 'bar',
@@ -29,7 +31,7 @@ function renderChart() {
         data: losses,
         label: '# of Losses',
         backgroundColor: [
-          'gray',
+          'red',
         ],
         borderColor: [
           'black'
@@ -49,6 +51,6 @@ function renderChart() {
 }
 renderChart();
 
-let retreivedPokemon = localStorage.getItem('pokemon');
+let retrievedPokemon = localStorage.getItem('pokemon');
 
-let parsedPokemon = JSON.parse(retreivedPokemon);
+let parsedPokemon = JSON.parse(retrievedPokemon);
