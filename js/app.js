@@ -84,6 +84,7 @@ let imgTwo = document.querySelector('#imgTwo');
 let imgThree = document.querySelector('#imgThree');
 let imgFour = document.querySelector('#imgFour');
 let imgFive = document.querySelector('#imgFive');
+let button = document.querySelector('button');
 /* UTILITY FUNCTIONS */
 
 function randomPokemon(element) {
@@ -240,25 +241,28 @@ function winChecker(usersChoice) {
 }
 
 /* EVENT HANDLER FUNCTIONS */
+
+function newGameButton() {
+  storeToLocal();
+  showOrHideCard();
+  playersHand.newHand();
+  renderPlayerRandom();
+  button.classList.add('invisable');
+  button.removeEventListener('click', newGameButton);
+  userchoice.addEventListener('click', playersChoice);
+}
+
 function playersChoice(e) {
   renderRandom();
   showOrHideCard();
   userchoice.removeEventListener('click', playersChoice);
   winChecker(e.target.alt);
   getOpponentName();
+  button.classList.remove('invisable');
+  button.addEventListener('click', newGameButton);
 }
 
 /* EVENT LISTENER METHODS */
 userchoice.addEventListener('click', playersChoice);
 
 renderPlayerRandom();
-
-let button = document.querySelector('button');
-
-button.addEventListener('click', () => {
-  storeToLocal();
-  showOrHideCard();
-  playersHand.newHand();
-  renderPlayerRandom();
-  userchoice.addEventListener('click', playersChoice);
-});
