@@ -1,0 +1,27 @@
+body{
+  background-color: rgb(255, 103, 77);
+  font-family: 'Abel', sans-serif;
+}
+
+h1{
+ font-family: 'Glegoo', serif;
+ font-size: 80px;
+ text-align: center;
+}
+/* 
+font-family: 'Silkscreen', cursive; */ 
+
+button{
+  font-family: "Silkscreen", Arial, Helvetica, sans-serif;
+  font-size: x-large;
+  padding: 20px;
+  border-radius: 70px;
+  text-align:center;
+  
+}
+
+button:hover{
+  background-color: rgb(255, 236, 81);
+  border-color: rgb(255, 236, 81);
+}
+
