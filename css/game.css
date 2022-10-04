@@ -6,9 +6,9 @@ body {
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: minmax(100px, auto);
   grid-template-areas:
-    "header header header"
-    "game-outer game-outer game-outer"
-    "footer footer footer";
+    'header header header'
+    'game-outer game-outer game-outer'
+    'footer footer footer';
   gap: 20px;
 }
 
@@ -43,10 +43,10 @@ nav {
   grid-template-columns: repeat(5, 1fr);
   grid-auto-rows: minmax(50px, auto);
   grid-template-areas:
-    ". h2 h2 h2 ."
-    " . opponents oppponents.  game rules "
-    ". . . . ."
-    " image-container image-container image-container image-container image-container";
+    '. h2 h2 h2 .'
+    ' . opponents oppponents.  game rules '
+    '. . . . .'
+    ' image-container image-container image-container image-container image-container';
   gap: 20px;
   background-color: rgb(38, 92, 186, 0.5);
   border-radius: 20px;
@@ -77,17 +77,17 @@ h2 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-family: "Silkscreen", Arial, Helvetica, sans-serif;
+  font-family: 'Silkscreen', Arial, Helvetica, sans-serif;
   align-items: center;
 }
 
-.opponents-inner>h3 {
+.opponents-inner > h3 {
   font-size: 40px;
   padding: 10px;
 }
 
 button {
-  font-family: "Silkscreen", Arial, Helvetica, sans-serif;
+  font-family: 'Silkscreen', Arial, Helvetica, sans-serif;
   padding: 20px;
   margin: 20px;
   border-radius: 70px;
@@ -109,7 +109,7 @@ button:hover {
   margin-bottom: 20px;
 }
 
-#game-rules>section {
+#game-rules > section {
   text-align: center;
   padding: 20px;
   color: rgb(55, 71, 79);
@@ -123,41 +123,34 @@ button:hover {
   transition: height 0.8s;
   overflow: hidden;
   transition: 1s;
-  font-family: "Silkscreen", Arial, Helvetica, sans-serif;
-
+  font-family: 'Silkscreen', Arial, Helvetica, sans-serif;
 }
 
-#game-rules>section:hover {
+#game-rules > section:hover {
   height: auto;
   width: auto;
   background-color: yellow;
   transform: scale(1.15);
 }
 
-
-
-#rule-section>h3 {
+#rule-section > h3 {
   padding: 10px;
   font-size: large;
 }
 
-#rule-section>p {
+#rule-section > p {
   padding: 20px;
 }
-
-
 
 #image-container {
   grid-area: image-container;
   grid-column: 1/-1;
   grid-row: 4/5;
-
-
 }
 
 /* *user image choice of 5  */
 
-#user-choice>ul {
+#user-choice > ul {
   display: flex;
   flex-wrap: wrap;
   flex-flow: row;
@@ -166,27 +159,23 @@ button:hover {
   padding-left: 20px;
 }
 
-#user-choice>p {
+#user-choice > p {
   padding: 20px;
   font-size: xx-large;
 }
-
 
 img {
   background-color:   rgb(38, 92, 186, 0.8);
   border-radius: 15px;
   /* background-color:   rgb(38, 92, 186, 0.8); */
   max-width: 80%;
-
 }
 
 h5 {
-  font-family: "Silkscreen", Arial, Helvetica, sans-serif;
+  font-family: 'Silkscreen', Arial, Helvetica, sans-serif;
   font-size: x-large;
   padding: 5px;
-
 }
-
 
 footer {
   grid-area: footer;
@@ -195,9 +184,12 @@ footer {
   grid-row: 6/7;
   text-align: center;
   align-items: center;
-
 }
 
 .hidden {
   display: none;
+}
+
+.invisable {
+  opacity: 0;
 }
