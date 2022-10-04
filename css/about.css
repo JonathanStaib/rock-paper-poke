@@ -54,6 +54,8 @@ img {
 #Lewis img {
 position: relative;
 bottom: 10px;
+border-radius: 15px;
+border: ridge yellow;
 }
 
  #Lewis p {
@@ -70,6 +72,8 @@ bottom: 10px;
   position: relative;
   left: 810px;
   bottom: 60px;
+  border-radius: 15px;
+  border: ridge yellow;
 }
 
 #Monica p {
@@ -84,6 +88,8 @@ bottom: 10px;
 #Jonathan img {
   position: relative;
   bottom: 80px;
+  border-radius: 15px;
+  border: ridge yellow;
 }
 
 #Jonathan p {
@@ -94,13 +100,19 @@ bottom: 10px;
     border: ridge yellow;
     border-radius: 15px;
     padding: 20px;
- 
+}
+
+#Jonathan a{
+  color: yellow;
+  text-decoration: underline;
 }
 
 #Raphael img {
   position: relative;
   left: 810px;
   bottom: 100px;
+  border-radius: 15px;
+  border: ridge yellow;
 }
 
 #Raphael p {
