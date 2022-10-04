@@ -147,14 +147,14 @@ function showOrHideCard() {
 }
 
 function winChecker(usersChoice) {
-  //TODO THIS IS WHERE THE SWITCH STATEMENT LOGIC WILL LIVE
+  console.log(usersChoice);
 }
 
 /* EVENT HANDLER FUNCTIONS */
 function playersChoice(e) {
   renderRandom();
   showOrHideCard();
-  console.log(e.target.alt);
+  winChecker(e.target.alt);
 }
 
 /* EVENT LISTENER METHODS */
