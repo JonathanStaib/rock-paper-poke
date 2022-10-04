@@ -157,63 +157,39 @@ function winChecker(usersChoice) {
       switch (usersChoice) {
         case 'ice':
           console.log('user wins');
-          break;
-        case 'electric':
-          console.log('user wins');
-          break;
-        case 'fire':
-          console.log('it was a draw!');
-          break;
-        default:
-          console.log('User lost!');
+      } else if (usersChoice === 'fire') {
+        console.log('it was a draw!');
+      } else {
+        console.log('User lost!');
       }
       break;
 
     case 'ground':
-      switch (usersChoice) {
-        case 'fire':
-          console.log('user wins');
-          break;
-        case 'grass':
-          console.log('user wins');
-          break;
-        case 'ground':
-          console.log('it was a draw!');
-          break;
-        default:
-          console.log('User lost!');
+      if (usersChoice === 'fire' || usersChoice === 'grass') {
+        console.log('user wins');
+      } else if (usersChoice === 'ground') {
+        console.log('it was a draw!');
+      } else {
+        console.log('User lost!');
       }
       break;
-
     case 'grass':
-      switch (usersChoice) {
-        case 'fire':
-          console.log('user wins');
-          break;
-        case 'electric':
-          console.log('user wins');
-          break;
-        case 'grass':
-          console.log('it was a draw!');
-          break;
-        default:
-          console.log('User lost!');
+      if (usersChoice === 'fire' || usersChoice === 'electric') {
+        console.log('user wins');
+      } else if (usersChoice === 'grass') {
+        console.log('it was a draw!');
+      } else {
+        console.log('User lost!');
       }
       break;
 
     case 'electric':
-      switch (usersChoice) {
-        case 'ice':
-          console.log('user wins');
-          break;
-        case 'ground':
-          console.log('user wins');
-          break;
-        case 'electric':
-          console.log('it was a draw!');
-          break;
-        default:
-          console.log('User lost!');
+      if (usersChoice === 'ice' || usersChoice === 'ground') {
+        console.log('user wins');
+      } else if (usersChoice === 'electric') {
+        console.log('it was a draw!');
+      } else {
+        console.log('User lost!');
       }
       break;
     case 'ice':
@@ -234,6 +210,7 @@ function winChecker(usersChoice) {
 function playersChoice(e) {
   renderRandom();
   showOrHideCard();
+  userchoice.removeEventListener('click', playersChoice);
   winChecker(e.target.alt);
 }
 
@@ -241,3 +218,12 @@ function playersChoice(e) {
 userchoice.addEventListener('click', playersChoice);
 
 renderPlayerRandom();
+
+let header = document.querySelector('header'); // TODO CHANGE TO BUTTON
+
+header.addEventListener('click', () => {
+  showOrHideCard();
+  playersHand.newHand();
+  renderPlayerRandom();
+  userchoice.addEventListener('click', playersChoice);
+});
