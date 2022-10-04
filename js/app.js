@@ -1,6 +1,8 @@
 'use strict';
 /* GLOBALS */
 const pokemonSpotted = [];
+let wins = 0;
+let losses = 0;
 /* These Arrays are used to reference the Pokemon images on pokemon.com */
 const fire = ['004', '005', '006', '037', '038', '058', '069', '077'];
 const ice = ['087', '091', '124', '131', '144', '215', '220', '221'];
@@ -72,7 +74,9 @@ function randomPokemon(element) {
   return Math.floor(Math.random() * element.length);
 }
 function storeToLocal() {
-  //TODO WINS AND LOSS SAVE TO LOCAL STORAGE
+  localStorage.setItem('pokemonSpotted', JSON.stringify(pokemonSpotted));
+  localStorage.setItem('wins', JSON.stringify(wins));
+  localStorage.setItem('loss', JSON.stringify(losses));
 }
 
 /* GAME FUNCTIONS */
@@ -117,10 +121,11 @@ function renderRandom() {
 /* This function will search the pokedex file for the opponents pokemon's name
 It will store the name in a varable called computersName */
 function getOpponentName() {
+  let url = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${computer.value}.png`;
   fetch('pokedex.json')
     .then((response) => response.json())
     .then((data) =>
-      pokemonSpotted.push(data[+computer.value - 1].name.english)
+      pokemonSpotted.push([url, data[+computer.value - 1].name.english])
     );
 }
 /* This Function renders 5 images based on numbers stored in PlayerHand Object */
@@ -157,48 +162,58 @@ function winChecker(usersChoice) {
     case 'fire':
       if (usersChoice === 'ice' || usersChoice === 'electric') {
         console.log('user wins');
+        wins++;
       } else if (usersChoice === 'fire') {
         console.log('it was a draw!');
       } else {
         console.log('User lost!');
+        losses++;
       }
       break;
 
     case 'ground':
       if (usersChoice === 'fire' || usersChoice === 'grass') {
+        wins++;
         console.log('user wins');
       } else if (usersChoice === 'ground') {
         console.log('it was a draw!');
       } else {
         console.log('User lost!');
+        losses++;
       }
       break;
     case 'grass':
       if (usersChoice === 'fire' || usersChoice === 'electric') {
+        wins++;
         console.log('user wins');
       } else if (usersChoice === 'grass') {
         console.log('it was a draw!');
       } else {
         console.log('User lost!');
+        losses++;
       }
       break;
 
     case 'electric':
       if (usersChoice === 'ice' || usersChoice === 'ground') {
+        wins++;
         console.log('user wins');
       } else if (usersChoice === 'electric') {
         console.log('it was a draw!');
       } else {
         console.log('User lost!');
+        losses++;
       }
       break;
     case 'ice':
       if (usersChoice === 'ground' || usersChoice === 'grass') {
+        wins++;
         console.log('user wins');
       } else if (usersChoice === 'ice') {
         console.log('it was a draw!');
       } else {
         console.log('User lost!');
+        losses++;
       }
       break;
     default:
@@ -213,7 +228,6 @@ function playersChoice(e) {
   userchoice.removeEventListener('click', playersChoice);
   winChecker(e.target.alt);
   getOpponentName();
-  console.log(pokemonSpotted);
 }
 
 /* EVENT LISTENER METHODS */
@@ -224,6 +238,7 @@ renderPlayerRandom();
 let button = document.querySelector('button'); // TODO CHANGE TO BUTTON
 
 button.addEventListener('click', () => {
+  storeToLocal();
   showOrHideCard();
   playersHand.newHand();
   renderPlayerRandom();
