@@ -154,9 +154,8 @@ function winChecker(usersChoice) {
   console.log(computersType);
   switch (computersType) {
     case 'fire':
-      switch (usersChoice) {
-        case 'ice':
-          console.log('user wins');
+      if (usersChoice === 'ice' || usersChoice === 'electric') {
+        console.log('user wins');
       } else if (usersChoice === 'fire') {
         console.log('it was a draw!');
       } else {
