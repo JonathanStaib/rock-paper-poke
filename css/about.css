@@ -100,7 +100,11 @@ border: ridge yellow;
     border: ridge yellow;
     border-radius: 15px;
     padding: 20px;
- 
+}
+
+#Jonathan a{
+  color: yellow;
+  text-decoration: underline;
 }
 
 #Raphael img {
