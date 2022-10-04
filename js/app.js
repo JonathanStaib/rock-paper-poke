@@ -108,7 +108,7 @@ agaisnt the player*/
 function renderRandom() {
   let pokemon = pickRandomType();
   computer.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemon[0]}.png`;
-  computer.alt = pokemon[0];
+  computer.alt = pokemon[1];
   return pokemon[1];
 }
 /* This function will search the pokedex file for the opponents pokemon's name
@@ -122,25 +122,27 @@ function getOpponentName() {
 function renderPlayerRandom() {
   // playersHand.newHand(); // grab data from the playerHand object to render images
   imgOne.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.fire[0]}.png`;
-
+  imgOne.alt = Object.keys(types)[0];
   imgTwo.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.ice[0]}.png`;
-  imgTwo.alt = playersHand.ice[1];
+  imgTwo.alt = Object.keys(types)[1];
   imgThree.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.electric[0]}.png`;
-  imgThree.alt = playersHand.electric[1];
+  imgThree.alt = Object.keys(types)[2];
   imgFour.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.ground[0]}.png`;
-  imgFour.alt = playersHand.ground[1];
+  imgFour.alt = Object.keys(types)[3];
   imgFive.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.grass[0]}.png`;
-  imgFive.alt = playersHand.grass[1];
+  imgFive.alt = Object.keys(types)[4];
 }
 
 function showOrHideCard() {
   /* This function will display the back of a card, or hide the image of the back of a card
   if its already being displayed, like a toggle. */
   let cardBack = document.querySelector('#opponents>figure>img');
-  if (cardBack.src.endsWith('.jpg')) {
-    cardBack.src = '';
+  if (!cardBack.classList.contains('hidden')) {
+    cardBack.classList.add('hidden');
+    computer.classList.remove('hidden');
   } else {
-    cardBack.src = '../assets/tcg-card-back.jpg';
+    computer.classList.add('hidden');
+    cardBack.classList.remove('hidden');
   }
 }
 
@@ -150,6 +152,8 @@ function winChecker(usersChoice) {
 
 /* EVENT HANDLER FUNCTIONS */
 function playersChoice(e) {
+  renderRandom();
+  showOrHideCard();
   console.log(e.target.alt);
 }
 
