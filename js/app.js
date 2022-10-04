@@ -1,6 +1,10 @@
 'use strict';
 /* GLOBALS */
-const pokemonSpotted = [];
+
+let pokemonSpotted = [];
+if (localStorage.pokemonSpotted) {
+  pokemonSpotted = JSON.parse(localStorage.pokemonSpotted);
+}
 let wins = 0;
 let losses = 0;
 /* These Arrays are used to reference the Pokemon images on pokemon.com */
@@ -74,7 +78,9 @@ function randomPokemon(element) {
   return Math.floor(Math.random() * element.length);
 }
 function storeToLocal() {
-  localStorage.setItem('pokemonSpotted', JSON.stringify(pokemonSpotted));
+  let uniquePokemon = [...new Set(pokemonSpotted)]; // remove duplicates from array
+
+  localStorage.setItem('pokemonSpotted', JSON.stringify(uniquePokemon));
   localStorage.setItem('wins', JSON.stringify(wins));
   localStorage.setItem('loss', JSON.stringify(losses));
 }
@@ -235,7 +241,7 @@ userchoice.addEventListener('click', playersChoice);
 
 renderPlayerRandom();
 
-let button = document.querySelector('button'); // TODO CHANGE TO BUTTON
+let button = document.querySelector('button');
 
 button.addEventListener('click', () => {
   storeToLocal();
