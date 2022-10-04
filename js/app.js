@@ -96,6 +96,11 @@ function renderPlayerRandom() {
   let imgThree = document.querySelector('#imgThree');
   let imgFour = document.querySelector('#imgFour');
   let imgFive = document.querySelector('#imgFive');
+  pickRandomType('fire');
+  pickRandomType('ice');
+  pickRandomType('electric');
+  pickRandomType('ground');
+  pickRandomType('grass');
 
   imgOne.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.fire}.png`;
   imgTwo.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.ice}.png`;
@@ -123,3 +128,5 @@ function playersChoice() {
 
 /* EVENT LISTENER METHODS */
 // div.addEventListener('click', playersChoice); //! div NEEDS UPDATED VARIABLE NAME FOR ACTUAL HTML ELEMENT
+
+renderPlayerRandom();
