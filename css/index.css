@@ -8,6 +8,7 @@ h1{
  font-size: 80px;
  text-align: center;
 }
+
 /* 
 font-family: 'Silkscreen', cursive; */ 
 
@@ -16,12 +17,24 @@ button{
   font-size: x-large;
   padding: 20px;
   border-radius: 70px;
-  text-align:center;
-  
+  text-align:center;  
 }
 
 button:hover{
   background-color: rgb(255, 236, 81);
   border-color: rgb(255, 236, 81);
 }
+
+/* https://css-tricks.com/design-considerations-text-images/
+body{
+  background-image:
+  linear-gradient( 
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)), 
+   url("../img/pika-luca.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom ;
+  height: 100vh;
+} */
 
