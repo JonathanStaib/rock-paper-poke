@@ -9,6 +9,7 @@ function renderChart() {
   let losses = [5];
 
   Chart.defaults.font.size = 16;
+  Chart.defaults.color = "#000000";
 
   let myChartObj = {
     type: 'bar',
@@ -40,6 +41,9 @@ function renderChart() {
       }]
     },
     options: {
+      layout: {
+        padding: 10
+      },
       scales: {
         y: {
           beginAtZero: true
