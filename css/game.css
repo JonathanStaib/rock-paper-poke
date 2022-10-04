@@ -30,12 +30,15 @@ h1{
    padding-bottom: 10px;
  }
 
+ /* *div housing all game play for grid layout applied to body*/
 .game-outer{
   grid-area: game-outer;
   grid-column: 1/-1;
   grid-row:2/6;
   object-fit:scale-down;
 }
+
+/* *div housing game play content with own grid */
 .game-inner{
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -46,8 +49,6 @@ h1{
   ". . . . ."
   " image-container image-container image-container image-container image-container";
   gap: 20px;
-  /* object-fit:scale-down; */
-
 }
 
 h2{
@@ -56,15 +57,27 @@ h2{
   grid-row:1/2;
   text-align: center;
   font-size: 60px;
+  padding: 20px;
 }
 
 #opponents{
   /* *might have to adjust column to 2/3 and  */
   grid-column: 3/4;
   grid-row:2/3;
+  text-align: center;
  justify-content: center;
-
+ font-family: "Silkscreen", Arial, Helvetica, sans-serif;
+ /* background-color: blue;
+ border: none;
+ border-radius: 90px; */
 }
+
+#opponents>h3{
+  /* padding:10px; */
+  font-size: 40px;
+}
+
+
 #game-rules{
   grid-column:5/6;
   grid-row:2/3;
@@ -81,12 +94,23 @@ h2{
   
 }
 
-#user-choice{
+/* *user image choice of 5  */
+
+#user-choice>ul{
   display: flex;
-  flex-direction: row;
-  flex-basis: auto;
   flex-wrap: wrap;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
 }
+
+
+#user-choice>ul>li{
+  /* padding-left: 10px; */
+}
+
+
 
 figure> img{
 
@@ -104,7 +128,8 @@ img{
 /* game play grid: opponents images  */
 
 footer{
-  grid-area:footer;
+  grid-area:footer; 
+  padding: 20px;
   grid-column: 1/-1;
   grid-row:6/7;
   text-align: center;
