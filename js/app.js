@@ -125,8 +125,13 @@ function renderPlayerRandom() {
   imgFive.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.grass[0]}.png`;
 }
 
-function removePreviousImg() {
-  opponents.src = '../assets/tcg-card-back.jpg';
+function showOrHideCard() {
+  let cardBack = document.querySelector('#opponents>figure>img');
+  if (cardBack.src.endsWith('.jpg')) {
+    cardBack.src = '';
+  } else {
+    cardBack.src = '../assets/tcg-card-back.jpg';
+  }
 }
 
 function winChecker(usersChoice) {
