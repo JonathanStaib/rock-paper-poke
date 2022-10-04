@@ -6,7 +6,7 @@ const ice = ['087', '091', '124', '131', '144', '215', '220', '221'];
 const electric = ['025', '026', '081', '082', '100', '101', '125', '135'];
 const ground = ['027', '028', '031', '034', '050', '051', '074', '075'];
 const grass = ['001', '002', '003', '043', '044', '045', '046', '047'];
-
+let computersName; // Name of the Pokemon that the computer is going to send to battle
 /* This object is used to reference the globals above, and have a string name to 
 reference later in conditionals such. Example: if('fire' === types.keyName) */
 const types = {
@@ -57,7 +57,7 @@ PlayerDeck.prototype.newHand = function () {
 };
 
 /* DOM MANIPULATION */
-let div = document.querySelector('#opponents');
+let opponents = document.querySelector('#opponents');
 let imgOne = document.querySelector('#imgOne');
 let imgTwo = document.querySelector('#imgTwo');
 let imgThree = document.querySelector('#imgThree');
@@ -108,12 +108,16 @@ function renderRandom() {
   let pokemon = pickRandomType();
   img.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemon[0]}.png`;
   img.className = 'exists';
-  opponentDiv.appendChild(img);
+  opponents.appendChild(img);
 
   //TODO Add a way to get the name of the computers pokemon.
   return pokemon[1];
 }
-
+function getOpponentName() {
+  fetch('pokedex.json')
+    .then((response) => response.json())
+    .then((data) => (computersName = data[0].name.english));
+}
 /* This Function renders 5 images based on numbers stored in PlayerHand Object */
 function renderPlayerRandom() {
   playersHand.newHand(); // grab data from the playerHand object to render images
@@ -125,11 +129,7 @@ function renderPlayerRandom() {
 }
 
 function removePreviousImg() {
-  let checkForImage = document.querySelector('.exists');
-  if (checkForImage?.src) {
-    // The ? is to check for null first, otherwise it will break.
-    checkForImage.remove();
-  }
+  opponents.src = '../assets/tcg-card-back.jpg';
 }
 
 function winChecker(usersChoice) {
