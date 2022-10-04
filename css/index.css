@@ -1,5 +1,5 @@
 body{
-  background-color: rgb(255, 103, 77);
+  background-color: rgb(255,61,0);
   color:whitesmoke;
   font-family: 'Abel', sans-serif;
   display: grid;
@@ -57,12 +57,26 @@ button{
   padding: 20px;
   border-radius: 70px;
   border:none;
-  text-align:center;  
+  text-align:center;
+  color: rgb(55,71,79); 
+  animation: bounce 1.6s ease infinite; 
+  
+}
+
+@keyframes bounce {
+  70% { transform:translateY(-0%); }
+  80% { transform:translateY(-10%); }
+  90% { transform:translateY(0%); }
+  95% { transform:translateY(-10%); }
+  97% { transform:translateY(0%); }
+  99% { transform:translateY(-5%); }
+  100% { transform:translateY(0); }
 }
 
 button:hover{
   background-color: rgb(255, 236, 81);
   border:none;
+  animation-play-state: paused;
 
 }
 
