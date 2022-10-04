@@ -1,0 +1,22 @@
+#my-chart{
+ 
+}
+
+#chart-container{
+  display: block;
+  justify-content: center;
+  color: black;
+  background-color: rgb(180, 200, 216);
+  border: 3px solid black;
+  border-radius: 15px;
+  width: 95%;
+  align-self: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+
+}
+
+#chart-info{
+  
+}
