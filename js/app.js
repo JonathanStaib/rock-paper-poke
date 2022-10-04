@@ -1,11 +1,14 @@
 /* GLOBALS */
 
+/* These Arrays are used to reference the Pokemon images on pokemon.com */
 const fire = ['004', '005', '006', '037', '038', '058', '069', '077'];
 const ice = ['087', '091', '124', '131', '144', '215', '220', '221'];
 const electric = ['025', '026', '081', '082', '100', '101', '125', '135'];
 const ground = ['027', '028', '031', '034', '050', '051', '074', '075'];
 const grass = ['001', '002', '003', '043', '044', '045', '046', '047'];
 
+/* This object is used to reference the globals above, and have a string name to 
+reference later in conditionals such. Example: if('fire' === types.keyName) */
 const types = {
   fire: fire,
   ice: ice,
@@ -17,29 +20,49 @@ const types = {
 /* CONSTRUCTORS */
 
 const PlayerDeck = function () {
-  this.fire = '004';
-  this.ice = '087';
-  this.electric = '025';
-  this.ground = '027';
-  this.grass = '001';
+  this.fire = ['004', 'Charmander'];
+  this.ice = ['087', 'Dewgong'];
+  this.electric = ['025', 'Pikachu'];
+  this.ground = ['027', 'Sandshrew'];
+  this.grass = ['001', 'Bulbasaur'];
 };
 
 /* CREATING NEW PLAYER HAND */
 const playersHand = new PlayerDeck();
 /* PROTOTYPE METHODS */
 
-PlayerDeck.prototype.newHand = {
-  //TODO THIS WILL CREATE 5 RANDOM POKEMON IN THE PLAYERS HAND
-};
-
-PlayerDeck.prototype.getName = function () {
-  //TODO THIS WILL GET THE NAME OF THE POKEMON FOR THE ACCOICATED IMAGE
+PlayerDeck.prototype.newHand = function () {
+  /* This function creates new data for the PlayerDeck object by assigning each element
+  name to an array, the first index is the number that represents a Pokemon, 
+  the second number is the name of the Pokemon (as seen above in the constructor) */
+  const elementsAll = [];
+  let fire = pickRandomType('fire');
+  let ice = pickRandomType('ice');
+  let electric = pickRandomType('electric');
+  let ground = pickRandomType('ground');
+  let grass = pickRandomType('grass');
+  elementsAll.push(fire, ice, electric, ground, grass);
+  /* The for loop iterates over each element above, then checks the pokedex.json for the name of the pokemon by
+   subtracting 1 from the pokemons number to grab its index locations, it then 
+   checks the .name property, and .english to grab its english name and assign it to the PlayerDeck Object  */
+  for (let i = 0; i < elementsAll.length; i++) {
+    fetch('pokedex.json')
+      .then((response) => response.json())
+      .then(
+        (data) =>
+          (this[elementsAll[i][1]][1] =
+            data[+elementsAll[i][0] - 1].name.english)
+      );
+  }
 };
 
 /* DOM MANIPULATION */
 let div = document.querySelector('#opponents');
-div = document.querySelector('div'); //! THIS NEEDS THE VARIABLE NAME UPDATED AND SELECTOR CHANGED TO THE CORRECT ONE
-const parentPlayerImgs = document.querySelectorAll('li>figure>img');
+let imgOne = document.querySelector('#imgOne');
+let imgTwo = document.querySelector('#imgTwo');
+let imgThree = document.querySelector('#imgThree');
+let imgFour = document.querySelector('#imgFour');
+let imgFive = document.querySelector('#imgFive');
 /* UTILITY FUNCTIONS */
 
 function randomPokemon(element) {
@@ -61,20 +84,20 @@ function pickRandomType(typeOfElement = 'all') {
     let pickApokemon = types[pickAnElement][randomPokemon(pickAnElement)];
     return [pickApokemon, pickAnElement];
   } else if (typeOfElement === 'fire') {
-    playersHand.fire = types['fire'][randomPokemon(fire)];
-    return [playersHand.fire, 'fire'];
+    playersHand.fire[0] = types['fire'][randomPokemon(fire)];
+    return [playersHand.fire[0], 'fire'];
   } else if (typeOfElement === 'ice') {
-    playersHand.ice = types['ice'][randomPokemon(ice)];
-    return [playersHand.ice, 'ice'];
+    playersHand.ice[0] = types['ice'][randomPokemon(ice)];
+    return [playersHand.ice[0], 'ice'];
   } else if (typeOfElement === 'electric') {
-    playersHand.electric = types['electric'][randomPokemon(electric)];
-    return [playersHand.electric, 'electric'];
+    playersHand.electric[0] = types['electric'][randomPokemon(electric)];
+    return [playersHand.electric[0], 'electric'];
   } else if (typeOfElement === 'ground') {
-    playersHand.ground = types['ground'][randomPokemon(ground)];
-    return [playersHand.ground, 'ground'];
+    playersHand.ground[0] = types['ground'][randomPokemon(ground)];
+    return [playersHand.ground[0], 'ground'];
   } else if (typeOfElement === 'grass') {
-    playersHand.grass = types['grass'][randomPokemon(grass)];
-    return [playersHand.grass, 'grass'];
+    playersHand.grass[0] = types['grass'][randomPokemon(grass)];
+    return [playersHand.grass[0], 'grass'];
   }
 }
 
@@ -86,27 +109,19 @@ function renderRandom() {
   img.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemon[0]}.png`;
   img.className = 'exists';
   opponentDiv.appendChild(img);
+
+  //TODO Add a way to get the name of the computers pokemon.
   return pokemon[1];
 }
 
 /* This Function renders 5 images based on numbers stored in PlayerHand Object */
 function renderPlayerRandom() {
-  let imgOne = document.querySelector('#imgOne');
-  let imgTwo = document.querySelector('#imgTwo');
-  let imgThree = document.querySelector('#imgThree');
-  let imgFour = document.querySelector('#imgFour');
-  let imgFive = document.querySelector('#imgFive');
-  pickRandomType('fire');
-  pickRandomType('ice');
-  pickRandomType('electric');
-  pickRandomType('ground');
-  pickRandomType('grass');
-
-  imgOne.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.fire}.png`;
-  imgTwo.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.ice}.png`;
-  imgThree.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.electric}.png`;
-  imgFour.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.ground}.png`;
-  imgFive.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.grass}.png`;
+  playersHand.newHand(); // grab data from the playerHand object to render images
+  imgOne.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.fire[0]}.png`;
+  imgTwo.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.ice[0]}.png`;
+  imgThree.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.electric[0]}.png`;
+  imgFour.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.ground[0]}.png`;
+  imgFive.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.grass[0]}.png`;
 }
 
 function removePreviousImg() {
