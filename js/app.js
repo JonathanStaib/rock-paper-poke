@@ -131,10 +131,12 @@ function showOrHideCard() {
   /* This function will display the back of a card, or hide the image of the back of a card
   if its already being displayed, like a toggle. */
   let cardBack = document.querySelector('#opponents>figure>img');
-  if (cardBack.src.endsWith('.jpg')) {
+  // *changed .jpg to png to match pokeball 
+  if (cardBack.src.endsWith('.png')) {
     cardBack.src = '';
   } else {
-    cardBack.src = '../assets/tcg-card-back.jpg';
+    //*changed file path to match new file type
+    cardBack.src = '../assets/tcg-card-back.png';
   }
 }
 
