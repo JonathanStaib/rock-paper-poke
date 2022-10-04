@@ -139,12 +139,14 @@ function showOrHideCard() {
   /* This function will display the back of a card, or hide the image of the back of a card
   if its already being displayed, like a toggle. */
   let cardBack = document.querySelector('#opponents>figure>img');
+
   if (!cardBack.classList.contains('hidden')) {
     cardBack.classList.add('hidden');
     computer.classList.remove('hidden');
   } else {
     computer.classList.add('hidden');
     cardBack.classList.remove('hidden');
+
   }
 }
 
