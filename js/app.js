@@ -1,8 +1,24 @@
 'use strict';
 /* GLOBALS */
-const pokemonSpotted = [];
+
+let pokemonSpotted = [];
 let wins = 0;
 let losses = 0;
+
+/* REASSIGN GLOBALS IF LOCAL STORAGE EXISTS */
+
+if (localStorage.pokemonSpotted) {
+  pokemonSpotted = JSON.parse(localStorage.pokemonSpotted);
+}
+
+if (localStorage.wins) {
+  wins = JSON.parse(localStorage.wins);
+}
+
+if (localStorage.losses) {
+  losses = JSON.parse(localStorage.losses);
+}
+
 /* These Arrays are used to reference the Pokemon images on pokemon.com */
 const fire = ['004', '005', '006', '037', '038', '058', '069', '077'];
 const ice = ['087', '091', '124', '131', '144', '215', '220', '221'];
@@ -68,13 +84,16 @@ let imgTwo = document.querySelector('#imgTwo');
 let imgThree = document.querySelector('#imgThree');
 let imgFour = document.querySelector('#imgFour');
 let imgFive = document.querySelector('#imgFive');
+let button = document.querySelector('button');
 /* UTILITY FUNCTIONS */
 
 function randomPokemon(element) {
   return Math.floor(Math.random() * element.length);
 }
 function storeToLocal() {
-  localStorage.setItem('pokemonSpotted', JSON.stringify(pokemonSpotted));
+  let uniquePokemon = [...new Set(pokemonSpotted)]; // remove duplicates from array
+
+  localStorage.setItem('pokemonSpotted', JSON.stringify(uniquePokemon));
   localStorage.setItem('wins', JSON.stringify(wins));
   localStorage.setItem('loss', JSON.stringify(losses));
 }
@@ -111,8 +130,11 @@ function pickRandomType(typeOfElement = 'all') {
 
 /* This function renders a random image for the computer to battle
 agaisnt the player*/
-function renderRandom() {
+function renderRandom(usersChoice) {
   let pokemon = pickRandomType();
+  while (pokemon[1] === usersChoice) {
+    pokemon = pickRandomType();
+  }
   computer.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemon[0]}.png`;
   computer.alt = pokemon[1]; // used to compair agaisnt the users choice (stores the element)
   computer.value = pokemon[0]; // used to reference to name in the pokedex file later (stores the number)
@@ -159,88 +181,91 @@ function showOrHideCard() {
 function winChecker(usersChoice) {
   computersType = computer.alt; //set computer type to whats stored in the pokemon img alt
   switch (computersType) {
-  case 'fire':
-    if (usersChoice === 'ice' || usersChoice === 'electric') {
-      console.log('user wins');
-      wins++;
-    } else if (usersChoice === 'fire') {
-      console.log('it was a draw!');
-    } else {
-      console.log('User lost!');
-      losses++;
-    }
-    break;
+    case 'fire':
+      if (usersChoice === 'ice' || usersChoice === 'electric') {
+        console.log('user wins');
+        wins++;
+      } else if (usersChoice === 'fire') {
+        console.log('it was a draw!');
+      } else {
+        console.log('User lost!');
+        losses++;
+      }
+      break;
 
-  case 'ground':
-    if (usersChoice === 'fire' || usersChoice === 'grass') {
-      wins++;
-      console.log('user wins');
-    } else if (usersChoice === 'ground') {
-      console.log('it was a draw!');
-    } else {
-      console.log('User lost!');
-      losses++;
-    }
-    break;
-  case 'grass':
-    if (usersChoice === 'fire' || usersChoice === 'electric') {
-      wins++;
-      console.log('user wins');
-    } else if (usersChoice === 'grass') {
-      console.log('it was a draw!');
-    } else {
-      console.log('User lost!');
-      losses++;
-    }
-    break;
+    case 'ground':
+      if (usersChoice === 'fire' || usersChoice === 'grass') {
+        wins++;
+        console.log('user wins');
+      } else if (usersChoice === 'ground') {
+        console.log('it was a draw!');
+      } else {
+        console.log('User lost!');
+        losses++;
+      }
+      break;
+    case 'grass':
+      if (usersChoice === 'fire' || usersChoice === 'electric') {
+        wins++;
+        console.log('user wins');
+      } else if (usersChoice === 'grass') {
+        console.log('it was a draw!');
+      } else {
+        console.log('User lost!');
+        losses++;
+      }
+      break;
 
-  case 'electric':
-    if (usersChoice === 'ice' || usersChoice === 'ground') {
-      wins++;
-      console.log('user wins');
-    } else if (usersChoice === 'electric') {
-      console.log('it was a draw!');
-    } else {
-      console.log('User lost!');
-      losses++;
-    }
-    break;
-  case 'ice':
-    if (usersChoice === 'ground' || usersChoice === 'grass') {
-      wins++;
-      console.log('user wins');
-    } else if (usersChoice === 'ice') {
-      console.log('it was a draw!');
-    } else {
-      console.log('User lost!');
-      losses++;
-    }
-    break;
-  default:
-    console.log('error');
+    case 'electric':
+      if (usersChoice === 'ice' || usersChoice === 'ground') {
+        wins++;
+        console.log('user wins');
+      } else if (usersChoice === 'electric') {
+        console.log('it was a draw!');
+      } else {
+        console.log('User lost!');
+        losses++;
+      }
+      break;
+    case 'ice':
+      if (usersChoice === 'ground' || usersChoice === 'grass') {
+        wins++;
+        console.log('user wins');
+      } else if (usersChoice === 'ice') {
+        console.log('it was a draw!');
+      } else {
+        console.log('User lost!');
+        losses++;
+      }
+      break;
+    default:
+      console.log('error');
   }
 }
 
 /* EVENT HANDLER FUNCTIONS */
+
+function newGameButton() {
+  storeToLocal();
+  showOrHideCard();
+  playersHand.newHand();
+  renderPlayerRandom();
+  button.classList.add('invisable');
+  button.removeEventListener('click', newGameButton);
+  userchoice.addEventListener('click', playersChoice);
+}
+
 function playersChoice(e) {
-  renderRandom();
+  renderRandom(e.target.alt);
   showOrHideCard();
   userchoice.removeEventListener('click', playersChoice);
   winChecker(e.target.alt);
   getOpponentName();
+  button.classList.remove('invisable');
+  button.addEventListener('click', newGameButton);
 }
 
 /* EVENT LISTENER METHODS */
 userchoice.addEventListener('click', playersChoice);
 
 renderPlayerRandom();
-
-let button = document.querySelector('button'); // TODO CHANGE TO BUTTON
-
-button.addEventListener('click', () => {
-  storeToLocal();
-  showOrHideCard();
-  playersHand.newHand();
-  renderPlayerRandom();
-  userchoice.addEventListener('click', playersChoice);
-});
