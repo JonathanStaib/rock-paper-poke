@@ -7,6 +7,7 @@ const electric = ['025', '026', '081', '082', '100', '101', '125', '135'];
 const ground = ['027', '028', '031', '034', '050', '051', '074', '075'];
 const grass = ['001', '002', '003', '043', '044', '045', '046', '047'];
 let computersName; // Name of the Pokemon that the computer is going to send to battle
+let computersType; // Type of the Pokemon that the computer is going to send to battle
 /* This object is used to reference the globals above, and have a string name to 
 reference later in conditionals such. Example: if('fire' === types.keyName) */
 const types = {
@@ -108,7 +109,8 @@ agaisnt the player*/
 function renderRandom() {
   let pokemon = pickRandomType();
   computer.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemon[0]}.png`;
-  computer.alt = pokemon[1];
+  computer.alt = pokemon[1]; // used to compair agaisnt the users choice (stores the element)
+  computer.value = pokemon[0]; // used to reference to name in the pokedex file later (stores the number)
   return pokemon[1];
 }
 /* This function will search the pokedex file for the opponents pokemon's name
@@ -116,7 +118,7 @@ It will store the name in a varable called computersName */
 function getOpponentName() {
   fetch('pokedex.json')
     .then((response) => response.json())
-    .then((data) => (computersName = data[+computer.alt - 1].name.english));
+    .then((data) => (computersName = data[+computer.value - 1].name.english));
 }
 /* This Function renders 5 images based on numbers stored in PlayerHand Object */
 function renderPlayerRandom() {
@@ -147,7 +149,85 @@ function showOrHideCard() {
 }
 
 function winChecker(usersChoice) {
-  console.log(usersChoice);
+  getOpponentName();
+  computersType = computer.alt; //set computer type to whats stored in the pokemon img alt
+  console.log(computersType);
+  switch (computersType) {
+    case 'fire':
+      switch (usersChoice) {
+        case 'ice':
+          console.log('user wins');
+          break;
+        case 'electric':
+          console.log('user wins');
+          break;
+        case 'fire':
+          console.log('it was a draw!');
+          break;
+        default:
+          console.log('User lost!');
+      }
+      break;
+
+    case 'ground':
+      switch (usersChoice) {
+        case 'fire':
+          console.log('user wins');
+          break;
+        case 'grass':
+          console.log('user wins');
+          break;
+        case 'ground':
+          console.log('it was a draw!');
+          break;
+        default:
+          console.log('User lost!');
+      }
+      break;
+
+    case 'grass':
+      switch (usersChoice) {
+        case 'fire':
+          console.log('user wins');
+          break;
+        case 'electric':
+          console.log('user wins');
+          break;
+        case 'grass':
+          console.log('it was a draw!');
+          break;
+        default:
+          console.log('User lost!');
+      }
+      break;
+
+    case 'electric':
+      switch (usersChoice) {
+        case 'ice':
+          console.log('user wins');
+          break;
+        case 'ground':
+          console.log('user wins');
+          break;
+        case 'electric':
+          console.log('it was a draw!');
+          break;
+        default:
+          console.log('User lost!');
+      }
+      break;
+    case 'ice':
+      if (usersChoice === 'ground' || usersChoice === 'grass') {
+        console.log('user wins');
+      } else if (usersChoice === 'ice') {
+        console.log('it was a draw!');
+      } else {
+        console.log('User lost!');
+      }
+      break;
+    default:
+      console.log('error');
+  }
 }
 
 /* EVENT HANDLER FUNCTIONS */
