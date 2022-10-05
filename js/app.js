@@ -55,13 +55,12 @@ PlayerDeck.prototype.newHand = function () {
   /* This function creates new data for the PlayerDeck object by assigning each element
   name to an array, the first index is the number that represents a Pokemon,
   the second number is the name of the Pokemon (as seen above in the constructor) */
-  const elementsAll = [];
   let fire = pickRandomType('fire');
   let ice = pickRandomType('ice');
   let electric = pickRandomType('electric');
   let ground = pickRandomType('ground');
   let grass = pickRandomType('grass');
-  elementsAll.push(fire, ice, electric, ground, grass);
+  const elementsAll = [fire, ice, electric, ground, grass];
   /* The for loop iterates over each element above, then checks the pokedex.json for the name of the pokemon by
    subtracting 1 from the pokemons number to grab its index locations, it then
    checks the .name property, and .english to grab its english name and assign it to the PlayerDeck Object  */
@@ -85,6 +84,7 @@ let imgThree = document.querySelector('#imgThree');
 let imgFour = document.querySelector('#imgFour');
 let imgFive = document.querySelector('#imgFive');
 let button = document.querySelector('button');
+let messageBox = document.querySelector('#messageBox');
 /* UTILITY FUNCTIONS */
 
 function randomPokemon(element) {
@@ -103,28 +103,31 @@ function storeToLocal() {
 /* This function uses the random number function (named nandomPokemon)
 it grabs a random number based on Array size, and returns the number
 that matches a pokemon on pokemon.com and adds it to the players hand object */
-function pickRandomType(typeOfElement = 'all') {
+function pickRandomType(typeOfElement = 'all') { 
   let elementNames = Object.keys(types);
   if (typeOfElement === 'all') {
     let pickAnElement = elementNames[randomPokemon(elementNames)];
     let pickApokemon = types[pickAnElement][randomPokemon(pickAnElement)];
     return [pickApokemon, pickAnElement];
+    // if no element is specified, the function runs lines 106-110
+
+  /* The rest of this function creates the players
+pokemon using a random pokemon of each type */
   } else if (typeOfElement === 'fire') {
     playersHand.fire[0] = types['fire'][randomPokemon(fire)];
-
-    return [playersHand.fire[0], 'fire'];
+    return [playersHand.fire[0], 'fire']; //add fire type pokemon to playersHand
   } else if (typeOfElement === 'ice') {
     playersHand.ice[0] = types['ice'][randomPokemon(ice)];
-    return [playersHand.ice[0], 'ice'];
+    return [playersHand.ice[0], 'ice']; //add ice type pokemon to playersHand
   } else if (typeOfElement === 'electric') {
     playersHand.electric[0] = types['electric'][randomPokemon(electric)];
-    return [playersHand.electric[0], 'electric'];
+    return [playersHand.electric[0], 'electric']; //add electric type pokemon to playersHand
   } else if (typeOfElement === 'ground') {
     playersHand.ground[0] = types['ground'][randomPokemon(ground)];
-    return [playersHand.ground[0], 'ground'];
+    return [playersHand.ground[0], 'ground']; //add ground type pokemon to playersHand
   } else if (typeOfElement === 'grass') {
     playersHand.grass[0] = types['grass'][randomPokemon(grass)];
-    return [playersHand.grass[0], 'grass'];
+    return [playersHand.grass[0], 'grass']; //add grass type pokemon to playersHand
   }
 }
 
@@ -132,13 +135,16 @@ function pickRandomType(typeOfElement = 'all') {
 agaisnt the player*/
 function renderRandom(usersChoice) {
   let pokemon = pickRandomType();
+  /* The while loop ensures there is never a draw by generating a new pokemon until
+  its not of the same type that the player is using. */
   while (pokemon[1] === usersChoice) {
-    pokemon = pickRandomType();
+    pokemon = pickRandomType(); // This is where the computer grabs a random pokemon
   }
+  /* Lines 143 - 145 will manipulate the img element that contains the computers pokemon */
   computer.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemon[0]}.png`;
   computer.alt = pokemon[1]; // used to compair agaisnt the users choice (stores the element)
   computer.value = pokemon[0]; // used to reference to name in the pokedex file later (stores the number)
-  return pokemon[1];
+  return pokemon[1]; // returns the element (fire, ice ect..) the computers pokemon is using to compair agaisnt the player
 }
 /* This function will search the pokedex file for the opponents pokemon's name
 It will store the name in a varable called computersName */
@@ -147,7 +153,7 @@ function getOpponentName() {
   fetch('pokedex.json')
     .then((response) => response.json())
     .then((data) =>
-      pokemonSpotted.push([url, data[+computer.value - 1].name.english])
+      pokemonSpotted.push([url, data[+computer.value - 1].name.english]) // pushing the name into an array for local storage later
     );
 }
 /* This Function renders 5 images based on numbers stored in PlayerHand Object */
@@ -178,73 +184,80 @@ function showOrHideCard() {
   }
 }
 
+/* This function compairs the players choice of pokemon to the computers to
+see which element will win, reference the flowchart in the README.md to see
+which element beats which */
 function winChecker(usersChoice) {
   computersType = computer.alt; //set computer type to whats stored in the pokemon img alt
   switch (computersType) {
-    case 'fire':
-      if (usersChoice === 'ice' || usersChoice === 'electric') {
-        console.log('user wins');
-        wins++;
-      } else if (usersChoice === 'fire') {
-        console.log('it was a draw!');
-      } else {
-        console.log('User lost!');
-        losses++;
-      }
-      break;
+  case 'fire':
+    if (usersChoice === 'ice' || usersChoice === 'electric') {
+      console.log('user wins');
+      wins++;
+    } else if (usersChoice === 'fire') {
+      console.log('it was a draw!');
+    } else {
+      console.log('User lost!');
+      losses++;
+    }
+    break;
 
-    case 'ground':
-      if (usersChoice === 'fire' || usersChoice === 'grass') {
-        wins++;
-        console.log('user wins');
-      } else if (usersChoice === 'ground') {
-        console.log('it was a draw!');
-      } else {
-        console.log('User lost!');
-        losses++;
-      }
-      break;
-    case 'grass':
-      if (usersChoice === 'fire' || usersChoice === 'electric') {
-        wins++;
-        console.log('user wins');
-      } else if (usersChoice === 'grass') {
-        console.log('it was a draw!');
-      } else {
-        console.log('User lost!');
-        losses++;
-      }
-      break;
+  case 'ground':
+    if (usersChoice === 'fire' || usersChoice === 'grass') {
+      wins++;
+      console.log('user wins');
+    } else if (usersChoice === 'ground') {
+      console.log('it was a draw!');
+    } else {
+      console.log('User lost!');
+      losses++;
+    }
+    break;
+  case 'grass':
+    if (usersChoice === 'fire' || usersChoice === 'electric') {
+      wins++;
+      console.log('user wins');
+    } else if (usersChoice === 'grass') {
+      console.log('it was a draw!');
+    } else {
+      console.log('User lost!');
+      losses++;
+    }
+    break;
 
-    case 'electric':
-      if (usersChoice === 'ice' || usersChoice === 'ground') {
-        wins++;
-        console.log('user wins');
-      } else if (usersChoice === 'electric') {
-        console.log('it was a draw!');
-      } else {
-        console.log('User lost!');
-        losses++;
-      }
-      break;
-    case 'ice':
-      if (usersChoice === 'ground' || usersChoice === 'grass') {
-        wins++;
-        console.log('user wins');
-      } else if (usersChoice === 'ice') {
-        console.log('it was a draw!');
-      } else {
-        console.log('User lost!');
-        losses++;
-      }
-      break;
-    default:
-      console.log('error');
+  case 'electric':
+    if (usersChoice === 'ice' || usersChoice === 'ground') {
+      wins++;
+      console.log('user wins');
+    } else if (usersChoice === 'electric') {
+      console.log('it was a draw!');
+    } else {
+      console.log('User lost!');
+      losses++;
+    }
+    break;
+  case 'ice':
+    if (usersChoice === 'ground' || usersChoice === 'grass') {
+      wins++;
+      console.log('user wins');
+    } else if (usersChoice === 'ice') {
+      console.log('it was a draw!');
+    } else {
+      console.log('User lost!');
+      losses++;
+    }
+    break;
+  default:
+    console.log('error');
   }
 }
 
 /* EVENT HANDLER FUNCTIONS */
 
+/* This function will fire after a click event on the play again button
+it will push to localStorage, hide the pokemon from previous round, give the player 5 new
+pokemon, turn the button invisable, and remove the event listener from button
+It will add the event listener back on the 5 user pokemon */
 function newGameButton() {
   storeToLocal();
   showOrHideCard();
@@ -255,6 +268,11 @@ function newGameButton() {
   userchoice.addEventListener('click', playersChoice);
 }
 
+/* This event handler will fire when a player chooses a pokemon and clicks
+It will render the computers pokemon, and hide the pokeball image
+It will remove the event listener from the users pokemon, the user cant
+click another pokemon until they reset with the new game button
+The new game button becomes visable and gains an event listener */
 function playersChoice(e) {
   renderRandom(e.target.alt);
   showOrHideCard();
@@ -268,4 +286,5 @@ function playersChoice(e) {
 /* EVENT LISTENER METHODS */
 userchoice.addEventListener('click', playersChoice);
 
+/* Renders 5 random pokemon for the user on load. */
 renderPlayerRandom();
