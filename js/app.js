@@ -104,22 +104,22 @@ function randomPokemon(element) {
   return Math.floor(Math.random() * element.length);
 }
 function storeToLocal() {
-  let uniquePokemon = [];
   let uniquePokemonNames = [];
   let uniquePokemonUrls = [];
   let uniquePokemonFlat = [...new Set(pokemonSpotted.flat())]; // remove duplicates from array
   for (let i = 1; i < uniquePokemonFlat.length; i += 2) {
     uniquePokemonNames.push(uniquePokemonFlat[i]);
   }
+
   for (let i = 0; i < uniquePokemonFlat.length; i += 2) {
     uniquePokemonUrls.push(uniquePokemonFlat[i]);
   }
-  for (let i = 0; i < uniquePokemonFlat.length; i++) {
-    uniquePokemon[i] = [uniquePokemonNames, uniquePokemonUrls];
-  }
 
-  console.log(uniquePokemon);
-  localStorage.setItem('pokemonSpotted', JSON.stringify(uniquePokemon));
+  localStorage.setItem(
+    'pokemonSpottedNames',
+    JSON.stringify(uniquePokemonNames)
+  );
+  localStorage.setItem('pokemonSpottedUrls', JSON.stringify(uniquePokemonUrls));
   localStorage.setItem('wins', JSON.stringify(wins));
   localStorage.setItem('loss', JSON.stringify(losses));
 }
