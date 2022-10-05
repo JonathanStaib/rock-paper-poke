@@ -108,13 +108,15 @@ function storeToLocal() {
   let uniquePokemonNames = [];
   let uniquePokemonUrls = [];
   let uniquePokemonFlat = [...new Set(pokemonSpotted.flat())]; // remove duplicates from array
-  for (let i = 1; i < uniquePokemonFlat.length; i +=2){
+  for (let i = 1; i < uniquePokemonFlat.length; i += 2) {
     uniquePokemonNames.push(uniquePokemonFlat[i]);
   }
-  for (let i = 0; i < uniquePokemonFlat.length; i+=2){
+  for (let i = 0; i < uniquePokemonFlat.length; i += 2) {
     uniquePokemonUrls.push(uniquePokemonFlat[i]);
   }
-  for (let i = 0; )
+  for (let i = 0; i < uniquePokemonFlat.length; i++) {
+    uniquePokemon[i] = [uniquePokemonNames, uniquePokemonUrls];
+  }
 
   console.log(uniquePokemon);
   localStorage.setItem('pokemonSpotted', JSON.stringify(uniquePokemon));
