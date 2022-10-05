@@ -2,8 +2,21 @@
 /* GLOBALS */
 
 let pokemonSpotted = [];
-let wins = 0;
-let losses = 0;
+let wins = {
+  fire: 0,
+  ice: 0,
+  electric: 0,
+  ground: 0,
+  grass: 0,
+};
+
+let losses = {
+  fireL: 0,
+  iceL: 0,
+  electricL: 0,
+  groundL: 0,
+  grassL: 0,
+};
 
 /* REASSIGN GLOBALS IF LOCAL STORAGE EXISTS */
 
@@ -86,7 +99,7 @@ let imgFive = document.querySelector('#imgFive');
 let button = document.querySelector('button');
 let messageBox = document.querySelector('#messageBox');
 /* UTILITY FUNCTIONS */
-1
+1;
 function randomPokemon(element) {
   return Math.floor(Math.random() * element.length);
 }
@@ -103,7 +116,7 @@ function storeToLocal() {
 /* This function uses the random number function (named nandomPokemon)
 it grabs a random number based on Array size, and returns the number
 that matches a pokemon on pokemon.com and adds it to the players hand object */
-function pickRandomType(typeOfElement = 'all') { 
+function pickRandomType(typeOfElement = 'all') {
   let elementNames = Object.keys(types);
   if (typeOfElement === 'all') {
     let pickAnElement = elementNames[randomPokemon(elementNames)];
@@ -111,7 +124,7 @@ function pickRandomType(typeOfElement = 'all') {
     return [pickApokemon, pickAnElement];
     // if no element is specified, the function runs lines 106-110
 
-  /* The rest of this function creates the players
+    /* The rest of this function creates the players
 pokemon using a random pokemon of each type */
   } else if (typeOfElement === 'fire') {
     playersHand.fire[0] = types['fire'][randomPokemon(fire)];
@@ -152,8 +165,9 @@ function getOpponentName() {
   let url = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${computer.value}.png`;
   fetch('pokedex.json')
     .then((response) => response.json())
-    .then((data) =>
-      pokemonSpotted.push([url, data[+computer.value - 1].name.english]) // pushing the name into an array for local storage later
+    .then(
+      (data) =>
+        pokemonSpotted.push([url, data[+computer.value - 1].name.english]) // pushing the name into an array for local storage later
     );
 }
 /* This Function renders 5 images based on numbers stored in PlayerHand Object */
@@ -193,58 +207,63 @@ function winChecker(usersChoice) {
   case 'fire':
     if (usersChoice === 'ice' || usersChoice === 'electric') {
       console.log('user wins');
-      wins++;
+      wins.ice++;
+      wins.electric++;
     } else if (usersChoice === 'fire') {
       console.log('it was a draw!');
     } else {
+      losses[usersChoice+'L']++;
       console.log('User lost!');
-      losses++;
     }
     break;
 
   case 'ground':
     if (usersChoice === 'fire' || usersChoice === 'grass') {
-      wins++;
+      wins.fire++;
+      wins.grass++;
       console.log('user wins');
     } else if (usersChoice === 'ground') {
       console.log('it was a draw!');
     } else {
+      losses[usersChoice+'L']++;
       console.log('User lost!');
-      losses++;
     }
     break;
   case 'grass':
     if (usersChoice === 'fire' || usersChoice === 'electric') {
-      wins++;
+      wins.fire++;
+      wins.electric++;
       console.log('user wins');
     } else if (usersChoice === 'grass') {
       console.log('it was a draw!');
     } else {
+      losses[usersChoice+'L']++;
       console.log('User lost!');
-      losses++;
     }
     break;
 
   case 'electric':
     if (usersChoice === 'ice' || usersChoice === 'ground') {
-      wins++;
+      wins.ice++;
+      wins.ground++;
       console.log('user wins');
     } else if (usersChoice === 'electric') {
       console.log('it was a draw!');
     } else {
+      losses[usersChoice+'L']++;
       console.log('User lost!');
-      losses++;
     }
     break;
   case 'ice':
     if (usersChoice === 'ground' || usersChoice === 'grass') {
-      wins++;
+      wins.ground++;
+      wins.grass++;
       console.log('user wins');
     } else if (usersChoice === 'ice') {
       console.log('it was a draw!');
     } else {
+      losses[usersChoice+'L']++;
       console.log('User lost!');
-      losses++;
     }
     break;
   default:

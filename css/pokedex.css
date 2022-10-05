@@ -1,5 +1,6 @@
 body {
   height: 100vh;
+<<<<<<< HEAD
   background: url(../assets/00160088.jpeg) no-repeat center center fixed;
   -webkit-background-size: 100vw;
   -moz-background-size: 100vw;
@@ -7,15 +8,14 @@ body {
   background-size: 100vw;
   background-color: rgb(118, 163, 185);
  
+=======
+  background: url(../assets/ChartBG.jpeg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+>>>>>>> c4c945e8e36dccce252fb9430b9f3290f0070d7e
 }
-
-h1{
- font-family: 'Glegoo', serif;
- font-size: 30px;
- text-shadow: black 0px 0px 2px;
- text-align: center;
- padding-left: 20px;
-
 header {
   grid-area: header;
   grid-column: 1/-1;
@@ -40,15 +40,9 @@ nav {
   display: block;
   justify-content: center;
   color: black;
-  background-color: rgb(68, 157, 229);
+  background-color: rgb(180, 200, 216);
   border: 3px solid black;
   border-radius: 15px;
-  width: 65%;
-  align-self: center;
-  margin-left: 5%;
-  margin-right: 40vw%;
-  margin-bottom: 10px;
-margin-top: 8%;
   width: 510px;
   height: 400px;
   max-width: inherit;
@@ -63,7 +57,6 @@ margin-top: 8%;
 
 footer {
   color: white;
-  text-shadow: black 0px 0px 2px;
   text-align: center;
   align-items: center;
   padding-bottom: 3rem;
