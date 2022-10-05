@@ -86,7 +86,7 @@ let imgFive = document.querySelector('#imgFive');
 let button = document.querySelector('button');
 let messageBox = document.querySelector('#messageBox');
 /* UTILITY FUNCTIONS */
-
+1
 function randomPokemon(element) {
   return Math.floor(Math.random() * element.length);
 }
