@@ -13,18 +13,19 @@ let pokemonImg = document.querySelector('img');
 /* GRAB LOCAL STORAGE */
 let retrievedPokemon = JSON.parse(localStorage.getItem('pokemonSpotted'));
 
-let retrievedWins = JSON.parse(localStorage.getItem('wins'));
+let {fire,ice,electric,ground,grass} = JSON.parse(localStorage.getItem('wins'));
 
-let retrievedLosses = JSON.parse(localStorage.getItem('loss'));
+let {fireL,iceL,electricL,groundL,grassL} = JSON.parse(localStorage.getItem('loss'));
 
 /* CHART.JS LOGIC */
 let wins = [];
-wins.push(retrievedWins);
+wins.push(fire,ice,electric,ground,grass);
 let loss = [];
-loss.push(retrievedLosses);
+loss.push(fireL,iceL,electricL,groundL,grassL);
 
 function renderChart() {
-  // let types = [];
+  let testWins = [1,2,3,4,5]
+  let testLosses = [1,2,3,4,5]
 
 
   Chart.defaults.font.size = 14;
@@ -39,14 +40,14 @@ function renderChart() {
 
       datasets: [
         {
-          data: wins,
+          data: testWins,
           label: '# of Wins',
           backgroundColor: ['blue'],
           borderColor: ['navy'],
           borderWidth: 1,
         },
         {
-          data: loss,
+          data: testLosses,
           label: '# of Losses',
           backgroundColor: ['red'],
           borderColor: ['black'],

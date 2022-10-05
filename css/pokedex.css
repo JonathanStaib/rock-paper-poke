@@ -14,6 +14,7 @@ h1{
  text-shadow: black 0px 0px 2px;
  text-align: center;
  padding-left: 20px;
+}
 
 header {
   grid-area: header;
@@ -45,7 +46,7 @@ nav {
   width: 65%;
   align-self: center;
   margin-left: 5%;
-  margin-right: 40vw%;
+  margin-right: 40vw;
   margin-bottom: 10px;
 margin-top: 8%;
   width: 510px;
