@@ -19,6 +19,10 @@ body{
     color: whitesmoke;
     text-align: center;
     padding:5px;
+    font-family: 'Glegoo', serif;
+  font-size: 30px;
+  text-align: center;
+  padding-left: 20px;
   }
   
   nav{
