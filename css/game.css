@@ -21,7 +21,10 @@ header {
 }
 
 main{
-  width: 90vw;
+  align-content: center;
+  align-self: center;
+  align-items: center;
+  width: 98vw;
   margin-left: 10px;
   margin-right: 10px;
 }
