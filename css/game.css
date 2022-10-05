@@ -193,3 +193,7 @@ footer {
 .invisable {
   opacity: 0;
 }
+
+li figure img{
+  cursor: pointer;
+}

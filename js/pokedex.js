@@ -32,7 +32,7 @@ function renderChart() {
   let myChartObj = {
     type: 'bar',
     data: {
-      labels: 'Wins and Losses',
+      labels: 'wins and losses',
       datasets: [
         {
           data: wins,
