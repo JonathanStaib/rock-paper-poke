@@ -22,11 +22,9 @@ let wins = [];
 wins.push(fire,ice,electric,ground,grass);
 let loss = [];
 loss.push(fireL,iceL,electricL,groundL,grassL);
+console.log(loss);
 
 function renderChart() {
-  let testWins = [1,2,3,4,5]
-  let testLosses = [1,2,3,4,5]
-
 
   Chart.defaults.font.size = 14;
   Chart.defaults.color = "#000000";
@@ -36,18 +34,18 @@ function renderChart() {
     type: 'bar',
     data: {
 
-      labels: 'Wins and Losses',
+      labels: ['fire', 'ice', 'electric', 'grass', 'ground'],
 
       datasets: [
         {
-          data: testWins,
+          data: wins,
           label: '# of Wins',
           backgroundColor: ['blue'],
           borderColor: ['navy'],
           borderWidth: 1,
         },
         {
-          data: testLosses,
+          data: loss,
           label: '# of Losses',
           backgroundColor: ['red'],
           borderColor: ['black'],

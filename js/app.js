@@ -11,11 +11,11 @@ let wins = {
 };
 
 let losses = {
-  fire: 0,
-  ice: 0,
-  electric: 0,
-  ground: 0,
-  grass: 0,
+  fireL: 0,
+  iceL: 0,
+  electricL: 0,
+  groundL: 0,
+  grassL: 0,
 };
 
 /* REASSIGN GLOBALS IF LOCAL STORAGE EXISTS */
@@ -212,7 +212,7 @@ function winChecker(usersChoice) {
     } else if (usersChoice === 'fire') {
       console.log('it was a draw!');
     } else {
-      losses[usersChoice]++;
+      losses[usersChoice+'L']++;
       console.log('User lost!');
     }
     break;
@@ -225,7 +225,7 @@ function winChecker(usersChoice) {
     } else if (usersChoice === 'ground') {
       console.log('it was a draw!');
     } else {
-      losses[usersChoice]++;
+      losses[usersChoice+'L']++;
       console.log('User lost!');
     }
     break;
@@ -237,7 +237,7 @@ function winChecker(usersChoice) {
     } else if (usersChoice === 'grass') {
       console.log('it was a draw!');
     } else {
-      losses[usersChoice]++;
+      losses[usersChoice+'L']++;
       console.log('User lost!');
     }
     break;
@@ -250,7 +250,7 @@ function winChecker(usersChoice) {
     } else if (usersChoice === 'electric') {
       console.log('it was a draw!');
     } else {
-      losses[usersChoice]++;
+      losses[usersChoice+'L']++;
       console.log('User lost!');
     }
     break;
@@ -262,7 +262,7 @@ function winChecker(usersChoice) {
     } else if (usersChoice === 'ice') {
       console.log('it was a draw!');
     } else {
-      losses[usersChoice]++;
+      losses[usersChoice+'L']++;
       console.log('User lost!');
     }
     break;
