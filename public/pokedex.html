@@ -1,37 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/pokedex.css" />
+  </head>
 
-<head>
-  <title>Pokedex</title>
-  <link rel="stylesheet" href="../css/reset.css" />
-  <link rel="stylesheet" href="../css/style.css" />
-  <link rel="stylesheet" href="../css/pokedex.css" />
-</head>
-
-<body>
-  <header>
-    <h1>Rock, Paper, Poke!</h1>
-    <nav>
-      <ul>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="game.html">Game</a></li>
-        <li><a href="about.html">About</a></li>
-      </ul>
-    </nav>
-  </header>
-  <main>
-    <section id="chart-container">
-      <div>
-        <canvas id="my-chart"></canvas>
+  <body>
+    <header>
+      <h1>Rock, Paper, Poke!</h1>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="game.html">Game</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="wrapper">
+        <section id="chart-container">
+          <div>
+            <canvas id="my-chart"></canvas>
+          </div>
+        </section>
+        <section class="pokemon-seen">
+          <img class="no-local" src="../assets/tcg-card-back.png" alt="" />
+          <h4 class="no-local">Battle to Add Pokemon!</h4>
+        </section>
+        <div id="previous"></div>
+        <div id="next"></div>
       </div>
-    </section>
-    <section id="chart-info">
-      <p></p>
-    </section>
-  </main>
-  <footer>&copy; The A Team</footer>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
-  <script src="../js/pokedex.js"></script>
-</body>
-
+    </main>
+    <footer>&copy; The A Team</footer>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="../js/pokedex.js"></script>
+  </body>
 </html>

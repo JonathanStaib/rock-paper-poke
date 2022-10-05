@@ -1,30 +1,41 @@
 'use strict';
 
-let canvasElem = document.getElementById('my-chart').getContext('2d');
+/* GLOBALS */
+let positionInPokemon = 0;
 
+/* DOM SELECTORS */
+let canvasElem = document.getElementById('my-chart').getContext('2d');
+let previous = document.querySelector('#previous');
+let next = document.querySelector('#next');
+let pokemonName = document.querySelector('h4');
+let pokemonImg = document.querySelector('img');
+
+/* GRAB LOCAL STORAGE */
 let retrievedPokemon = JSON.parse(localStorage.getItem('pokemonSpotted'));
 
 let retrievedWins = JSON.parse(localStorage.getItem('wins'));
 
 let retrievedLosses = JSON.parse(localStorage.getItem('loss'));
 
+/* CHART.JS LOGIC */
 let wins = [];
 wins.push(retrievedWins);
 let loss = [];
 loss.push(retrievedLosses);
 
 function renderChart() {
-
   // let types = [];
+
 
   Chart.defaults.font.size = 14;
   Chart.defaults.color = "#000000";
 
+
   let myChartObj = {
     type: 'bar',
     data: {
-
       labels: 'Wins and Losses',
+
       datasets: [{
         data: wins,
         label: '# of Wins',
@@ -47,18 +58,81 @@ function renderChart() {
         ],
         borderWidth: 1
       }]
+
+      datasets: [
+        {
+          data: wins,
+          label: '# of Wins',
+          backgroundColor: ['blue'],
+          borderColor: ['navy'],
+          borderWidth: 1,
+        },
+        {
+          data: loss,
+          label: '# of Losses',
+          backgroundColor: ['red'],
+          borderColor: ['black'],
+          borderWidth: 1,
+        },
+      ],
+
     },
     options: {
       layout: {
-        padding: 10
+        padding: 10,
       },
       scales: {
         y: {
-          beginAtZero: true
-        }
-      }
-    }
+          beginAtZero: true,
+        },
+      },
+    },
   };
   new Chart(canvasElem, myChartObj, wins, loss);
 }
 renderChart();
+
+/* EVENT HANDLERS */
+function goNextPokemon() {
+  if (positionInPokemon < retrievedPokemon.length - 1) {
+    positionInPokemon++;
+  } else {
+    positionInPokemon = 0;
+  }
+  pokemonName.innerText = retrievedPokemon[positionInPokemon][1];
+  pokemonImg.src = retrievedPokemon[positionInPokemon][0];
+}
+
+function goPreviousPokemon() {
+  if (positionInPokemon > 0) {
+    positionInPokemon--;
+  } else {
+    positionInPokemon = retrievedPokemon.length - 1;
+  }
+  pokemonName.innerText = retrievedPokemon[positionInPokemon][1];
+  pokemonImg.src = retrievedPokemon[positionInPokemon][0];
+}
+
+function loadFirstPokemon() {
+  if (retrievedPokemon?.length > 1) {
+    pokemonName.innerText = retrievedPokemon[positionInPokemon][1];
+    pokemonImg.src = retrievedPokemon[positionInPokemon][0];
+    pokemonName.classList.remove('no-local');
+    pokemonImg.classList.remove('no-local');
+  }
+}
+
+/* EVENT LISTENERS */
+
+next.addEventListener('click', () => {
+  if (retrievedPokemon) {
+    goNextPokemon();
+  }
+});
+previous.addEventListener('click', () => {
+  if (retrievedPokemon) {
+    goPreviousPokemon();
+  }
+});
+
+loadFirstPokemon();
