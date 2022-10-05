@@ -212,6 +212,7 @@ function winChecker(usersChoice) {
     } else if (usersChoice === 'fire') {
       console.log('it was a draw!');
     } else {
+      losses[usersChoice]++;
       console.log('User lost!');
     }
     break;
@@ -224,6 +225,7 @@ function winChecker(usersChoice) {
     } else if (usersChoice === 'ground') {
       console.log('it was a draw!');
     } else {
+      losses[usersChoice]++;
       console.log('User lost!');
     }
     break;
@@ -235,6 +237,7 @@ function winChecker(usersChoice) {
     } else if (usersChoice === 'grass') {
       console.log('it was a draw!');
     } else {
+      losses[usersChoice]++;
       console.log('User lost!');
     }
     break;
@@ -247,6 +250,7 @@ function winChecker(usersChoice) {
     } else if (usersChoice === 'electric') {
       console.log('it was a draw!');
     } else {
+      losses[usersChoice]++;
       console.log('User lost!');
     }
     break;
@@ -258,6 +262,7 @@ function winChecker(usersChoice) {
     } else if (usersChoice === 'ice') {
       console.log('it was a draw!');
     } else {
+      losses[usersChoice]++;
       console.log('User lost!');
     }
     break;
