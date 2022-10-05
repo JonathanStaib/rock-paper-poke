@@ -108,11 +108,13 @@ button {
   text-align: center;
   color: rgb(55, 71, 79);
   font-size: large;
+  text-shadow: none;
 }
 
 button:hover {
   background-color: rgb(255, 236, 81);
   border: none;
+  text-shadow: none;
 }
 
 #game-rules {
@@ -139,6 +141,7 @@ button:hover {
   overflow: hidden;
   transition: 1s;
   font-family: 'Silkscreen', Arial, Helvetica, sans-serif;
+  text-shadow: none;
 }
 
 #game-rules > section:hover {
@@ -146,6 +149,7 @@ button:hover {
   width: auto;
   background-color: yellow;
   transform: scale(1.15);
+  text-shadow: none;
 }
 
 #rule-section > h3 {
