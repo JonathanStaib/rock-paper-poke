@@ -129,3 +129,8 @@ h4 {
 section > img.no-local {
   height: 180px;
 }
+
+#my-chart {
+  position:relative;
+  top: 75px;
+}
