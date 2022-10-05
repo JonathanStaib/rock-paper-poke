@@ -1,7 +1,6 @@
 body {
   color: whitesmoke;
   text-shadow: black 0px 0px 2px;
-  font-family: 'Abel', sans-serif;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: minmax(100px, auto);
@@ -23,11 +22,6 @@ header {
   grid-row: 1/2;
 }
 
-
-
-nav {
-  padding-bottom: 10px;
-}
 
 /* *div housing all game play for grid layout applied to body*/
 .game-outer {
