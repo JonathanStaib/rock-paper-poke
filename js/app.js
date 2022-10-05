@@ -98,28 +98,34 @@ let imgFour = document.querySelector('#imgFour');
 let imgFive = document.querySelector('#imgFive');
 let button = document.querySelector('button');
 let messageBox = document.querySelector('#message-box>p');
+let fireName = document.querySelector('#fire');
+let groundName = document.querySelector('#ground');
+let grassName = document.querySelector('#grass');
+let electricName = document.querySelector('#electric');
+let iceName = document.querySelector('#ice');
+
 /* UTILITY FUNCTIONS */
 1;
 function randomPokemon(element) {
   return Math.floor(Math.random() * element.length);
 }
 function storeToLocal() {
-  let uniquePokemon = [];
   let uniquePokemonNames = [];
   let uniquePokemonUrls = [];
   let uniquePokemonFlat = [...new Set(pokemonSpotted.flat())]; // remove duplicates from array
   for (let i = 1; i < uniquePokemonFlat.length; i += 2) {
     uniquePokemonNames.push(uniquePokemonFlat[i]);
   }
+
   for (let i = 0; i < uniquePokemonFlat.length; i += 2) {
     uniquePokemonUrls.push(uniquePokemonFlat[i]);
   }
-  for (let i = 0; i < uniquePokemonFlat.length; i++) {
-    uniquePokemon[i] = [uniquePokemonNames, uniquePokemonUrls];
-  }
 
-  console.log(uniquePokemon);
-  localStorage.setItem('pokemonSpotted', JSON.stringify(uniquePokemon));
+  localStorage.setItem(
+    'pokemonSpottedNames',
+    JSON.stringify(uniquePokemonNames)
+  );
+  localStorage.setItem('pokemonSpottedUrls', JSON.stringify(uniquePokemonUrls));
   localStorage.setItem('wins', JSON.stringify(wins));
   localStorage.setItem('loss', JSON.stringify(losses));
 }
@@ -190,12 +196,22 @@ function renderPlayerRandom() {
   imgOne.alt = Object.keys(types)[0];
   imgTwo.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.ice[0]}.png`;
   imgTwo.alt = Object.keys(types)[1];
+
   imgThree.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.electric[0]}.png`;
   imgThree.alt = Object.keys(types)[2];
+
   imgFour.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.ground[0]}.png`;
   imgFour.alt = Object.keys(types)[3];
+
   imgFive.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.grass[0]}.png`;
   imgFive.alt = Object.keys(types)[4];
+}
+function updateNames() {
+  fireName.innerText = playersHand.fire[1]; // change name of pokemon under image
+  iceName.innerText = playersHand.ice[1]; // change name of pokemon under image
+  electricName.innerText = playersHand.electric[1]; // change name of pokemon under image
+  groundName.innerText = playersHand.ground[1]; // change name of pokemon under image
+  grassName.innerText = playersHand.grass[1]; // change name of pokemon under image
 }
 
 function showOrHideCard() {
@@ -226,45 +242,57 @@ which element beats which */
 function winChecker(usersChoice) {
   computersType = computer.alt; //set computer type to whats stored in the pokemon img alt
   switch (computersType) {
-    case 'fire':
-      if (usersChoice === 'ice' || usersChoice === 'electric') {
-        playerWins(usersChoice);
-      } else {
-        playerLoss(usersChoice);
-      }
-      break;
+  case 'fire':
+    if (usersChoice === 'ice' || usersChoice === 'electric') {
+      playerWins(usersChoice);
+    } else {
+      playerLoss(usersChoice);
+    }
+    break;
 
-    case 'ground':
-      if (usersChoice === 'fire' || usersChoice === 'grass') {
-        playerWins(usersChoice);
-      } else {
-        playerLoss(usersChoice);
-      }
-      break;
-    case 'grass':
-      if (usersChoice === 'fire' || usersChoice === 'electric') {
-        playerWins(usersChoice);
-      } else {
-        playerLoss(usersChoice);
-      }
-      break;
+  case 'ground':
+    if (usersChoice === 'fire' || usersChoice === 'grass') {
+      playerWins(usersChoice);
+    } else {
+      playerLoss(usersChoice);
+    }
+    break;
+  case 'grass':
+    if (usersChoice === 'fire' || usersChoice === 'electric') {
+      playerWins(usersChoice);
+    } else {
+      playerLoss(usersChoice);
+    }
+    break;
 
-    case 'electric':
-      if (usersChoice === 'ice' || usersChoice === 'ground') {
-        playerWins(usersChoice);
-      } else {
-        playerLoss(usersChoice);
-      }
-      break;
-    case 'ice':
-      if (usersChoice === 'ground' || usersChoice === 'grass') {
-        playerWins(usersChoice);
-      } else {
-        playerLoss(usersChoice);
-      }
-      break;
-    default:
-      console.log('error');
+  case 'electric':
+    if (usersChoice === 'ice' || usersChoice === 'ground') {
+      playerWins(usersChoice);
+    } else {
+      playerLoss(usersChoice);
+    }
+    break;
+  case 'ice':
+    if (usersChoice === 'ground' || usersChoice === 'grass') {
+      playerWins(usersChoice);
+    } else {
+      playerLoss(usersChoice);
+    }
+    break;
+  default:
+    console.log('error');
+  }
+}
+
+function updateNamesInObject() {
+  let elementsAll = Object.keys(playersHand);
+  console.log(elementsAll[1]);
+  for (let i = 0; i < elementsAll.length; i++) {
+    fetch('pokedex.json')
+      .then((response) => response.json())
+      .then(
+        (data) => (elementsAll = data[+elementsAll[i][0] - 1].name.english)
+      );
   }
 }
 
@@ -277,8 +305,9 @@ It will add the event listener back on the 5 user pokemon */
 function newGameButton() {
   storeToLocal();
   showOrHideCard();
-  playersHand.newHand();
   renderPlayerRandom();
+  playersHand.newHand();
+  updateNames();
   messageBox.innerText = '';
   button.classList.add('invisable');
   button.removeEventListener('click', newGameButton);
@@ -296,6 +325,7 @@ function playersChoice(e) {
   userchoice.removeEventListener('click', playersChoice);
   winChecker(e.target.alt);
   getOpponentName();
+
   button.classList.remove('invisable');
   button.addEventListener('click', newGameButton);
 }
@@ -305,3 +335,4 @@ userchoice.addEventListener('click', playersChoice);
 
 /* Renders 5 random pokemon for the user on load. */
 renderPlayerRandom();
+updateNames();

@@ -11,7 +11,12 @@ let pokemonName = document.querySelector('h4');
 let pokemonImg = document.querySelector('img');
 
 /* GRAB LOCAL STORAGE */
-let retrievedPokemon = JSON.parse(localStorage.getItem('pokemonSpotted'));
+let retrievedPokemonName = JSON.parse(
+  localStorage.getItem('pokemonSpottedNames')
+);
+let retrievedPokemonUrl = JSON.parse(
+  localStorage.getItem('pokemonSpottedUrls')
+);
 
 let { fire, ice, electric, ground, grass } = JSON.parse(
   localStorage.getItem('wins')
@@ -35,7 +40,6 @@ function renderChart() {
   let myChartObj = {
     type: 'bar',
     data: {
-
       labels: ['fire', 'ice', 'electric', 'grass', 'ground'],
       datasets: [
         {
@@ -71,13 +75,13 @@ renderChart();
 
 /* EVENT HANDLERS */
 function goNextPokemon() {
-  if (positionInPokemon < retrievedPokemon.length - 1) {
+  if (positionInPokemon < retrievedPokemonName.length - 1) {
     positionInPokemon++;
   } else {
     positionInPokemon = 0;
   }
-  pokemonName.innerText = retrievedPokemon[positionInPokemon][1];
-  pokemonImg.src = retrievedPokemon[positionInPokemon][0];
+  pokemonName.innerText = retrievedPokemonName[positionInPokemon];
+  pokemonImg.src = retrievedPokemonUrl[positionInPokemon];
 }
 
 function goPreviousPokemon() {
@@ -86,14 +90,14 @@ function goPreviousPokemon() {
   } else {
     positionInPokemon = retrievedPokemon.length - 1;
   }
-  pokemonName.innerText = retrievedPokemon[positionInPokemon][1];
-  pokemonImg.src = retrievedPokemon[positionInPokemon][0];
+  pokemonName.innerText = retrievedPokemonName[positionInPokemon];
+  pokemonImg.src = retrievedPokemonUrl[positionInPokemon];
 }
 
 function loadFirstPokemon() {
-  if (retrievedPokemon?.length > 1) {
-    pokemonName.innerText = retrievedPokemon[positionInPokemon][1];
-    pokemonImg.src = retrievedPokemon[positionInPokemon][0];
+  if (retrievedPokemonName?.length > 1) {
+    pokemonName.innerText = retrievedPokemonName[positionInPokemon];
+    pokemonImg.src = retrievedPokemonUrl[positionInPokemon];
     pokemonName.classList.remove('no-local');
     pokemonImg.classList.remove('no-local');
   }
