@@ -9,15 +9,8 @@ body {
 header {
   grid-area: header;
   grid-column: 1/-1;
-}
 
-h1 {
-  font-family: 'Glegoo', serif;
-  font-size: 30px;
-  text-align: center;
-  padding-left: 20px;
 }
-
 nav {
   padding-bottom: 10px;
 }
@@ -33,6 +26,16 @@ nav {
   background-color: rgb(180, 200, 216);
   border: 3px solid black;
   border-radius: 15px;
+
+  /* ---------- */
+  z-index: 5;
+  position:absolute;
+  top: 37vh;
+  left: 40.2vw;
+  width: 25vw;
+  height: 35vh;
+
+  /*
   width: 510px;
   height: 400px;
   max-width: inherit;
@@ -40,41 +43,46 @@ nav {
   position: absolute;
   right: 255px;
   top: 250px;
+  */
 }
 
-#chart-info {
+
+
+.wrapper img{
+  width: 65vw;
+  margin-left: 3vw;
+  margin-right: 10vw;
 }
 
-footer {
-  color: white;
-  text-align: center;
-  align-items: center;
-  padding-bottom: 3rem;
-  padding-top: 1rem;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-
+/*
 .wrapper {
   background-image: url(../assets/pokedex-image.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   height: 900px;
-  width: 1695px;
-  min-width: 1695px;
-  min-height: 900px;
+  width: 1695px; 
+  min-width: 1695px; 
+  min-height: 900px; 
   position: relative;
 }
-
+*/
+/*
 main {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: auto;
 }
-
+*/
+.pokemon-seen img{
+  z-index: 5;
+  position:absolute;
+  top: 37.5vh;
+  left: 10.5vw;
+  width: 20vw;
+}
+/*
 .pokemon-seen {
   position: absolute;
   top: 30%;
@@ -84,9 +92,14 @@ main {
 .pokemon-seen > img {
   height: 250px;
 }
-
+*/
 h4 {
   font-size: 2.5rem;
+  z-index: 5;
+  position:absolute;
+  top: 36vh;
+  left: 8vw;
+  width: ;
 }
 
 #previous {
@@ -116,7 +129,18 @@ h4 {
 .no-local {
   font-size: 1.4rem;
 }
-
+/*
 section > img.no-local {
   height: 180px;
+}
+*/
+footer {
+  color: white;
+  text-align: center;
+  align-items: center;
+  padding-bottom: 3rem;
+  padding-top: 1rem;
+  /*position: fixed;*/
+  bottom: 0;
+  width: 100%;
 }

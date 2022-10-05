@@ -1,10 +1,12 @@
 /* https://www.tutorialbrain.com/css_tutorial/css_navigation_bar/ */
 
 body{
+  color: whitesmoke;
+  text-shadow: black 0px 0px 2px;
   /* background-color: white; */
   /* font-family: Arial, Helvetica, sans-serif; */
   background-color: rgb(52, 111, 213);
-  font-family: 'Gleego', sans-serif;
+  font-family: 'Glegoo', sans-serif;
   }
   
   header{
@@ -19,6 +21,10 @@ body{
     color: whitesmoke;
     text-align: center;
     padding:5px;
+    font-family: 'Glegoo', serif;
+    font-size: 30px;
+    text-align: center;
+    padding-left: 20px;
   }
   
   nav{
