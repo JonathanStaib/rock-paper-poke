@@ -26,13 +26,17 @@ loss.push(retrievedLosses);
 function renderChart() {
   // let types = [];
 
-  Chart.defaults.font.size = 16;
-  Chart.defaults.color = '#000000';
+
+  Chart.defaults.font.size = 14;
+  Chart.defaults.color = "#000000";
+
 
   let myChartObj = {
     type: 'bar',
     data: {
-      labels: 'wins and losses',
+
+      labels: 'Wins and Losses',
+
       datasets: [
         {
           data: wins,
@@ -49,6 +53,7 @@ function renderChart() {
           borderWidth: 1,
         },
       ],
+
     },
     options: {
       layout: {

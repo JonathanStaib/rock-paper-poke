@@ -1,6 +1,12 @@
 body{
+  background: url(../assets/aboutBG.jpeg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   background-color: rgba(255, 60, 0, 0.97);
   color:whitesmoke;
+  text-shadow: black 0px 0px 2px;
   font-family: 'Abel', sans-serif;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -77,7 +83,6 @@ button:hover{
   background-color: rgb(255, 236, 81);
   border:none;
   animation-play-state: paused;
-
 }
 
 footer{

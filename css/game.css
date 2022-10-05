@@ -1,7 +1,12 @@
 body {
   
   color: whitesmoke;
+
+  text-shadow: black 0px 0px 2px;
+  font-family: 'Abel', sans-serif;
+
   font-family: 'Glegoo', serif;
+
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: minmax(100px, auto);
@@ -10,6 +15,14 @@ body {
     'game-outer game-outer game-outer'
     'footer footer footer';
   gap: 20px;
+
+  
+    background: url(../assets/00160188.jpeg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  
 }
 
 header {
@@ -165,9 +178,11 @@ button:hover {
 }
 
 img {
-  background-color:   rgb(38, 92, 186, 0.8);
+  background-color: rgba(255, 192, 203, 0);
+
   border-radius: 15px;
   /* background-color:   rgb(38, 92, 186, 0.8); */
+
   max-width: 80%;
 }
 
@@ -175,6 +190,7 @@ h5 {
   font-family: 'Silkscreen', Arial, Helvetica, sans-serif;
   font-size: x-large;
   padding: 5px;
+  padding-left: 2rem;
 }
 
 footer {
