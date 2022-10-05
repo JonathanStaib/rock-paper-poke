@@ -5,8 +5,6 @@ body{
   /* font-family: Arial, Helvetica, sans-serif; */
   background-color: rgb(52, 111, 213);
   font-family: 'Gleego', sans-serif;
-  
-  
   }
   
   header{
@@ -26,6 +24,7 @@ body{
   nav{
     color:whitesmoke;
   }
+  
   nav ul{
   display: flex;
   align-items: center;
@@ -66,7 +65,5 @@ body{
   a:hover{
     color: rgb(55, 71, 79);
   }
-  /* footer{
-    background-color: gray;
-    height: 100px;
-  } */
+  
+

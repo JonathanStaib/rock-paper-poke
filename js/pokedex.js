@@ -34,30 +34,8 @@ function renderChart() {
   let myChartObj = {
     type: 'bar',
     data: {
-      labels: 'Wins and Losses',
 
-      datasets: [{
-        data: wins,
-        label: '# of Wins',
-        backgroundColor: [
-          'blue'
-        ],
-        borderColor: [
-          'navy'
-        ],
-        borderWidth: 1
-      },
-      {
-        data: loss,
-        label: '# of Losses',
-        backgroundColor: [
-          'red',
-        ],
-        borderColor: [
-          'black'
-        ],
-        borderWidth: 1
-      }]
+      labels: 'Wins and Losses',
 
       datasets: [
         {
