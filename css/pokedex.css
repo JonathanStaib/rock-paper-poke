@@ -9,6 +9,7 @@ body {
 header {
   grid-area: header;
   grid-column: 1/-1;
+  height: 10vh;
 }
 
 h1 {
@@ -25,7 +26,7 @@ nav {
 #my-chart {
   height: 100%;
 }
-
+/*
 #chart-container {
   display: block;
   justify-content: center;
@@ -41,40 +42,44 @@ nav {
   right: 255px;
   top: 250px;
 }
+*/
 
-#chart-info {
+
+.wrapper img{
+  width: 65vw;
+  margin-left: 3vw;
+  margin-right: 10vw;
 }
 
-footer {
-  color: white;
-  text-align: center;
-  align-items: center;
-  padding-bottom: 3rem;
-  padding-top: 1rem;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-
+/*
 .wrapper {
   background-image: url(../assets/pokedex-image.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   height: 900px;
-  width: 1695px;
-  min-width: 1695px;
-  min-height: 900px;
+  width: 1695px; 
+  min-width: 1695px; 
+  min-height: 900px; 
   position: relative;
 }
-
+*/
+/*
 main {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: auto;
 }
-
+*/
+.pokemon-seen img{
+  z-index: 5;
+  position:absolute;
+  top: 37vh;
+  left: 10vw;
+  width: 20vw;
+}
+/*
 .pokemon-seen {
   position: absolute;
   top: 30%;
@@ -84,11 +89,11 @@ main {
 .pokemon-seen > img {
   height: 250px;
 }
-
+*/
 h4 {
   font-size: 2.5rem;
 }
-
+/*
 #previous {
   height: 40px;
   width: 60px;
@@ -96,11 +101,11 @@ h4 {
   bottom: 150px;
   left: 37%;
 }
-
+*/
 #previous:hover {
   cursor: pointer;
 }
-
+/*
 #next {
   height: 40px;
   width: 60px;
@@ -119,4 +124,15 @@ h4 {
 
 section > img.no-local {
   height: 180px;
+}
+*/
+footer {
+  color: white;
+  text-align: center;
+  align-items: center;
+  padding-bottom: 3rem;
+  padding-top: 1rem;
+  /*position: fixed;*/
+  bottom: 0;
+  width: 100%;
 }
