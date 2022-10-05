@@ -12,6 +12,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  
 }
 
 header {
@@ -21,6 +22,8 @@ header {
 }
 
 main{
+  display: flex;
+  justify-content: center;
   align-content: center;
   align-self: center;
   align-items: center;
@@ -52,6 +55,8 @@ main{
   border-radius: 20px;
   margin-left: 5px;
   margin-right: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
   /*margin: 10px;
   padding: 10px;*/
 }
@@ -96,8 +101,8 @@ h2 {
 
 button {
   font-family: 'Silkscreen', Arial, Helvetica, sans-serif;
-  padding: 20px;
-  margin: 20px;
+  padding: 5px;
+  margin: 5px;
   border-radius: 70px;
   border: none;
   text-align: center;
