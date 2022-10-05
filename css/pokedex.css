@@ -1,47 +1,117 @@
-header{
+body {
+  height: 100vh;
+  background: url(../assets/ChartBG.jpeg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+header {
   grid-area: header;
   grid-column: 1/-1;
 }
 
-h1{
- font-family: 'Glegoo', serif;
- font-size: 30px;
- text-align: center;
- padding-left: 20px;
+h1 {
+  font-family: 'Glegoo', serif;
+  font-size: 30px;
+  text-align: center;
+  padding-left: 20px;
 }
 
-nav{
+nav {
   padding-bottom: 10px;
 }
 
-#my-chart{
- 
+#my-chart {
+  height: 100%;
 }
 
-#chart-container{
+#chart-container {
   display: block;
   justify-content: center;
   color: black;
   background-color: rgb(180, 200, 216);
   border: 3px solid black;
   border-radius: 15px;
-  width: 85%;
-  align-self: center;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 10px;
-
+  width: 510px;
+  height: 400px;
+  max-width: inherit;
+  max-height: inherit;
+  position: absolute;
+  right: 255px;
+  top: 250px;
 }
 
-#chart-info{
-  
+#chart-info {
 }
 
-footer{
+footer {
   color: white;
   text-align: center;
   align-items: center;
   padding-bottom: 3rem;
   padding-top: 1rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
+.wrapper {
+  background-image: url(../assets/pokedex-image.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 900px;
+  width: 1695px;
+  min-width: 1695px;
+  min-height: 900px;
+  position: relative;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.pokemon-seen {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+}
+
+.pokemon-seen > img {
+  display: inline-block;
+  height: 250px;
+}
+
+h4 {
+  font-size: 2.5rem;
+}
+
+#previous {
+  background-color: blue;
+  height: 40px;
+  width: 60px;
+  position: absolute;
+  bottom: 150px;
+  left: 37%;
+}
+
+#previous:hover {
+  cursor: pointer;
+}
+
+#next {
+  background-color: green;
+  height: 40px;
+  width: 60px;
+  position: absolute;
+  bottom: 150px;
+  left: 43%;
+}
+
+#next:hover {
+  cursor: pointer;
+}

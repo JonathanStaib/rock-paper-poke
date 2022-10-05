@@ -1,60 +1,58 @@
 'use strict';
 
+/* DOM SELECTORS */
 let canvasElem = document.getElementById('my-chart').getContext('2d');
 
-function renderChart() {
+/* GRAB LOCAL STORAGE */
+let retrievedPokemon = JSON.parse(localStorage.getItem('pokemonSpotted'));
 
-  let types = [2];
-  let wins = [5];
-  let losses = [5];
+let retrievedWins = JSON.parse(localStorage.getItem('wins'));
+
+let retrievedLosses = JSON.parse(localStorage.getItem('loss'));
+
+let wins = [];
+wins.push(retrievedWins);
+let loss = [];
+loss.push(retrievedLosses);
+
+function renderChart() {
+  // let types = [];
 
   Chart.defaults.font.size = 16;
-  Chart.defaults.color = "#000000";
+  Chart.defaults.color = '#000000';
 
   let myChartObj = {
     type: 'bar',
     data: {
-
-      labels: types,
-      datasets: [{
-        data: wins,
-        label: '# of Wins',
-        backgroundColor: [
-          'blue'
-        ],
-        borderColor: [
-          'navy'
-        ],
-        borderWidth: 1
-
-      },
-      {
-        data: losses,
-        label: '# of Losses',
-        backgroundColor: [
-          'red',
-        ],
-        borderColor: [
-          'black'
-        ],
-        borderWidth: 1
-      }]
+      labels: 'Wins and Losses',
+      datasets: [
+        {
+          data: wins,
+          label: '# of Wins',
+          backgroundColor: ['blue'],
+          borderColor: ['navy'],
+          borderWidth: 1,
+        },
+        {
+          data: loss,
+          label: '# of Losses',
+          backgroundColor: ['red'],
+          borderColor: ['black'],
+          borderWidth: 1,
+        },
+      ],
     },
     options: {
       layout: {
-        padding: 10
+        padding: 10,
       },
       scales: {
         y: {
-          beginAtZero: true
-        }
-      }
-    }
+          beginAtZero: true,
+        },
+      },
+    },
   };
-  new Chart(canvasElem, myChartObj);
+  new Chart(canvasElem, myChartObj, wins, loss);
 }
 renderChart();
-
-let retrievedPokemon = localStorage.getItem('pokemon');
-
-let parsedPokemon = JSON.parse(retrievedPokemon);
