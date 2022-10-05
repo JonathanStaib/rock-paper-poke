@@ -1,15 +1,12 @@
-
 body {
   height: 100vh;
   background: url(../assets/ChartBG.jpeg) no-repeat center center fixed;
-
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   max-height: 100vh;
 }
-
 
 h1{
  font-family: 'Glegoo', serif;
@@ -28,7 +25,6 @@ h1 {
   font-size: 30px;
   text-align: center;
   padding-left: 20px;
-
 }
 
 nav {
@@ -46,14 +42,12 @@ nav {
   background-color: rgb(68, 157, 229);
   border: 3px solid black;
   border-radius: 15px;
-
   width: 65%;
   align-self: center;
   margin-left: 5%;
   margin-right: 40vw%;
   margin-bottom: 10px;
 margin-top: 8%;
-
   width: 510px;
   height: 400px;
   max-width: inherit;
@@ -61,7 +55,6 @@ margin-top: 8%;
   position: absolute;
   right: 255px;
   top: 250px;
-
 }
 
 #chart-info {
@@ -73,7 +66,6 @@ footer {
   text-align: center;
   align-items: center;
   padding-bottom: 3rem;
-
   padding-top: 1rem;
   position: fixed;
   bottom: 0;
@@ -107,7 +99,6 @@ main {
 
 .pokemon-seen > img {
   height: 250px;
-
 }
 
 h4 {
