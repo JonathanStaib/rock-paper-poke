@@ -17,7 +17,7 @@ function renderChart() {
 
   // let types = [];
 
-  Chart.defaults.font.size = 16;
+  Chart.defaults.font.size = 14;
   Chart.defaults.color = "#000000";
 
   let myChartObj = {
@@ -35,7 +35,6 @@ function renderChart() {
           'navy'
         ],
         borderWidth: 1
-
       },
       {
         data: loss,

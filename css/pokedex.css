@@ -1,19 +1,18 @@
 
 body { 
-  background: url(../assets/ChartBG.jpeg) no-repeat center center fixed; 
+  background: url(../assets/wallpapertip_ash-and-pikachu-wallpaper_807879.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  max-height: 100vh;
 }
-header{
-  grid-area: header;
-  grid-column: 1/-1;
-}
+
 
 h1{
  font-family: 'Glegoo', serif;
  font-size: 30px;
+ text-shadow: black 0px 0px 2px;
  text-align: center;
  padding-left: 20px;
 }
@@ -30,15 +29,15 @@ nav{
   display: block;
   justify-content: center;
   color: black;
-  background-color: rgb(180, 200, 216);
+  background-color: rgb(68, 157, 229);
   border: 3px solid black;
   border-radius: 15px;
-  width: 85%;
+  width: 65%;
   align-self: center;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 5%;
+  margin-right: 40vw%;
   margin-bottom: 10px;
-
+margin-top: 8%;
 }
 
 #chart-info{
@@ -47,9 +46,10 @@ nav{
 
 footer{
   color: white;
+  text-shadow: black 0px 0px 2px;
   text-align: center;
   align-items: center;
   padding-bottom: 3rem;
-  padding-top: 1rem;
+  padding-top: 2rem;
 }
 

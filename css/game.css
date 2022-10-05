@@ -1,5 +1,6 @@
 body {
   color: whitesmoke;
+  text-shadow: black 0px 0px 2px;
   font-family: 'Abel', sans-serif;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -9,6 +10,14 @@ body {
     'game-outer game-outer game-outer'
     'footer footer footer';
   gap: 20px;
+
+  
+    background: url(../assets/00160188.jpeg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  
 }
 
 header {
@@ -160,7 +169,7 @@ button:hover {
 }
 
 img {
-  background-color: pink;
+  background-color: rgba(255, 192, 203, 0);
   max-width: 80%;
 }
 
@@ -168,6 +177,7 @@ h5 {
   font-family: 'Silkscreen', Arial, Helvetica, sans-serif;
   font-size: x-large;
   padding: 5px;
+  padding-left: 2rem;
 }
 
 footer {
