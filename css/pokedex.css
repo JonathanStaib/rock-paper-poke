@@ -1,11 +1,12 @@
 body {
   height: 100vh;
-  background: url(../assets/ChartBG.jpeg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  max-height: 100vh;
+  background: url(../assets/00160088.jpeg) no-repeat center center fixed;
+  -webkit-background-size: 100vw;
+  -moz-background-size: 100vw;
+  -o-background-size: 100vw;
+  background-size: 100vw;
+  background-color: rgb(118, 163, 185);
+ 
 }
 
 h1{

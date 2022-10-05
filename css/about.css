@@ -1,9 +1,12 @@
+
 body { 
-  background: url(../assets/30440_pokemon.jpeg) no-repeat center center fixed; 
+  background: url(../assets/vector-paint-pokemon-charmander-6bdyylsk4vhu4x8c.webp) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  background-size: 100vw;
+  background-color: rgb(6, 107, 107)
+
 }
 
 main {
