@@ -24,9 +24,9 @@ main{
   align-content: center;
   align-self: center;
   align-items: center;
-  width: 98vw;
   margin-left: 10px;
   margin-right: 10px;
+  width: 90vw;
 }
 
 /* *div housing all game play for grid layout applied to body*/
