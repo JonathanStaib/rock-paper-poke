@@ -72,4 +72,8 @@ body{
     color: rgb(55, 71, 79);
   }
   
+  footer {
+    text-align: center;
+    font-family: "Silkscreen", Arial, Helvetica, sans-serif;
+  }
 
