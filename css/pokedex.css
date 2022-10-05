@@ -16,6 +16,15 @@ body {
   background-size: cover;
 >>>>>>> c4c945e8e36dccce252fb9430b9f3290f0070d7e
 }
+
+h1{
+ font-family: 'Glegoo', serif;
+ font-size: 30px;
+ text-shadow: black 0px 0px 2px;
+ text-align: center;
+ padding-left: 20px;
+}
+
 header {
   grid-area: header;
   grid-column: 1/-1;
@@ -129,4 +138,9 @@ h4 {
 
 section > img.no-local {
   height: 180px;
+}
+
+#my-chart {
+  position:relative;
+  top: 75px;
 }
