@@ -86,7 +86,6 @@ PlayerDeck.prototype.newHand = function () {
             data[+elementsAll[i][0] - 1].name.english)
       );
   }
-  updateNames();
 };
 
 /* DOM MANIPULATION */
@@ -193,10 +192,8 @@ function getOpponentName() {
 /* This Function renders 5 images based on numbers stored in PlayerHand Object */
 function renderPlayerRandom() {
   // playersHand.newHand(); // grab data from the playerHand object to render images
-
   imgOne.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.fire[0]}.png`;
   imgOne.alt = Object.keys(types)[0];
-  updateNames();
   imgTwo.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.ice[0]}.png`;
   imgTwo.alt = Object.keys(types)[1];
 
@@ -287,6 +284,19 @@ function winChecker(usersChoice) {
   }
 }
 
+function updateNamesInObject() {
+  let elementsAll = Object.keys(playersHand);
+  console.log(elementsAll[1]);
+  for (let i = 0; i < elementsAll.length; i++) {
+    fetch('pokedex.json')
+      .then((response) => response.json())
+      .then(
+        (data) =>
+          ( = data[+elementsAll[i][0] - 1].name.english)
+      );
+  }
+}
+
 /* EVENT HANDLER FUNCTIONS */
 
 /* This function will fire after a click event on the play again button
@@ -296,9 +306,9 @@ It will add the event listener back on the 5 user pokemon */
 function newGameButton() {
   storeToLocal();
   showOrHideCard();
-  playersHand.newHand();
   renderPlayerRandom();
-
+  playersHand.newHand();
+  updateNames();
   messageBox.innerText = '';
   button.classList.add('invisable');
   button.removeEventListener('click', newGameButton);
@@ -316,7 +326,7 @@ function playersChoice(e) {
   userchoice.removeEventListener('click', playersChoice);
   winChecker(e.target.alt);
   getOpponentName();
-  updateNames();
+
   button.classList.remove('invisable');
   button.addEventListener('click', newGameButton);
 }
