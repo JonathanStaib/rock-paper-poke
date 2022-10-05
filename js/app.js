@@ -291,8 +291,7 @@ function updateNamesInObject() {
     fetch('pokedex.json')
       .then((response) => response.json())
       .then(
-        (data) =>
-          ( = data[+elementsAll[i][0] - 1].name.english)
+        (data) => (elementsAll = data[+elementsAll[i][0] - 1].name.english)
       );
   }
 }
