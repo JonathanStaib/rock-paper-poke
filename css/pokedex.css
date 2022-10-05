@@ -82,7 +82,6 @@ main {
 }
 
 .pokemon-seen > img {
-  display: inline-block;
   height: 250px;
 }
 
@@ -112,4 +111,12 @@ h4 {
 
 #next:hover {
   cursor: pointer;
+}
+
+.no-local {
+  font-size: 1.4rem;
+}
+
+section > img.no-local {
+  height: 180px;
 }

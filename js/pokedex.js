@@ -87,13 +87,25 @@ function goPreviousPokemon() {
 }
 
 function loadFirstPokemon() {
-  pokemonName.innerText = retrievedPokemon[positionInPokemon][1];
-  pokemonImg.src = retrievedPokemon[positionInPokemon][0];
+  if (retrievedPokemon?.length > 1) {
+    pokemonName.innerText = retrievedPokemon[positionInPokemon][1];
+    pokemonImg.src = retrievedPokemon[positionInPokemon][0];
+    pokemonName.classList.remove('no-local');
+    pokemonImg.classList.remove('no-local');
+  }
 }
 
 /* EVENT LISTENERS */
 
-next.addEventListener('click', goNextPokemon);
-previous.addEventListener('click', goPreviousPokemon);
+next.addEventListener('click', () => {
+  if (retrievedPokemon) {
+    goNextPokemon();
+  }
+});
+previous.addEventListener('click', () => {
+  if (retrievedPokemon) {
+    goPreviousPokemon();
+  }
+});
 
 loadFirstPokemon();
