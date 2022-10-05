@@ -1,6 +1,7 @@
 body {
+  
   color: whitesmoke;
-  font-family: 'Abel', sans-serif;
+  font-family: 'Glegoo', serif;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: minmax(100px, auto);
@@ -47,6 +48,10 @@ nav {
     '. . . . .'
     ' image-container image-container image-container image-container image-container';
   gap: 20px;
+  background-color: rgb(38, 92, 186, 0.5);
+  border-radius: 20px;
+  margin:10px;
+  padding:10px;
 }
 
 h2 {
@@ -65,7 +70,7 @@ h2 {
   grid-row: 2/3;
   text-align: center;
   justify-content: center;
-  font-family: 'Silkscreen', Arial, Helvetica, sans-serif;
+  font-family: "Silkscreen", Arial, Helvetica, sans-serif;
 }
 
 .opponents-inner {
@@ -125,7 +130,7 @@ button:hover {
   height: auto;
   width: auto;
   background-color: yellow;
-  transform: scale(1.2);
+  transform: scale(1.15);
 }
 
 #rule-section > h3 {
@@ -160,7 +165,9 @@ button:hover {
 }
 
 img {
-  background-color: pink;
+  background-color:   rgb(38, 92, 186, 0.8);
+  border-radius: 15px;
+  /* background-color:   rgb(38, 92, 186, 0.8); */
   max-width: 80%;
 }
 
