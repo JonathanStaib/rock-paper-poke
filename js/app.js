@@ -43,11 +43,11 @@ let computersType; // Type of the Pokemon that the computer is going to send to 
 /* This object is used to reference the globals above, and have a string name to
 reference later in conditionals such. Example: if('fire' === types.keyName) */
 const types = {
-  fire: fire,
-  ice: ice,
-  electric: electric,
-  ground: ground,
-  grass: grass,
+  fireL: fire,
+  iceL: ice,
+  electricL: electric,
+  groundL: ground,
+  grassL: grass,
 };
 
 /* CONSTRUCTORS */
