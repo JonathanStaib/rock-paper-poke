@@ -21,15 +21,15 @@ let losses = {
 /* REASSIGN GLOBALS IF LOCAL STORAGE EXISTS */
 
 if (localStorage.pokemonSpotted) {
-  pokemonSpotted = JSON.parse(localStorage.pokemonSpotted);
+  pokemonSpotted = JSON.parse(localStorage.getItem('pokemonSpotted'));
 }
 
 if (localStorage.wins) {
-  wins = JSON.parse(localStorage.wins);
+  wins = JSON.parse(localStorage.getItem('wins'));
 }
 
 if (localStorage.losses) {
-  losses = JSON.parse(localStorage.losses);
+  losses = JSON.parse(localStorage.getItem('losses'));
 }
 
 /* These Arrays are used to reference the Pokemon images on pokemon.com */
@@ -104,8 +104,21 @@ function randomPokemon(element) {
   return Math.floor(Math.random() * element.length);
 }
 function storeToLocal() {
-  let uniquePokemon = [...new Set(pokemonSpotted)]; // remove duplicates from array
+  let uniquePokemon = [];
+  let uniquePokemonNames = [];
+  let uniquePokemonUrls = [];
+  let uniquePokemonFlat = [...new Set(pokemonSpotted.flat())]; // remove duplicates from array
+  for (let i = 1; i < uniquePokemonFlat.length; i += 2) {
+    uniquePokemonNames.push(uniquePokemonFlat[i]);
+  }
+  for (let i = 0; i < uniquePokemonFlat.length; i += 2) {
+    uniquePokemonUrls.push(uniquePokemonFlat[i]);
+  }
+  for (let i = 0; i < uniquePokemonFlat.length; i++) {
+    uniquePokemon[i] = [uniquePokemonNames, uniquePokemonUrls];
+  }
 
+  console.log(uniquePokemon);
   localStorage.setItem('pokemonSpotted', JSON.stringify(uniquePokemon));
   localStorage.setItem('wins', JSON.stringify(wins));
   localStorage.setItem('loss', JSON.stringify(losses));
@@ -198,10 +211,6 @@ function showOrHideCard() {
   }
 }
 
-/* This function compairs the players choice of pokemon to the computers to
-see which element will win, reference the flowchart in the README.md to see
-which element beats which */
-
 function playerWins(usersChoice) {
   messageBox.innerHTML = `You won with a ${usersChoice} type!`;
   wins[usersChoice]++;
@@ -211,49 +220,51 @@ function playerLoss(usersChoice) {
   messageBox.innerHTML = `You lost with a ${usersChoice} type!`;
   losses[usersChoice + 'L']++;
 }
-
+/* This function compairs the players choice of pokemon to the computers to
+see which element will win, reference the flowchart in the README.md to see
+which element beats which */
 function winChecker(usersChoice) {
   computersType = computer.alt; //set computer type to whats stored in the pokemon img alt
   switch (computersType) {
-  case 'fire':
-    if (usersChoice === 'ice' || usersChoice === 'electric') {
-      playerWins(usersChoice);
-    } else {
-      playerLoss(usersChoice);
-    }
-    break;
+    case 'fire':
+      if (usersChoice === 'ice' || usersChoice === 'electric') {
+        playerWins(usersChoice);
+      } else {
+        playerLoss(usersChoice);
+      }
+      break;
 
-  case 'ground':
-    if (usersChoice === 'fire' || usersChoice === 'grass') {
-      playerWins(usersChoice);
-    } else {
-      playerLoss(usersChoice);
-    }
-    break;
-  case 'grass':
-    if (usersChoice === 'fire' || usersChoice === 'electric') {
-      playerWins(usersChoice);
-    } else {
-      playerLoss(usersChoice);
-    }
-    break;
+    case 'ground':
+      if (usersChoice === 'fire' || usersChoice === 'grass') {
+        playerWins(usersChoice);
+      } else {
+        playerLoss(usersChoice);
+      }
+      break;
+    case 'grass':
+      if (usersChoice === 'fire' || usersChoice === 'electric') {
+        playerWins(usersChoice);
+      } else {
+        playerLoss(usersChoice);
+      }
+      break;
 
-  case 'electric':
-    if (usersChoice === 'ice' || usersChoice === 'ground') {
-      playerWins(usersChoice);
-    } else {
-      playerLoss(usersChoice);
-    }
-    break;
-  case 'ice':
-    if (usersChoice === 'ground' || usersChoice === 'grass') {
-      playerWins(usersChoice);
-    } else {
-      playerLoss(usersChoice);
-    }
-    break;
-  default:
-    console.log('error');
+    case 'electric':
+      if (usersChoice === 'ice' || usersChoice === 'ground') {
+        playerWins(usersChoice);
+      } else {
+        playerLoss(usersChoice);
+      }
+      break;
+    case 'ice':
+      if (usersChoice === 'ground' || usersChoice === 'grass') {
+        playerWins(usersChoice);
+      } else {
+        playerLoss(usersChoice);
+      }
+      break;
+    default:
+      console.log('error');
   }
 }
 
@@ -268,6 +279,7 @@ function newGameButton() {
   showOrHideCard();
   playersHand.newHand();
   renderPlayerRandom();
+  messageBox.innerText = '';
   button.classList.add('invisable');
   button.removeEventListener('click', newGameButton);
   userchoice.addEventListener('click', playersChoice);
