@@ -26,7 +26,7 @@ nav {
 #my-chart {
   height: 100%;
 }
-/*
+
 #chart-container {
   display: block;
   justify-content: center;
@@ -34,6 +34,16 @@ nav {
   background-color: rgb(180, 200, 216);
   border: 3px solid black;
   border-radius: 15px;
+
+  /* ---------- */
+  z-index: 5;
+  position:absolute;
+  top: 37vh;
+  left: 40.2vw;
+  width: 25vw;
+  height: 35vh;
+
+  /*
   width: 510px;
   height: 400px;
   max-width: inherit;
@@ -41,8 +51,9 @@ nav {
   position: absolute;
   right: 255px;
   top: 250px;
+  */
 }
-*/
+
 
 
 .wrapper img{
@@ -93,7 +104,7 @@ main {
 h4 {
   font-size: 2.5rem;
 }
-/*
+
 #previous {
   height: 40px;
   width: 60px;
@@ -101,11 +112,11 @@ h4 {
   bottom: 150px;
   left: 37%;
 }
-*/
+
 #previous:hover {
   cursor: pointer;
 }
-/*
+
 #next {
   height: 40px;
   width: 60px;
@@ -121,7 +132,7 @@ h4 {
 .no-local {
   font-size: 1.4rem;
 }
-
+/*
 section > img.no-local {
   height: 180px;
 }
