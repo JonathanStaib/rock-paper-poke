@@ -11,11 +11,11 @@ let wins = {
 };
 
 let losses = {
-  fire: 0,
-  ice: 0,
-  electric: 0,
-  ground: 0,
-  grass: 0,
+  fireL: 0,
+  iceL: 0,
+  electricL: 0,
+  groundL: 0,
+  grassL: 0,
 };
 
 /* REASSIGN GLOBALS IF LOCAL STORAGE EXISTS */
@@ -43,11 +43,11 @@ let computersType; // Type of the Pokemon that the computer is going to send to 
 /* This object is used to reference the globals above, and have a string name to
 reference later in conditionals such. Example: if('fire' === types.keyName) */
 const types = {
-  fireL: fire,
-  iceL: ice,
-  electricL: electric,
-  groundL: ground,
-  grassL: grass,
+  fire: fire,
+  ice: ice,
+  electric: electric,
+  ground: ground,
+  grass: grass,
 };
 
 /* CONSTRUCTORS */
@@ -204,70 +204,70 @@ which element beats which */
 function winChecker(usersChoice) {
   computersType = computer.alt; //set computer type to whats stored in the pokemon img alt
   switch (computersType) {
-    case 'fire':
-      if (usersChoice === 'ice' || usersChoice === 'electric') {
-        console.log('user wins');
-        wins.ice++;
-        wins.electric++;
-      } else if (usersChoice === 'fire') {
-        console.log('it was a draw!');
-      } else {
-        losses[usersChoice]++;
-        console.log('User lost!');
-      }
-      break;
+  case 'fire':
+    if (usersChoice === 'ice' || usersChoice === 'electric') {
+      console.log('user wins');
+      wins.ice++;
+      wins.electric++;
+    } else if (usersChoice === 'fire') {
+      console.log('it was a draw!');
+    } else {
+      losses[usersChoice+'L']++;
+      console.log('User lost!');
+    }
+    break;
 
-    case 'ground':
-      if (usersChoice === 'fire' || usersChoice === 'grass') {
-        wins.fire++;
-        wins.grass++;
-        console.log('user wins');
-      } else if (usersChoice === 'ground') {
-        console.log('it was a draw!');
-      } else {
-        losses[usersChoice]++;
-        console.log('User lost!');
-      }
-      break;
-    case 'grass':
-      if (usersChoice === 'fire' || usersChoice === 'electric') {
-        wins.fire++;
-        wins.electric++;
-        console.log('user wins');
-      } else if (usersChoice === 'grass') {
-        console.log('it was a draw!');
-      } else {
-        losses[usersChoice]++;
-        console.log('User lost!');
-      }
-      break;
+  case 'ground':
+    if (usersChoice === 'fire' || usersChoice === 'grass') {
+      wins.fire++;
+      wins.grass++;
+      console.log('user wins');
+    } else if (usersChoice === 'ground') {
+      console.log('it was a draw!');
+    } else {
+      losses[usersChoice+'L']++;
+      console.log('User lost!');
+    }
+    break;
+  case 'grass':
+    if (usersChoice === 'fire' || usersChoice === 'electric') {
+      wins.fire++;
+      wins.electric++;
+      console.log('user wins');
+    } else if (usersChoice === 'grass') {
+      console.log('it was a draw!');
+    } else {
+      losses[usersChoice+'L']++;
+      console.log('User lost!');
+    }
+    break;
 
-    case 'electric':
-      if (usersChoice === 'ice' || usersChoice === 'ground') {
-        wins.ice++;
-        wins.ground++;
-        console.log('user wins');
-      } else if (usersChoice === 'electric') {
-        console.log('it was a draw!');
-      } else {
-        losses[usersChoice]++;
-        console.log('User lost!');
-      }
-      break;
-    case 'ice':
-      if (usersChoice === 'ground' || usersChoice === 'grass') {
-        wins.ground++;
-        wins.grass++;
-        console.log('user wins');
-      } else if (usersChoice === 'ice') {
-        console.log('it was a draw!');
-      } else {
-        losses[usersChoice]++;
-        console.log('User lost!');
-      }
-      break;
-    default:
-      console.log('error');
+  case 'electric':
+    if (usersChoice === 'ice' || usersChoice === 'ground') {
+      wins.ice++;
+      wins.ground++;
+      console.log('user wins');
+    } else if (usersChoice === 'electric') {
+      console.log('it was a draw!');
+    } else {
+      losses[usersChoice+'L']++;
+      console.log('User lost!');
+    }
+    break;
+  case 'ice':
+    if (usersChoice === 'ground' || usersChoice === 'grass') {
+      wins.ground++;
+      wins.grass++;
+      console.log('user wins');
+    } else if (usersChoice === 'ice') {
+      console.log('it was a draw!');
+    } else {
+      losses[usersChoice+'L']++;
+      console.log('User lost!');
+    }
+    break;
+  default:
+    console.log('error');
   }
 }
 
