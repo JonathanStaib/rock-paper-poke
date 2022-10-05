@@ -1,7 +1,14 @@
 'use strict';
 
+/* GLOBALS */
+let positionInPokemon = 0;
+
 /* DOM SELECTORS */
 let canvasElem = document.getElementById('my-chart').getContext('2d');
+let previous = document.querySelector('#previous');
+let next = document.querySelector('#next');
+let pokemonName = document.querySelector('h4');
+let pokemonImg = document.querySelector('img');
 
 /* GRAB LOCAL STORAGE */
 let retrievedPokemon = JSON.parse(localStorage.getItem('pokemonSpotted'));
@@ -10,6 +17,7 @@ let retrievedWins = JSON.parse(localStorage.getItem('wins'));
 
 let retrievedLosses = JSON.parse(localStorage.getItem('loss'));
 
+/* CHART.JS LOGIC */
 let wins = [];
 wins.push(retrievedWins);
 let loss = [];
@@ -56,3 +64,36 @@ function renderChart() {
   new Chart(canvasElem, myChartObj, wins, loss);
 }
 renderChart();
+
+/* EVENT HANDLERS */
+function goNextPokemon() {
+  if (positionInPokemon < retrievedPokemon.length - 1) {
+    positionInPokemon++;
+  } else {
+    positionInPokemon = 0;
+  }
+  pokemonName.innerText = retrievedPokemon[positionInPokemon][1];
+  pokemonImg.src = retrievedPokemon[positionInPokemon][0];
+}
+
+function goPreviousPokemon() {
+  if (positionInPokemon > 0) {
+    positionInPokemon--;
+  } else {
+    positionInPokemon = retrievedPokemon.length - 1;
+  }
+  pokemonName.innerText = retrievedPokemon[positionInPokemon][1];
+  pokemonImg.src = retrievedPokemon[positionInPokemon][0];
+}
+
+function loadFirstPokemon() {
+  pokemonName.innerText = retrievedPokemon[positionInPokemon][1];
+  pokemonImg.src = retrievedPokemon[positionInPokemon][0];
+}
+
+/* EVENT LISTENERS */
+
+next.addEventListener('click', goNextPokemon);
+previous.addEventListener('click', goPreviousPokemon);
+
+loadFirstPokemon();
