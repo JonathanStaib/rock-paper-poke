@@ -86,6 +86,7 @@ PlayerDeck.prototype.newHand = function () {
             data[+elementsAll[i][0] - 1].name.english)
       );
   }
+  updateNames();
 };
 
 /* DOM MANIPULATION */
@@ -98,6 +99,12 @@ let imgFour = document.querySelector('#imgFour');
 let imgFive = document.querySelector('#imgFive');
 let button = document.querySelector('button');
 let messageBox = document.querySelector('#message-box>p');
+let fireName = document.querySelector('#fire');
+let groundName = document.querySelector('#ground');
+let grassName = document.querySelector('#grass');
+let electricName = document.querySelector('#electric');
+let iceName = document.querySelector('#ice');
+
 /* UTILITY FUNCTIONS */
 1;
 function randomPokemon(element) {
@@ -186,16 +193,28 @@ function getOpponentName() {
 /* This Function renders 5 images based on numbers stored in PlayerHand Object */
 function renderPlayerRandom() {
   // playersHand.newHand(); // grab data from the playerHand object to render images
+
   imgOne.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.fire[0]}.png`;
   imgOne.alt = Object.keys(types)[0];
+  updateNames();
   imgTwo.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.ice[0]}.png`;
   imgTwo.alt = Object.keys(types)[1];
+
   imgThree.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.electric[0]}.png`;
   imgThree.alt = Object.keys(types)[2];
+
   imgFour.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.ground[0]}.png`;
   imgFour.alt = Object.keys(types)[3];
+
   imgFive.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${playersHand.grass[0]}.png`;
   imgFive.alt = Object.keys(types)[4];
+}
+function updateNames() {
+  fireName.innerText = playersHand.fire[1]; // change name of pokemon under image
+  iceName.innerText = playersHand.ice[1]; // change name of pokemon under image
+  electricName.innerText = playersHand.electric[1]; // change name of pokemon under image
+  groundName.innerText = playersHand.ground[1]; // change name of pokemon under image
+  grassName.innerText = playersHand.grass[1]; // change name of pokemon under image
 }
 
 function showOrHideCard() {
@@ -279,6 +298,7 @@ function newGameButton() {
   showOrHideCard();
   playersHand.newHand();
   renderPlayerRandom();
+
   messageBox.innerText = '';
   button.classList.add('invisable');
   button.removeEventListener('click', newGameButton);
@@ -296,6 +316,7 @@ function playersChoice(e) {
   userchoice.removeEventListener('click', playersChoice);
   winChecker(e.target.alt);
   getOpponentName();
+  updateNames();
   button.classList.remove('invisable');
   button.addEventListener('click', newGameButton);
 }
@@ -305,3 +326,4 @@ userchoice.addEventListener('click', playersChoice);
 
 /* Renders 5 random pokemon for the user on load. */
 renderPlayerRandom();
+updateNames();
