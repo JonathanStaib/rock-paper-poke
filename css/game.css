@@ -140,8 +140,15 @@ button p{
   right: 50px;
   bottom: 18px;
   overflow: hidden;
-  transition: 1s;
+  transition: transform 1s linear;
   font-family: 'Silkscreen', Arial, Helvetica, sans-serif;
+  text-shadow: none;
+}
+#game-rules > section:hover {
+  height: auto;
+  width: auto;
+  background-color: yellow;
+  transform: scale(1.15);
   text-shadow: none;
 }
 #computer {
@@ -151,13 +158,6 @@ button p{
 li > figure > img {
   width: 61%;
   margin-bottom: -9%;
-}
-#game-rules > section:hover {
-  height: auto;
-  width: auto;
-  background-color: yellow;
-  transform: scale(1.15);
-  text-shadow: none;
 }
 
 #rule-section > h3 {
