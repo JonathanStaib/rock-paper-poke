@@ -8,7 +8,7 @@ let canvasElem = document.getElementById('my-chart').getContext('2d');
 let previous = document.querySelector('#previous');
 let next = document.querySelector('#next');
 let pokemonName = document.querySelector('h4');
-let pokemonImg = document.querySelector('img');
+let pokemonImg = document.querySelector('#display');
 
 /* GRAB LOCAL STORAGE */
 let retrievedPokemonName = JSON.parse(

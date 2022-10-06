@@ -23,9 +23,10 @@ main {
   grid-area: main;
   grid-row: 2/3;
   grid-column: 1/-1;
-  padding: 30px;
-  margin-left: 15%;
-  margin-right: 15%
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-left: 10%;
+  margin-right: 10%
 }
 
 
@@ -39,8 +40,9 @@ footer {
   text-align: center;
 }
 
-img {
-  width: 8%
+#ball {
+  width: 13%;
+  padding: 0.3%;
 }
 
 /* *grid for about me :( */
@@ -54,7 +56,7 @@ img {
     "monica"
     "jonathan"
     "raphael";
-  gap: 15px;
+  gap: 8px;
 }
 
 h2 {
@@ -71,6 +73,7 @@ h2 {
   display: flex;
   justify-content: row;
   align-items: center;
+  height: 16vh;
 }
 
 
@@ -80,14 +83,25 @@ h2 {
   justify-content: space-between;
   grid-row: 3/4;
   align-items: center;
+  height: 16vh;
 }
-
+#Lewis img {
+  border-radius: 15px;
+  width: 13%;
+  transition: all 1s linear;
+}
 
 #Monica {
   display: flex;
   justify-content: row;
   grid-row: 4/5;
   align-items: center;
+  height: 16vh;
+}
+#Monica img {
+  border-radius: 15px;
+  width: 13%;
+  transition: all 1s linear;
 }
 
 #Jonathan {
@@ -96,6 +110,12 @@ h2 {
   justify-content: space-between;
   grid-row: 5/6;
   align-items: center;
+  height: 16vh;
+}
+#Jonathan img {
+  border-radius: 15px;
+  width: 13%;
+  transition: all 1s linear;
 }
 
 #Raphael {
@@ -103,8 +123,13 @@ h2 {
   display: flex;
   justify-content: row;
   align-items: center;
+  height: 16vh;
 }
-
+#Raphael img {
+  border-radius: 15px;
+  width: 20%;
+  transition: transform 1s linear;
+}
 
 section {
   background-color: rgba(33, 95, 98, 0.866);
@@ -113,15 +138,10 @@ section {
   border: ridge rgb(38,106,110,0.3);
 }
 
-img{
-  padding: 0.3%
-}
 img:hover:not(#ball) {
   transform: scale(1.3);
   border-radius: 15px;
-  transition: 0.5s all ease-in;
 }
-
 
 #ball:hover {
   animation: shake 0.5s;
@@ -164,6 +184,11 @@ p {
 }
 
 #Jonathan a {
+  color: yellow;
+  text-decoration: underline;
+}
+
+#Raphael a {
   color: yellow;
   text-decoration: underline;
 }
