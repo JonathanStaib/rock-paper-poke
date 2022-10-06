@@ -9,8 +9,10 @@ body {
 
 main {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-auto-rows: minmax(10px, auto);
+  /* grid-template-columns: repeat(1, 1fr); */
+  grid-auto-columns: min-content;
+  grid-auto-columns: max-content;
+  /* grid-auto-rows: minmax(10px, auto); */
   grid-template-areas:
     'header header header'
     'game-outer game-outer game-outer'
@@ -93,8 +95,8 @@ h2 {
 
 button {
   font-family: 'Silkscreen', Arial, Helvetica, sans-serif;
-  padding: 25px 35px;
-  margin: 5px;
+  padding: 1.5%;
+  margin: 1%;
   border-radius: 70px;
   border: none;
   text-align: center;
@@ -107,6 +109,10 @@ button:hover {
   background-color: rgb(255, 236, 81);
   border: none;
   text-shadow: none;
+}
+
+button p{
+  padding: 1%;
 }
 
 #game-rules {
@@ -257,7 +263,7 @@ footer {
     margin-top: 10%;
   }
   button {
-    margin-top: 10%;
+    margin-top: 1%;
   }
 
   #message-box {
