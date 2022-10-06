@@ -199,6 +199,7 @@ h5 {
   font-family: 'Silkscreen', Arial, Helvetica, sans-serif;
   font-size: x-large;
   padding: 5px;
+  padding-left: 1rem;
 }
 
 .hidden {
