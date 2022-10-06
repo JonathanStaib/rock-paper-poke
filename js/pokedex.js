@@ -31,7 +31,7 @@ let wins = [];
 wins.push(fire, ice, electric, ground, grass);
 let loss = [];
 loss.push(fireL, iceL, electricL, groundL, grassL);
-console.log(loss);
+
 
 function renderChart() {
   Chart.defaults.font.size = 14;
