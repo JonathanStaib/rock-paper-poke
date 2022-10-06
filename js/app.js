@@ -38,7 +38,6 @@ const ice = ['087', '091', '124', '131', '144', '215', '220', '221'];
 const electric = ['025', '026', '081', '082', '100', '101', '125', '135'];
 const ground = ['027', '028', '031', '034', '050', '051', '074', '075'];
 const grass = ['001', '002', '003', '043', '044', '045', '046', '047'];
-let computersName = ''; // Name of the Pokemon that the computer is going to send to battle
 let computersType; // Type of the Pokemon that the computer is going to send to battle
 /* This object is used to reference the globals above, and have a string name to
 reference later in conditionals such. Example: if('fire' === types.keyName) */
@@ -66,18 +65,11 @@ const playersHand = new PlayerDeck();
 /* PROTOTYPE METHODS */
 
 PlayerDeck.prototype.newHand = function () {
-  /* This function creates new data for the PlayerDeck object by assigning each element
-  name to an array, the first index is the number that represents a Pokemon,
-  the second number is the name of the Pokemon (as seen above in the constructor) */
-  let fire = pickRandomType('fire');
-  let ice = pickRandomType('ice');
-  let electric = pickRandomType('electric');
-  let ground = pickRandomType('ground');
-  let grass = pickRandomType('grass');
-  const elementsAll = [fire, ice, electric, ground, grass];
-  /* The for loop iterates over each element above, then checks the pokedex.json for the name of the pokemon by
-   subtracting 1 from the pokemons number to grab its index locations, it then
-   checks the .name property, and .english to grab its english name and assign it to the PlayerDeck Object  */
+  pickRandomType('fire');
+  pickRandomType('ice');
+  pickRandomType('electric');
+  pickRandomType('ground');
+  pickRandomType('grass');
 };
 
 /* DOM MANIPULATION */
