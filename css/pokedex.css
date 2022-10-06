@@ -33,13 +33,13 @@ nav {
   background-color: rgb(180, 200, 216);
   border: 3px solid black;
   border-radius: 15px;
-  width: 510px;
-  height: 400px;
+  width: 335px;
+  height: 300px;
   max-width: inherit;
   max-height: inherit;
   position: absolute;
-  right: 255px;
-  top: 250px;
+  right: 157px;
+  top: 160px;
 }
 
 #chart-info {
@@ -61,10 +61,8 @@ footer {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  height: 900px;
-  width: 1695px;
-  min-width: 1695px;
-  min-height: 900px;
+  height: 600px;
+  width: 1100px;
   position: relative;
 }
 
@@ -82,8 +80,7 @@ main {
 }
 
 .pokemon-seen > img {
-  display: inline-block;
-  height: 250px;
+  height: 150px;
 }
 
 h4 {
@@ -117,23 +114,24 @@ h4 {
 .no-local {
   display: hidden;
 }
-@media (max-width: 600px) and (max-width: 1100px) {
+
+@media (min-width: 360px) and (max-width: 989) {
   .wrapper {
     margin-top: 120px;
-    height: 450px;
-    width: 500px;
-    min-width: 500px;
-    min-height: 450px;
+    height: 250px;
+    width: 250px;
+    min-width: 250px;
+    min-height: 250px;
   }
 
   .pokemon-seen {
     position: absolute;
-    top: 33%;
-    left: 23%;
+    top: 3%;
+    left: 3%;
   }
 
   .pokemon-seen > img {
-    height: 100px;
+    height: 80px;
   }
 
   h4 {
@@ -141,17 +139,17 @@ h4 {
   }
 
   #previous {
-    height: 17px;
+    height: 15px;
     width: 28px;
-    bottom: 105px;
-    left: 32%;
+    bottom: 116px;
+    left: 31%;
     background-color: blue;
   }
 
   #next {
-    height: 17px;
+    height: 15px;
     width: 28px;
-    bottom: 105px;
+    bottom: 116px;
     left: 40%;
     background-color: red;
   }
@@ -166,19 +164,18 @@ h4 {
 
   #chart-container {
     border-radius: 0px;
-    width: 195px;
-    height: 155px;
+    width: 173px;
+    height: 145px;
     right: 15px;
-    top: 145px;
+    top: 147px;
   }
 }
-
-@media (min-width: 1024px) {
+@media (min-width: 960px) and (max-width: 1289px) {
   .wrapper {
     margin-top: 120px;
     height: 450px;
-    width: 500px;
-    min-width: 500px;
+    width: 450px;
+    min-width: 450px;
     min-height: 450px;
   }
 
@@ -189,7 +186,7 @@ h4 {
   }
 
   .pokemon-seen > img {
-    height: 100px;
+    height: 80px;
   }
 
   h4 {
@@ -197,17 +194,19 @@ h4 {
   }
 
   #previous {
-    height: 17px;
+    height: 15px;
     width: 28px;
-    bottom: 105px;
-    left: 32%;
+    bottom: 116px;
+    left: 31%;
+    background-color: blue;
   }
 
   #next {
-    height: 17px;
+    height: 15px;
     width: 28px;
-    bottom: 105px;
+    bottom: 116px;
     left: 40%;
+    background-color: red;
   }
   nav {
     padding-bottom: 0px;
@@ -220,9 +219,63 @@ h4 {
 
   #chart-container {
     border-radius: 0px;
-    width: 195px;
-    height: 155px;
+    width: 173px;
+    height: 145px;
     right: 15px;
-    top: 145px;
+    top: 147px;
+  }
+}
+
+@media (min-width: 1290px) and (max-width: 1600px) {
+  .wrapper {
+    margin-top: 50px;
+    height: 550px;
+    width: 700px;
+    min-width: 600px;
+    min-height: 550px;
+  }
+
+  .pokemon-seen {
+    position: absolute;
+    top: 33%;
+    left: 23%;
+  }
+
+  .pokemon-seen > img {
+    height: 140px;
+  }
+
+  h4 {
+    font-size: 1rem;
+  }
+
+  #previous {
+    height: 17px;
+    width: 28px;
+    bottom: 111px;
+    left: 33%;
+  }
+
+  #next {
+    height: 17px;
+    width: 28px;
+    bottom: 111px;
+    left: 41%;
+  }
+  nav {
+    padding-bottom: 0px;
+  }
+
+  #my-chart {
+    height: 100%;
+    padding: 0;
+  }
+
+  #chart-container {
+    border-radius: 0px;
+    width: 274px;
+    height: 223px;
+    right: 22px;
+    top: 161px;
   }
 }
