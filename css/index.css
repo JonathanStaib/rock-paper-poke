@@ -85,17 +85,5 @@ footer{
   text-align: center;
   padding:20px;
   margin:20px;
+  position: absolute;
 }
-/* https://css-tricks.com/design-considerations-text-images/
-body{
-  background-image:
-  linear-gradient( 
-    rgba(0, 0, 0, 0.5),
-    rgba(0, 0, 0, 0.5)), 
-   url("../img/pika-luca.webp");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: bottom ;
-  height: 100vh;
-} */
-
