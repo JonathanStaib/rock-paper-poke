@@ -6,11 +6,11 @@ body {
     "footer footer footer";
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: minmax(50px, auto);
-  background: url(../assets/charmender.webp) no-repeat center center fixed;
+  background:url(../assets/ash-pokemon-minimalism.png) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  background-size: cover;git 
 }
 header {
   grid-area: header;
@@ -54,7 +54,10 @@ h2 {
   grid-column: 1/2;
   grid-row: 1/2;
   text-align: center;
-  font-size: 50px;
+  font-size: 4.5vmax;
+}
+img{
+  padding: 0.7%;
 }
 #bio {
   grid-area: bio;
@@ -74,7 +77,9 @@ h2 {
 }
 #Lewis img {
   border-radius: 15px;
-  width: 16%;
+  /* width: 16%; */
+  width:8vmax;
+  /* padding: 0.7%; */
   transition: all 1s linear;
 }
 #Monica {
@@ -86,7 +91,9 @@ h2 {
 }
 #Monica img {
   border-radius: 15px;
-  width: 13%;
+  width: 5vmax;
+  /* object-fit: contain; */
+  padding: 0.7%;
   transition: all 1s linear;
 }
 #Jonathan {
@@ -99,7 +106,8 @@ h2 {
 }
 #Jonathan img {
   border-radius: 15px;
-  width: 13%;
+  /* width: 13%; */
+  width: 6vmax;
   transition: all 1s linear;
 }
 #Raphael {
@@ -111,26 +119,30 @@ h2 {
 }
 #Raphael img {
   border-radius: 15px;
-  width: 19%;
+  /* width: 19%; */
+  width: 7.5vmax;
   transition: transform 1s linear;
 }
 section {
-  background-color: rgba(33, 95, 98, 0.866);
+  background-color: rgba(49, 135, 189, 0.581);
   padding: 0.8%;
   border-radius: 15px;
-  border: ridge rgb(38,106,110,0.3);
+  /* border: ridge rgba(47, 50, 113, 0.3); */
 }
 img:hover:not(#ball) {
   transform: scale(1.3);
   border-radius: 15px;
+}
+#ball{
+  width:8vmax;
 }
 #ball:hover {
   animation: shake 0.5s;
   animation-iteration-count: 1.5;
 }
 p {
-  /* border: ridge yellow;
-  border-radius: 15px; */
+  font-size: 16px;
+  font-size: 1.1vmax;
   padding: 1%;
   margin: 1%;
 }
