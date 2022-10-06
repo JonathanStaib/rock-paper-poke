@@ -230,12 +230,12 @@ function showOrHideCard() {
 }
 
 function playerWins(usersChoice) {
-  messageBox.innerHTML = `You won with a ${usersChoice} type!`;
+  messageBox.innerHTML = `You won with ${usersChoice} type!`;
   wins[usersChoice]++;
 }
 
 function playerLoss(usersChoice) {
-  messageBox.innerHTML = `You lost with a ${usersChoice} type!`;
+  messageBox.innerHTML = `You lost with ${usersChoice} type!`;
   losses[usersChoice + 'L']++;
 }
 /* This function compairs the players choice of pokemon to the computers to
