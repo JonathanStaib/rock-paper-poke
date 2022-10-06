@@ -32,7 +32,6 @@ wins.push(fire, ice, electric, ground, grass);
 let loss = [];
 loss.push(fireL, iceL, electricL, groundL, grassL);
 
-
 function renderChart() {
   Chart.defaults.font.size = 13;
   Chart.defaults.color = '#000000';
@@ -102,7 +101,6 @@ function loadFirstPokemon() {
     pokemonImg.classList.remove('no-local');
   }
 }
-
 /* EVENT LISTENERS */
 
 next.addEventListener('click', () => {
