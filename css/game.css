@@ -69,7 +69,7 @@ h2 {
   font-family: 'Silkscreen', Arial, Helvetica, sans-serif;
 }
 
-#opponent-name{
+#opponent-name {
   margin-right: 15%;
 }
 
@@ -140,6 +140,11 @@ button:hover {
 }
 #computer {
   width: 61%;
+}
+
+li > figure > img {
+  width: 61%;
+  margin-bottom: -9%;
 }
 #game-rules > section:hover {
   height: auto;
