@@ -79,10 +79,8 @@ button:hover{
 }
 
 footer{
-  grid-area:footer;
-  grid-row: 6/7;
-  grid-column: 1/-1;
-  text-align: center;
-  padding:20px;
-  margin:20px;
+  position:fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }
