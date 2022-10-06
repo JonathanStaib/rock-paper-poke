@@ -106,12 +106,12 @@ function loadFirstPokemon() {
 /* EVENT LISTENERS */
 
 next.addEventListener('click', () => {
-  if (retrievedPokemon) {
+  if (retrievedPokemonName) {
     goNextPokemon();
   }
 });
 previous.addEventListener('click', () => {
-  if (retrievedPokemon) {
+  if (retrievedPokemonName) {
     goPreviousPokemon();
   }
 });
