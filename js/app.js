@@ -1,6 +1,6 @@
 'use strict';
 /* GLOBALS */
-
+let pokemonNames = [];
 let pokemonSpotted = [];
 let wins = {
   fire: 0,
@@ -207,11 +207,11 @@ function renderPlayerRandom() {
   imgFive.alt = Object.keys(types)[4];
 }
 function updateNames() {
-  fireName.innerText = playersHand.fire[1]; // change name of pokemon under image
-  iceName.innerText = playersHand.ice[1]; // change name of pokemon under image
-  electricName.innerText = playersHand.electric[1]; // change name of pokemon under image
-  groundName.innerText = playersHand.ground[1]; // change name of pokemon under image
-  grassName.innerText = playersHand.grass[1]; // change name of pokemon under image
+  fireName.innerText = pokemonNames[0]; // change name of pokemon under image
+  iceName.innerText = pokemonNames[1]; // change name of pokemon under image
+  electricName.innerText = pokemonNames[2]; // change name of pokemon under image
+  groundName.innerText = pokemonNames[3]; // change name of pokemon under image
+  grassName.innerText = pokemonNames[4]; // change name of pokemon under image
 }
 
 function showOrHideCard() {
@@ -242,56 +242,59 @@ which element beats which */
 function winChecker(usersChoice) {
   computersType = computer.alt; //set computer type to whats stored in the pokemon img alt
   switch (computersType) {
-  case 'fire':
-    if (usersChoice === 'ice' || usersChoice === 'electric') {
-      playerWins(usersChoice);
-    } else {
-      playerLoss(usersChoice);
-    }
-    break;
+    case 'fire':
+      if (usersChoice === 'ice' || usersChoice === 'electric') {
+        playerWins(usersChoice);
+      } else {
+        playerLoss(usersChoice);
+      }
+      break;
 
-  case 'ground':
-    if (usersChoice === 'fire' || usersChoice === 'grass') {
-      playerWins(usersChoice);
-    } else {
-      playerLoss(usersChoice);
-    }
-    break;
-  case 'grass':
-    if (usersChoice === 'fire' || usersChoice === 'electric') {
-      playerWins(usersChoice);
-    } else {
-      playerLoss(usersChoice);
-    }
-    break;
+    case 'ground':
+      if (usersChoice === 'fire' || usersChoice === 'grass') {
+        playerWins(usersChoice);
+      } else {
+        playerLoss(usersChoice);
+      }
+      break;
+    case 'grass':
+      if (usersChoice === 'fire' || usersChoice === 'electric') {
+        playerWins(usersChoice);
+      } else {
+        playerLoss(usersChoice);
+      }
+      break;
 
-  case 'electric':
-    if (usersChoice === 'ice' || usersChoice === 'ground') {
-      playerWins(usersChoice);
-    } else {
-      playerLoss(usersChoice);
-    }
-    break;
-  case 'ice':
-    if (usersChoice === 'ground' || usersChoice === 'grass') {
-      playerWins(usersChoice);
-    } else {
-      playerLoss(usersChoice);
-    }
-    break;
-  default:
-    console.log('error');
+    case 'electric':
+      if (usersChoice === 'ice' || usersChoice === 'ground') {
+        playerWins(usersChoice);
+      } else {
+        playerLoss(usersChoice);
+      }
+      break;
+    case 'ice':
+      if (usersChoice === 'ground' || usersChoice === 'grass') {
+        playerWins(usersChoice);
+      } else {
+        playerLoss(usersChoice);
+      }
+      break;
+    default:
+      console.log('error');
   }
 }
 
 function updateNamesInObject() {
   let elementsAll = Object.keys(playersHand);
+
   console.log(elementsAll[1]);
   for (let i = 0; i < elementsAll.length; i++) {
     fetch('pokedex.json')
       .then((response) => response.json())
-      .then(
-        (data) => (elementsAll = data[+elementsAll[i][0] - 1].name.english)
+      .then((data) =>
+        pokemonNames.push(
+          data[+playersHand[elementsAll[i]][0] - 1].name.english
+        )
       );
   }
 }
@@ -307,6 +310,7 @@ function newGameButton() {
   showOrHideCard();
   renderPlayerRandom();
   playersHand.newHand();
+  updateNamesInObject();
   updateNames();
   messageBox.innerText = '';
   button.classList.add('invisable');
@@ -325,7 +329,7 @@ function playersChoice(e) {
   userchoice.removeEventListener('click', playersChoice);
   winChecker(e.target.alt);
   getOpponentName();
-
+  updateNamesInObject();
   button.classList.remove('invisable');
   button.addEventListener('click', newGameButton);
 }
