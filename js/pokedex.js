@@ -34,7 +34,7 @@ loss.push(fireL, iceL, electricL, groundL, grassL);
 
 
 function renderChart() {
-  Chart.defaults.font.size = 13;
+  Chart.defaults.font.size = 14;
   Chart.defaults.color = '#000000';
 
   let myChartObj = {
@@ -60,7 +60,7 @@ function renderChart() {
     },
     options: {
       layout: {
-        padding: 0,
+        padding: 10,
       },
       scales: {
         y: {
