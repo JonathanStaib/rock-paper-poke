@@ -19,16 +19,13 @@ main{
   "footer footer footer";
   gap: 20px;
 }
-
 header{
   grid-area: header;
   grid-column: 1/-1;
 }
-
 nav{
   padding-bottom: 0px;
 }
-
 section{
   grid-area: section;
   grid-row: 2/5;
@@ -36,17 +33,13 @@ section{
   text-align: center;
   padding-top: 20px;
 }
-
 h2{
   font-size: 100px;
 }
-
 p{
   font-size: 35px;
   padding:20px;
-
 }
-
 button{
   grid-area: button;
   grid-row:5/6;
@@ -59,9 +52,7 @@ button{
   text-align:center;
   color: rgb(55,71,79); 
   animation: bounce 1.6s ease infinite; 
-  
 }
-
 @keyframes bounce {
   70% { transform:translateY(-0%); }
   80% { transform:translateY(-10%); }
@@ -71,13 +62,11 @@ button{
   99% { transform:translateY(-5%); }
   100% { transform:translateY(0); }
 }
-
 button:hover{
   background-color: rgb(255, 236, 81);
   border:none;
   animation-play-state: paused;
 }
-
 footer{
   position:fixed;
   left: 0;
