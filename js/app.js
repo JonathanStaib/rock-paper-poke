@@ -1,6 +1,6 @@
 'use strict';
 /* GLOBALS */
-
+let pokemonNames = [];
 let pokemonSpotted = [];
 let wins = {
   fire: 0,
@@ -38,7 +38,6 @@ const ice = ['087', '091', '124', '131', '144', '215', '220', '221'];
 const electric = ['025', '026', '081', '082', '100', '101', '125', '135'];
 const ground = ['027', '028', '031', '034', '050', '051', '074', '075'];
 const grass = ['001', '002', '003', '043', '044', '045', '046', '047'];
-let computersName = ''; // Name of the Pokemon that the computer is going to send to battle
 let computersType; // Type of the Pokemon that the computer is going to send to battle
 /* This object is used to reference the globals above, and have a string name to
 reference later in conditionals such. Example: if('fire' === types.keyName) */
@@ -62,29 +61,13 @@ const PlayerDeck = function () {
 
 /* CREATING NEW PLAYER HAND */
 const playersHand = new PlayerDeck();
+
 /* PROTOTYPE METHODS */
 
 PlayerDeck.prototype.newHand = function () {
-  /* This function creates new data for the PlayerDeck object by assigning each element
-  name to an array, the first index is the number that represents a Pokemon,
-  the second number is the name of the Pokemon (as seen above in the constructor) */
-  let fire = pickRandomType('fire');
-  let ice = pickRandomType('ice');
-  let electric = pickRandomType('electric');
-  let ground = pickRandomType('ground');
-  let grass = pickRandomType('grass');
-  const elementsAll = [fire, ice, electric, ground, grass];
-  /* The for loop iterates over each element above, then checks the pokedex.json for the name of the pokemon by
-   subtracting 1 from the pokemons number to grab its index locations, it then
-   checks the .name property, and .english to grab its english name and assign it to the PlayerDeck Object  */
-  for (let i = 0; i < elementsAll.length; i++) {
-    fetch('pokedex.json')
-      .then((response) => response.json())
-      .then(
-        (data) =>
-          (this[elementsAll[i][1]][1] =
-            data[+elementsAll[i][0] - 1].name.english)
-      );
+  let typesByElement = Object.keys(types); // referencing the object called types on line 44 for key names as a string
+  for (let elementFromTypesObject of typesByElement) {
+    pickRandomType(elementFromTypesObject); // insert the keyname (as a string) into the pickRandomType function
   }
 };
 
@@ -98,29 +81,33 @@ let imgFour = document.querySelector('#imgFour');
 let imgFive = document.querySelector('#imgFive');
 let button = document.querySelector('button');
 let messageBox = document.querySelector('#message-box>p');
+let messageBoxParent = document.querySelector('#message-box');
 let fireName = document.querySelector('#fire');
 let groundName = document.querySelector('#ground');
 let grassName = document.querySelector('#grass');
 let electricName = document.querySelector('#electric');
 let iceName = document.querySelector('#ice');
+let opponentName = document.querySelector('#opponent-name');
 
 /* UTILITY FUNCTIONS */
-1;
-function randomPokemon(element) {
+
+function randomPokemon(element) { // element is referring to the arrays on lines 36/40
   return Math.floor(Math.random() * element.length);
 }
 function storeToLocal() {
   let uniquePokemonNames = [];
   let uniquePokemonUrls = [];
+  // the flat method grabs all arrays nested inside an array and turns them into 1 big array
   let uniquePokemonFlat = [...new Set(pokemonSpotted.flat())]; // remove duplicates from array
-  for (let i = 1; i < uniquePokemonFlat.length; i += 2) {
+  for (let i = 1; i < uniquePokemonFlat.length; i += 2) {// starting at index 1, grab all odd indexs and push into names
     uniquePokemonNames.push(uniquePokemonFlat[i]);
   }
 
-  for (let i = 0; i < uniquePokemonFlat.length; i += 2) {
+  for (let i = 0; i < uniquePokemonFlat.length; i += 2) { // start at index 0 and grab all even indexes
     uniquePokemonUrls.push(uniquePokemonFlat[i]);
   }
 
+  /* Grab all data for the pokedex and place it in local storage */
   localStorage.setItem(
     'pokemonSpottedNames',
     JSON.stringify(uniquePokemonNames)
@@ -173,9 +160,16 @@ function renderRandom(usersChoice) {
     pokemon = pickRandomType(); // This is where the computer grabs a random pokemon
   }
   /* Lines 143 - 145 will manipulate the img element that contains the computers pokemon */
+  opponentName.classList.add('invisable');
   computer.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemon[0]}.png`;
   computer.alt = pokemon[1]; // used to compair agaisnt the users choice (stores the element)
   computer.value = pokemon[0]; // used to reference to name in the pokedex file later (stores the number)
+  fetch('pokedex.json')
+    .then((response) => response.json())
+    .then(
+      (data) =>
+        (opponentName.innerText = data[+computer.value - 1].name.english) // setting name of opponent to DOM
+    );
   return pokemon[1]; // returns the element (fire, ice ect..) the computers pokemon is using to compair agaisnt the player
 }
 /* This function will search the pokedex file for the opponents pokemon's name
@@ -207,11 +201,14 @@ function renderPlayerRandom() {
   imgFive.alt = Object.keys(types)[4];
 }
 function updateNames() {
-  fireName.innerText = playersHand.fire[1]; // change name of pokemon under image
-  iceName.innerText = playersHand.ice[1]; // change name of pokemon under image
-  electricName.innerText = playersHand.electric[1]; // change name of pokemon under image
-  groundName.innerText = playersHand.ground[1]; // change name of pokemon under image
-  grassName.innerText = playersHand.grass[1]; // change name of pokemon under image
+  if (pokemonNames.length > 1) {
+    fireName.innerText = pokemonNames[0]; // change name of pokemon under image
+    iceName.innerText = pokemonNames[1]; // change name of pokemon under image
+    electricName.innerText = pokemonNames[2]; // change name of pokemon under image
+    groundName.innerText = pokemonNames[3]; // change name of pokemon under image
+    grassName.innerText = pokemonNames[4]; // change name of pokemon under image
+    pokemonNames = [];
+  }
 }
 
 function showOrHideCard() {
@@ -221,19 +218,24 @@ function showOrHideCard() {
   if (!cardBack.classList.contains('hidden')) {
     cardBack.classList.add('hidden');
     computer.classList.remove('hidden');
+    opponentName.classList.remove('invisable');
+    messageBoxParent.classList.remove('invisable');
   } else {
     computer.classList.add('hidden');
+    opponentName.classList.add('invisable');
+    messageBoxParent.classList.add('invisable');
+
     cardBack.classList.remove('hidden');
   }
 }
 
 function playerWins(usersChoice) {
-  messageBox.innerHTML = `You won with a ${usersChoice} type!`;
+  messageBox.innerHTML = `You won with ${usersChoice} type!`;
   wins[usersChoice]++;
 }
 
 function playerLoss(usersChoice) {
-  messageBox.innerHTML = `You lost with a ${usersChoice} type!`;
+  messageBox.innerHTML = `You lost with ${usersChoice} type!`;
   losses[usersChoice + 'L']++;
 }
 /* This function compairs the players choice of pokemon to the computers to
@@ -243,7 +245,7 @@ function winChecker(usersChoice) {
   computersType = computer.alt; //set computer type to whats stored in the pokemon img alt
   switch (computersType) {
   case 'fire':
-    if (usersChoice === 'ice' || usersChoice === 'electric') {
+    if (usersChoice === 'ground' || usersChoice === 'electric') {
       playerWins(usersChoice);
     } else {
       playerLoss(usersChoice);
@@ -251,14 +253,14 @@ function winChecker(usersChoice) {
     break;
 
   case 'ground':
-    if (usersChoice === 'fire' || usersChoice === 'grass') {
+    if (usersChoice === 'ice' || usersChoice === 'grass') {
       playerWins(usersChoice);
     } else {
       playerLoss(usersChoice);
     }
     break;
   case 'grass':
-    if (usersChoice === 'fire' || usersChoice === 'electric') {
+    if (usersChoice === 'fire' || usersChoice === 'ice') {
       playerWins(usersChoice);
     } else {
       playerLoss(usersChoice);
@@ -266,14 +268,14 @@ function winChecker(usersChoice) {
     break;
 
   case 'electric':
-    if (usersChoice === 'ice' || usersChoice === 'ground') {
+    if (usersChoice === 'grass' || usersChoice === 'ground') {
       playerWins(usersChoice);
     } else {
       playerLoss(usersChoice);
     }
     break;
   case 'ice':
-    if (usersChoice === 'ground' || usersChoice === 'grass') {
+    if (usersChoice === 'electric' || usersChoice === 'fire') {
       playerWins(usersChoice);
     } else {
       playerLoss(usersChoice);
@@ -286,12 +288,15 @@ function winChecker(usersChoice) {
 
 function updateNamesInObject() {
   let elementsAll = Object.keys(playersHand);
-  console.log(elementsAll[1]);
   for (let i = 0; i < elementsAll.length; i++) {
     fetch('pokedex.json')
       .then((response) => response.json())
       .then(
-        (data) => (elementsAll = data[+elementsAll[i][0] - 1].name.english)
+        (data) =>
+          pokemonNames.push(
+            data[+playersHand[elementsAll[i]][0] - 1].name.english
+          ),
+        updateNames()
       );
   }
 }
@@ -306,12 +311,11 @@ function newGameButton() {
   storeToLocal();
   showOrHideCard();
   renderPlayerRandom();
-  playersHand.newHand();
-  updateNames();
   messageBox.innerText = '';
   button.classList.add('invisable');
   button.removeEventListener('click', newGameButton);
   userchoice.addEventListener('click', playersChoice);
+  updateNames();
 }
 
 /* This event handler will fire when a player chooses a pokemon and clicks
@@ -322,17 +326,18 @@ The new game button becomes visable and gains an event listener */
 function playersChoice(e) {
   renderRandom(e.target.alt);
   showOrHideCard();
-  userchoice.removeEventListener('click', playersChoice);
+
   winChecker(e.target.alt);
   getOpponentName();
-
+  playersHand.newHand();
+  userchoice.removeEventListener('click', playersChoice);
   button.classList.remove('invisable');
   button.addEventListener('click', newGameButton);
+  updateNamesInObject();
 }
 
 /* EVENT LISTENER METHODS */
 userchoice.addEventListener('click', playersChoice);
-
 /* Renders 5 random pokemon for the user on load. */
 renderPlayerRandom();
 updateNames();

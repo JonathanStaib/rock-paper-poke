@@ -3,25 +3,23 @@
 body{
   color: whitesmoke;
   text-shadow: black 0px 0px 2px;
-  /* background-color: white; */
-  /* font-family: Arial, Helvetica, sans-serif; */
-  background-color: rgb(52, 111, 213);
-  font-family: 'Glegoo', sans-serif;
+  /* background-color: rgb(52, 111, 213); */
+  /*font-family: 'Glegoo', sans-serif;*/
+  /*font-family: 'Gemunu Libre', sans-serif;*/
+  font-family: 'Patua One', cursive; 
+  /*font-family: 'VT323', monospace;*/
   }
-  
   header{
     height: 6vh;
     display: flex;
     justify-content: space-between;
     align-items:center;
-    font-family: 'Glegoo', serif;
+    padding-top: 0.3%;
   }
   
   h1{
-    color: whitesmoke;
     text-align: center;
     padding:0px;
-    font-family: 'Glegoo', serif;
     font-size: 30px;
     text-align: center;
     padding-left: 20px;
@@ -70,10 +68,11 @@ body{
   }
   a:hover{
     color: rgb(55, 71, 79);
+    text-shadow: none;
   }
   
   footer {
     text-align: center;
     font-family: "Silkscreen", Arial, Helvetica, sans-serif;
+    padding: 1%;
   }
-

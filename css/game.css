@@ -1,35 +1,33 @@
 body {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-auto-rows: minmax(25px, auto);
-  grid-template-areas:
-    'header header header'
-    'game-outer game-outer game-outer'
-    'footer footer footer';
-  gap: 1px;
   background: url(../assets/00160188.jpeg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  height: 100vh;
 }
 
-header {
-  grid-area: header;
-  grid-column: 1/-1;
-  grid-row: 1/2;
-}
-
-main{
+main {
+  display: grid;
+  /* grid-template-columns: repeat(1, 1fr); */
+  grid-auto-columns: min-content;
+  grid-auto-columns: max-content;
+  /* grid-auto-rows: minmax(10px, auto); */
+  grid-template-areas:
+    'header header header'
+    'game-outer game-outer game-outer'
+    'footer footer footer';
+  gap: 1px;
+  display: flex;
+  justify-content: center;
   align-content: center;
   align-self: center;
   align-items: center;
   margin-left: 10px;
   margin-right: 10px;
-  width: 90vw;
+  width: 98vw;
 }
 
-/* *div housing all game play for grid layout applied to body*/
 .game-outer {
   grid-area: game-outer;
   grid-column: 1/-1;
@@ -37,7 +35,6 @@ main{
   object-fit: scale-down;
 }
 
-/* *div housing game play content with own grid */
 .game-inner {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -52,8 +49,8 @@ main{
   border-radius: 20px;
   margin-left: 5px;
   margin-right: 5px;
-  /*margin: 10px;
-  padding: 10px;*/
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 h2 {
@@ -66,9 +63,7 @@ h2 {
   padding-bottom: 10px;
 }
 
-/* *game play grid: opponents images  */
 #opponents {
-  /* *might have to adjust column to 2/3 and  */
   grid-column: 3/4;
   grid-row: 2/3;
   text-align: center;
@@ -76,9 +71,17 @@ h2 {
   font-family: 'Silkscreen', Arial, Helvetica, sans-serif;
 }
 
+#opponent-name {
+  margin-right: 15%;
+}
+
 #message-box {
   font-size: 2.3rem;
   text-align: center;
+  grid-column: 2/2;
+  margin-top: 30%;
+  margin-bottom: -10%;
+  color: rgba(228, 0, 0, 0.705);
 }
 
 .opponents-inner {
@@ -96,18 +99,24 @@ h2 {
 
 button {
   font-family: 'Silkscreen', Arial, Helvetica, sans-serif;
-  padding: 20px;
-  margin: 20px;
+  padding: 1.5%;
+  margin: 1%;
   border-radius: 70px;
   border: none;
   text-align: center;
   color: rgb(55, 71, 79);
   font-size: large;
+  text-shadow: none;
 }
 
 button:hover {
   background-color: rgb(255, 236, 81);
   border: none;
+  text-shadow: none;
+}
+
+button p{
+  padding: 1%;
 }
 
 #game-rules {
@@ -119,10 +128,10 @@ button:hover {
 
 #game-rules > section {
   text-align: center;
-  padding: 20px;
   color: rgb(55, 71, 79);
   background-color: whitesmoke;
   padding: 5px 5px 5px 5px;
+  padding-bottom: 20px;
   border-radius: 70px;
   height: 40px;
   width: 50%;
@@ -130,17 +139,106 @@ button:hover {
   position: relative;
   right: 50px;
   bottom: 18px;
-  transition: height 0.8s;
   overflow: hidden;
-  transition: 1s;
+  transition: transform 1s linear;
   font-family: 'Silkscreen', Arial, Helvetica, sans-serif;
+  text-shadow: none;
 }
+
+
+#game-rules > section {
+  transition: transform 1s linear;
+}
+@keyframes transform {
+  0% {
+    transform: scale(0.15);
+  }
+  10% {
+    transform: scale(0.25);
+  }
+  20% {
+    transform: scale(0.35);
+  }
+  30% {
+    transform: scale(0.45);
+  }
+  40% {
+    transform: scale(0.55);
+  }
+  50% {
+    transform: scale(0.65);
+  }
+  60% {
+    transform: scale(0.75);
+  }
+  70% {
+    transform: scale(0.85);
+  }
+  80% {
+    transform: scale(0.95);
+  }
+  90% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1.15);
+  }
+}
+
 
 #game-rules > section:hover {
   height: auto;
   width: auto;
   background-color: yellow;
   transform: scale(1.15);
+  text-shadow: none;
+
+  @keyframes transform {
+    0% {
+      transform: scale(0.15);
+    }
+    10% {
+      transform: scale(0.25);
+    }
+    20% {
+      transform: scale(0.35);
+    }
+    30% {
+      transform: scale(0.45);
+    }
+    40% {
+      transform: scale(0.55);
+    }
+    50% {
+      transform: scale(0.65);
+    }
+    60% {
+      transform: scale(0.75);
+    }
+    70% {
+      transform: scale(0.85);
+    }
+    80% {
+      transform: scale(0.95);
+    }
+    90% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1.15);
+    }
+  }
+}
+
+
+
+#computer {
+  width: 61%;
+}
+
+li > figure > img {
+  width: 61%;
+  margin-bottom: -9%;
 }
 
 #rule-section > h3 {
@@ -157,8 +255,6 @@ button:hover {
   grid-column: 1/-1;
   grid-row: 3/4;
 }
-
-/* *user image choice of 5  */
 
 #user-choice > ul {
   display: flex;
@@ -177,7 +273,6 @@ button:hover {
 img {
   background-color: rgba(255, 192, 203, 0);
   border-radius: 15px;
-  /* background-color:   rgb(38, 92, 186, 0.8); */
   max-width: 80%;
 }
 
@@ -185,44 +280,137 @@ h5 {
   font-family: 'Silkscreen', Arial, Helvetica, sans-serif;
   font-size: x-large;
   padding: 5px;
-  padding-left: 2rem;
-}
-
-footer {
-  grid-area: footer;
-  padding: 5px;
-  grid-column: 1/-1;
-  grid-row: 3/4;
-  text-align: center;
-  align-items: center;
+  padding-left: 1rem;
 }
 
 .hidden {
   display: none;
+  background-color: none;
 }
 
 .invisable {
   opacity: 0;
+  background-color: none;
 }
 
 li figure img {
   cursor: pointer;
+  transition: transform 0.5s linear;
+}
+
+li figure img:hover {
+  transform: scale(1.3);
+  border-radius: 15px;
 }
 
 #gameBall {
-  animation: shake 4s ease infinite ;
+  animation: shake 4s ease infinite;
 }
 @keyframes shake {
-  0% { transform: translate(-1px, -2px) rotate(0deg); }
-  80% { transform: translate(-1px, -2px) rotate(0deg); }
-  83% { transform: translate(-3px, 0px) rotate(10deg); }
-  85% { transform: translate(-3px, 0px) rotate(0deg); }
-  87% { transform: translate(3px, 2px) rotate(-10deg); }
-  89% { transform: translate(1px, -1px) rotate(0deg); }
-  91% { transform: translate(-1px, -2px) rotate(10deg); }
-  93% { transform: translate(-1px, -2px) rotate(0deg); }
-  95% { transform: translate(-3px, 0px) rotate(-10deg); }
-  97.5% { transform: translate(3px, 2px) rotate(0deg); }
-  100% { transform: translate(-1px, -2px) rotate(10deg); }
-  /* 100% { transform: translate(-1px, 2px) rotate(-1deg); } */
+  0% {
+    transform: translate(-1px, -2px) rotate(0deg);
+  }
+  80% {
+    transform: translate(-1px, -2px) rotate(0deg);
+  }
+  83% {
+    transform: translate(-3px, 0px) rotate(10deg);
+  }
+  85% {
+    transform: translate(-3px, 0px) rotate(0deg);
+  }
+  87% {
+    transform: translate(3px, 2px) rotate(-10deg);
+  }
+  89% {
+    transform: translate(1px, -1px) rotate(0deg);
+  }
+  91% {
+    transform: translate(-1px, -2px) rotate(10deg);
+  }
+  93% {
+    transform: translate(-1px, -2px) rotate(0deg);
+  }
+  95% {
+    transform: translate(-3px, 0px) rotate(-10deg);
+  }
+  97.5% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(-1px, -2px) rotate(10deg);
+  }
+}
+
+footer {
+  text-align: center;
+  align-items: center;
+  padding-top: 15px;
+}
+
+@media (min-width: 1025px) and (min-height: 900px) {
+ 
+
+  #computer {
+    width: 39%;
+  }
+
+  #user-choice {
+    margin-top: 5%;
+  }
+  button {
+    margin-top: 1%;
+  }
+
+  #message-box {
+    grid-row: 3/4;
+    grid-column: 3/3;
+    height: 14%;
+    background-color: rgba(17, 211, 133, 0.549);
+    border-radius: 25px;
+    width: 500px;
+    margin-top: 0%;
+    font-size: 2rem;
+    padding: 5px;
+  }
+
+  #gameBall {
+    width: 41%;
+  }
+  li > figure > img {
+    width: 44%;
+    margin-bottom: 0;
+  }
+
+  #message-box > p {
+    padding-top: 10px;
+    padding-bottom: 20px;
+    margin-bottom: 9px;
+  }
+
+  #computer{
+    width: 34%;
+  }
+
+  h2 {
+    font-size: 2.6rem;
+  }
+
+  h3 {
+    font-size: 2.3rem;
+  }
+
+  h5 {
+    margin-top: 15px;
+  }
+
+  .hidden {
+    display: none;
+    background-color: none;
+  }
+
+  .invisable {
+    opacity: 0;
+    background-color: none;
+  }
 }
