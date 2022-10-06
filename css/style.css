@@ -6,7 +6,12 @@ body{
   /* background-color: white; */
   /* font-family: Arial, Helvetica, sans-serif; */
   /* background-color: rgb(52, 111, 213); */
-  font-family: 'Glegoo', sans-serif;
+  
+  /*font-family: 'Glegoo', sans-serif;*/
+
+  /*font-family: 'Gemunu Libre', sans-serif;*/
+  font-family: 'Patua One', cursive; 
+  /*font-family: 'VT323', monospace;*/
   }
   
   header{
@@ -14,14 +19,11 @@ body{
     display: flex;
     justify-content: space-between;
     align-items:center;
-    font-family: 'Glegoo', serif;
   }
   
   h1{
-    color: whitesmoke;
     text-align: center;
     padding:0px;
-    font-family: 'Glegoo', serif;
     font-size: 30px;
     text-align: center;
     padding-left: 20px;
