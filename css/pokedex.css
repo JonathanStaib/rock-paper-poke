@@ -30,10 +30,10 @@ nav {
   /* ---------- */
   z-index: 5;
   position:absolute;
-  top: 37vh;
-  left: 40.2vw;
-  width: 25vw;
-  height: 35vh;
+  top: 33%;
+  left: 40.7%;
+  width: 25%;
+  height: 35%;
 
   /*
   width: 510px;
@@ -50,8 +50,8 @@ nav {
 
 .wrapper img{
   width: 65vw;
-  margin-left: 3vw;
-  margin-right: 10vw;
+  margin-left: 3%;
+  margin-right: 10%;
 }
 
 /*
@@ -78,9 +78,9 @@ main {
 .pokemon-seen img{
   z-index: 5;
   position:absolute;
-  top: 37.5vh;
-  left: 10.5vw;
-  width: 20vw;
+  top: 37.5%;
+  left: 10.5%;
+  width: 20%;
 }
 /*
 .pokemon-seen {
@@ -97,9 +97,9 @@ h4 {
   font-size: 2.5rem;
   z-index: 5;
   position:absolute;
-  top: 36vh;
-  left: 8vw;
-  width: ;
+  top: 35%;
+  left: 10%;
+  width: 20%;
 }
 
 #previous {
@@ -127,7 +127,9 @@ h4 {
 }
 
 .no-local {
+  color: black;
   font-size: 1.4rem;
+
 }
 /*
 section > img.no-local {
