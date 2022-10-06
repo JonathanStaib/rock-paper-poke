@@ -70,7 +70,7 @@ function renderChart() {
   };
   new Chart(canvasElem, myChartObj, wins, loss);
 }
-renderChart();
+renderChart(); // Render Chart
 
 /* EVENT HANDLERS */
 function goNextPokemon() {
