@@ -95,6 +95,7 @@ let groundName = document.querySelector('#ground');
 let grassName = document.querySelector('#grass');
 let electricName = document.querySelector('#electric');
 let iceName = document.querySelector('#ice');
+let opponentName = document.querySelector('#opponent-name');
 
 /* UTILITY FUNCTIONS */
 1;
@@ -165,9 +166,16 @@ function renderRandom(usersChoice) {
     pokemon = pickRandomType(); // This is where the computer grabs a random pokemon
   }
   /* Lines 143 - 145 will manipulate the img element that contains the computers pokemon */
+  opponentName.classList.add('invisable');
   computer.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemon[0]}.png`;
   computer.alt = pokemon[1]; // used to compair agaisnt the users choice (stores the element)
   computer.value = pokemon[0]; // used to reference to name in the pokedex file later (stores the number)
+  fetch('pokedex.json')
+    .then((response) => response.json())
+    .then(
+      (data) =>
+        (opponentName.innerText = data[+computer.value - 1].name.english) // setting name of opponent to DOM
+    );
   return pokemon[1]; // returns the element (fire, ice ect..) the computers pokemon is using to compair agaisnt the player
 }
 /* This function will search the pokedex file for the opponents pokemon's name
@@ -216,8 +224,11 @@ function showOrHideCard() {
   if (!cardBack.classList.contains('hidden')) {
     cardBack.classList.add('hidden');
     computer.classList.remove('hidden');
+    opponentName.classList.remove('invisable');
   } else {
     computer.classList.add('hidden');
+    opponentName.classList.add('invisable');
+
     cardBack.classList.remove('hidden');
   }
 }
@@ -237,45 +248,45 @@ which element beats which */
 function winChecker(usersChoice) {
   computersType = computer.alt; //set computer type to whats stored in the pokemon img alt
   switch (computersType) {
-  case 'fire':
-    if (usersChoice === 'ice' || usersChoice === 'electric') {
-      playerWins(usersChoice);
-    } else {
-      playerLoss(usersChoice);
-    }
-    break;
+    case 'fire':
+      if (usersChoice === 'ice' || usersChoice === 'electric') {
+        playerWins(usersChoice);
+      } else {
+        playerLoss(usersChoice);
+      }
+      break;
 
-  case 'ground':
-    if (usersChoice === 'fire' || usersChoice === 'grass') {
-      playerWins(usersChoice);
-    } else {
-      playerLoss(usersChoice);
-    }
-    break;
-  case 'grass':
-    if (usersChoice === 'fire' || usersChoice === 'electric') {
-      playerWins(usersChoice);
-    } else {
-      playerLoss(usersChoice);
-    }
-    break;
+    case 'ground':
+      if (usersChoice === 'fire' || usersChoice === 'grass') {
+        playerWins(usersChoice);
+      } else {
+        playerLoss(usersChoice);
+      }
+      break;
+    case 'grass':
+      if (usersChoice === 'fire' || usersChoice === 'electric') {
+        playerWins(usersChoice);
+      } else {
+        playerLoss(usersChoice);
+      }
+      break;
 
-  case 'electric':
-    if (usersChoice === 'ice' || usersChoice === 'ground') {
-      playerWins(usersChoice);
-    } else {
-      playerLoss(usersChoice);
-    }
-    break;
-  case 'ice':
-    if (usersChoice === 'ground' || usersChoice === 'grass') {
-      playerWins(usersChoice);
-    } else {
-      playerLoss(usersChoice);
-    }
-    break;
-  default:
-    console.log('error');
+    case 'electric':
+      if (usersChoice === 'ice' || usersChoice === 'ground') {
+        playerWins(usersChoice);
+      } else {
+        playerLoss(usersChoice);
+      }
+      break;
+    case 'ice':
+      if (usersChoice === 'ground' || usersChoice === 'grass') {
+        playerWins(usersChoice);
+      } else {
+        playerLoss(usersChoice);
+      }
+      break;
+    default:
+      console.log('error');
   }
 }
 
