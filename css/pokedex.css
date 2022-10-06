@@ -82,7 +82,7 @@ h4 {
   position: absolute;
   bottom: 100px;
   left: 36%;
-  background-color: red;
+
 }
 
 #previous:hover {
@@ -95,7 +95,7 @@ h4 {
   position: absolute;
   bottom: 100px;
   left: 43%;
-  background-color: blue;
+
 }
 
 #next:hover {
