@@ -268,10 +268,7 @@ footer {
 }
 
 @media (min-width: 1025px) and (min-height: 900px) {
-  li > figure > img {
-    width: 45%;
-    margin-bottom: -9%;
-  }
+ 
 
   #computer {
     width: 39%;
