@@ -78,15 +78,6 @@ PlayerDeck.prototype.newHand = function () {
   /* The for loop iterates over each element above, then checks the pokedex.json for the name of the pokemon by
    subtracting 1 from the pokemons number to grab its index locations, it then
    checks the .name property, and .english to grab its english name and assign it to the PlayerDeck Object  */
-  for (let i = 0; i < elementsAll.length; i++) {
-    fetch('pokedex.json')
-      .then((response) => response.json())
-      .then(
-        (data) =>
-          (this[elementsAll[i][1]][1] =
-            data[+elementsAll[i][0] - 1].name.english)
-      );
-  }
 };
 
 /* DOM MANIPULATION */
@@ -208,13 +199,14 @@ function renderPlayerRandom() {
   imgFive.alt = Object.keys(types)[4];
 }
 function updateNames() {
-  updateNamesInObject();
-  fireName.innerText = pokemonNames[0]; // change name of pokemon under image
-  iceName.innerText = pokemonNames[1]; // change name of pokemon under image
-  electricName.innerText = pokemonNames[2]; // change name of pokemon under image
-  groundName.innerText = pokemonNames[3]; // change name of pokemon under image
-  grassName.innerText = pokemonNames[4]; // change name of pokemon under image
-  pokemonNames = [];
+  if (pokemonNames.length > 1) {
+    fireName.innerText = pokemonNames[0]; // change name of pokemon under image
+    iceName.innerText = pokemonNames[1]; // change name of pokemon under image
+    electricName.innerText = pokemonNames[2]; // change name of pokemon under image
+    groundName.innerText = pokemonNames[3]; // change name of pokemon under image
+    grassName.innerText = pokemonNames[4]; // change name of pokemon under image
+    pokemonNames = [];
+  }
 }
 
 function showOrHideCard() {
@@ -316,6 +308,7 @@ function newGameButton() {
   button.classList.add('invisable');
   button.removeEventListener('click', newGameButton);
   userchoice.addEventListener('click', playersChoice);
+  updateNames();
 }
 
 /* This event handler will fire when a player chooses a pokemon and clicks
@@ -324,18 +317,20 @@ It will remove the event listener from the users pokemon, the user cant
 click another pokemon until they reset with the new game button
 The new game button becomes visable and gains an event listener */
 function playersChoice(e) {
-  console.log(pokemonNames);
   renderRandom(e.target.alt);
   showOrHideCard();
-  userchoice.removeEventListener('click', playersChoice);
+
   winChecker(e.target.alt);
   getOpponentName();
   playersHand.newHand();
+  userchoice.removeEventListener('click', playersChoice);
   button.classList.remove('invisable');
   button.addEventListener('click', newGameButton);
+  updateNamesInObject();
 }
 
 /* EVENT LISTENER METHODS */
 userchoice.addEventListener('click', playersChoice);
 /* Renders 5 random pokemon for the user on load. */
 renderPlayerRandom();
+updateNames();
