@@ -267,6 +267,7 @@ footer {
 @media (min-width: 1025px) {
   li > figure > img {
     width: 45%;
+    margin-bottom: -9%;
   }
 
   #computer {
@@ -277,8 +278,7 @@ footer {
     margin-top: 10%;
   }
   button {
-    margin-top: 15%;
-    margin-bottom: -10%;
+    margin-top: 10%;
   }
 
   #message-box {
@@ -288,7 +288,7 @@ footer {
     background-color: rgba(17, 211, 133, 0.549);
     border-radius: 25px;
     width: 500px;
-    margin-top: 15%;
+    margin-top: 8%;
     font-size: 2rem;
     padding: 0;
   }
@@ -308,6 +308,10 @@ footer {
 
   h3 {
     font-size: 2.3rem;
+  }
+
+  h5 {
+    margin-top: 15px;
   }
 
   .hidden {
