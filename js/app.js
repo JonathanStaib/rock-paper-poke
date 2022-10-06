@@ -244,45 +244,45 @@ which element beats which */
 function winChecker(usersChoice) {
   computersType = computer.alt; //set computer type to whats stored in the pokemon img alt
   switch (computersType) {
-    case 'fire':
-      if (usersChoice === 'ground' || usersChoice === 'electric') {
-        playerWins(usersChoice);
-      } else {
-        playerLoss(usersChoice);
-      }
-      break;
+  case 'fire':
+    if (usersChoice === 'ground' || usersChoice === 'electric') {
+      playerWins(usersChoice);
+    } else {
+      playerLoss(usersChoice);
+    }
+    break;
 
-    case 'ground':
-      if (usersChoice === 'ice' || usersChoice === 'grass') {
-        playerWins(usersChoice);
-      } else {
-        playerLoss(usersChoice);
-      }
-      break;
-    case 'grass':
-      if (usersChoice === 'fire' || usersChoice === 'ice') {
-        playerWins(usersChoice);
-      } else {
-        playerLoss(usersChoice);
-      }
-      break;
+  case 'ground':
+    if (usersChoice === 'ice' || usersChoice === 'grass') {
+      playerWins(usersChoice);
+    } else {
+      playerLoss(usersChoice);
+    }
+    break;
+  case 'grass':
+    if (usersChoice === 'fire' || usersChoice === 'ice') {
+      playerWins(usersChoice);
+    } else {
+      playerLoss(usersChoice);
+    }
+    break;
 
-    case 'electric':
-      if (usersChoice === 'grass' || usersChoice === 'ground') {
-        playerWins(usersChoice);
-      } else {
-        playerLoss(usersChoice);
-      }
-      break;
-    case 'ice':
-      if (usersChoice === 'electric' || usersChoice === 'fire') {
-        playerWins(usersChoice);
-      } else {
-        playerLoss(usersChoice);
-      }
-      break;
-    default:
-      console.log('error');
+  case 'electric':
+    if (usersChoice === 'grass' || usersChoice === 'ground') {
+      playerWins(usersChoice);
+    } else {
+      playerLoss(usersChoice);
+    }
+    break;
+  case 'ice':
+    if (usersChoice === 'electric' || usersChoice === 'fire') {
+      playerWins(usersChoice);
+    } else {
+      playerLoss(usersChoice);
+    }
+    break;
+  default:
+    console.log('error');
   }
 }
 
