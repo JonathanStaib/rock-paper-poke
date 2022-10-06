@@ -129,7 +129,7 @@ h4 {
 .no-local {
   color: black;
   font-size: 1.4rem;
-
+  display: none;
 }
 /*
 section > img.no-local {
