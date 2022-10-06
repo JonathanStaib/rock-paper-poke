@@ -82,6 +82,7 @@ let imgFour = document.querySelector('#imgFour');
 let imgFive = document.querySelector('#imgFive');
 let button = document.querySelector('button');
 let messageBox = document.querySelector('#message-box>p');
+let messageBoxParent = document.querySelector('#message-box');
 let fireName = document.querySelector('#fire');
 let groundName = document.querySelector('#ground');
 let grassName = document.querySelector('#grass');
@@ -217,9 +218,11 @@ function showOrHideCard() {
     cardBack.classList.add('hidden');
     computer.classList.remove('hidden');
     opponentName.classList.remove('invisable');
+    messageBoxParent.classList.remove('invisable');
   } else {
     computer.classList.add('hidden');
     opponentName.classList.add('invisable');
+    messageBoxParent.classList.add('invisable');
 
     cardBack.classList.remove('hidden');
   }

@@ -13,7 +13,7 @@ header {
   grid-row: 1/2;
 }
 */
-main{
+main {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-auto-rows: minmax(10px, auto);
@@ -84,6 +84,10 @@ h2 {
 #message-box {
   font-size: 2.3rem;
   text-align: center;
+  grid-column: 2/2;
+  margin-top: 30%;
+  margin-bottom: -10%;
+  color: rgba(228, 0, 0, 0.705);
 }
 
 .opponents-inner {
@@ -101,7 +105,7 @@ h2 {
 
 button {
   font-family: 'Silkscreen', Arial, Helvetica, sans-serif;
-  padding: 5px;
+  padding: 25px 35px;
   margin: 5px;
   border-radius: 70px;
   border: none;
@@ -136,7 +140,6 @@ button:hover {
   position: relative;
   right: 50px;
   bottom: 18px;
-  transition: height 0.8s;
   overflow: hidden;
   transition: 1s;
   font-family: 'Silkscreen', Arial, Helvetica, sans-serif;
@@ -196,13 +199,14 @@ h5 {
   padding-left: 2rem;
 }
 
-
 .hidden {
   display: none;
+  background-color: none;
 }
 
 .invisable {
   opacity: 0;
+  background-color: none;
 }
 
 li figure img {
@@ -210,20 +214,42 @@ li figure img {
 }
 
 #gameBall {
-  animation: shake 4s ease infinite ;
+  animation: shake 4s ease infinite;
 }
 @keyframes shake {
-  0% { transform: translate(-1px, -2px) rotate(0deg); }
-  80% { transform: translate(-1px, -2px) rotate(0deg); }
-  83% { transform: translate(-3px, 0px) rotate(10deg); }
-  85% { transform: translate(-3px, 0px) rotate(0deg); }
-  87% { transform: translate(3px, 2px) rotate(-10deg); }
-  89% { transform: translate(1px, -1px) rotate(0deg); }
-  91% { transform: translate(-1px, -2px) rotate(10deg); }
-  93% { transform: translate(-1px, -2px) rotate(0deg); }
-  95% { transform: translate(-3px, 0px) rotate(-10deg); }
-  97.5% { transform: translate(3px, 2px) rotate(0deg); }
-  100% { transform: translate(-1px, -2px) rotate(10deg); }
+  0% {
+    transform: translate(-1px, -2px) rotate(0deg);
+  }
+  80% {
+    transform: translate(-1px, -2px) rotate(0deg);
+  }
+  83% {
+    transform: translate(-3px, 0px) rotate(10deg);
+  }
+  85% {
+    transform: translate(-3px, 0px) rotate(0deg);
+  }
+  87% {
+    transform: translate(3px, 2px) rotate(-10deg);
+  }
+  89% {
+    transform: translate(1px, -1px) rotate(0deg);
+  }
+  91% {
+    transform: translate(-1px, -2px) rotate(10deg);
+  }
+  93% {
+    transform: translate(-1px, -2px) rotate(0deg);
+  }
+  95% {
+    transform: translate(-3px, 0px) rotate(-10deg);
+  }
+  97.5% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(-1px, -2px) rotate(10deg);
+  }
   /* 100% { transform: translate(-1px, 2px) rotate(-1deg); } */
 }
 
@@ -236,4 +262,61 @@ footer {
   text-align: center;
   align-items: center;
   padding-top: 15px;
+}
+
+@media (min-width: 1025px) {
+  li > figure > img {
+    width: 45%;
+  }
+
+  #computer {
+    width: 41%;
+  }
+
+  #user-choice {
+    margin-top: 10%;
+  }
+  button {
+    margin-top: 15%;
+    margin-bottom: -10%;
+  }
+
+  #message-box {
+    grid-row: 3/4;
+    grid-column: 3/3;
+    height: 10%;
+    background-color: rgba(17, 211, 133, 0.549);
+    border-radius: 25px;
+    width: 500px;
+    margin-top: 15%;
+    font-size: 2rem;
+    padding: 0;
+  }
+
+  #gameBall {
+    width: 41%;
+  }
+
+  #message-box > p {
+    padding-top: 10px;
+    padding-bottom: -20px;
+  }
+
+  h2 {
+    font-size: 2.6rem;
+  }
+
+  h3 {
+    font-size: 2.3rem;
+  }
+
+  .hidden {
+    display: none;
+    background-color: none;
+  }
+
+  .invisable {
+    opacity: 0;
+    background-color: none;
+  }
 }
