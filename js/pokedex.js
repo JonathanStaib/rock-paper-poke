@@ -2,7 +2,8 @@
 
 /* GLOBALS */
 let positionInPokemon = 0;
-
+let wins = [];
+let loss = [];
 /* DOM SELECTORS */
 let canvasElem = document.getElementById('my-chart').getContext('2d');
 let previous = document.querySelector('#previous');
@@ -17,20 +18,25 @@ let retrievedPokemonName = JSON.parse(
 let retrievedPokemonUrl = JSON.parse(
   localStorage.getItem('pokemonSpottedUrls')
 );
-
-let { fire, ice, electric, ground, grass } = JSON.parse(
-  localStorage.getItem('wins')
-);
-
-let { fireL, iceL, electricL, groundL, grassL } = JSON.parse(
-  localStorage.getItem('loss')
-);
-
+if (localStorage.wins) {
+  let { fire, ice, electric, ground, grass } = JSON.parse(
+    localStorage.getItem('wins')
+  );
+  wins.push(fire, ice, electric, ground, grass);
+}
+if (localStorage.wins) {
+  let { fireL, iceL, electricL, groundL, grassL } = JSON.parse(
+    localStorage.getItem('loss')
+  );
+  loss.push(fireL, iceL, electricL, groundL, grassL);
+}
 /* CHART.JS LOGIC */
+
 let wins = [];
 wins.push(fire, ice, electric, ground, grass);
 let loss = [];
 loss.push(fireL, iceL, electricL, groundL, grassL);
+
 
 function renderChart() {
   Chart.defaults.font.size = 13;
