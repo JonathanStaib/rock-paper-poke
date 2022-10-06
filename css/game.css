@@ -62,7 +62,6 @@ h2 {
 }
 
 #opponents {
-
   grid-column: 3/4;
   grid-row: 2/3;
   text-align: center;
@@ -239,13 +238,12 @@ li figure img {
 }
 
 footer {
- 
   text-align: center;
   align-items: center;
   padding-top: 15px;
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 1025px) and (min-height: 900px) {
   li > figure > img {
     width: 45%;
     margin-bottom: -9%;
