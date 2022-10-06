@@ -9,7 +9,6 @@ body {
 header {
   grid-area: header;
   grid-column: 1/-1;
-
 }
 nav {
   padding-bottom: 10px;
@@ -50,6 +49,7 @@ footer {
 }
 
 .wrapper {
+  margin-top: 10%;
   background-image: url(../assets/pokedex-image.png);
   background-size: contain;
   background-position: center;
@@ -109,12 +109,18 @@ h4 {
 }
 
 @media (min-width: 360px) and (max-width: 989) {
+  body {
+    background: url(../assets/00160088.jpeg) no-repeat center center fixed;
+    -webkit-background-size: 100vw;
+    -moz-background-size: 100vw;
+    -o-background-size: 100vw;
+    background-size: 100vw;
+    background-color: rgb(118, 163, 185);
+  }
   .wrapper {
-    margin-top: 120px;
-    height: 250px;
-    width: 250px;
-    min-width: 250px;
-    min-height: 250px;
+    margin-top: 50%;
+    height: 350px;
+    width: 350px;
   }
 
   .pokemon-seen {
@@ -150,11 +156,6 @@ h4 {
     padding-bottom: 0px;
   }
 
-  #my-chart {
-    height: 100%;
-    padding: 0;
-  }
-
   #chart-container {
     border-radius: 0px;
     width: 173px;
@@ -165,7 +166,7 @@ h4 {
 }
 @media (min-width: 960px) and (max-width: 1289px) {
   .wrapper {
-    margin-top: 120px;
+    margin-top: 25%;
     height: 450px;
     width: 450px;
     min-width: 450px;
@@ -221,7 +222,7 @@ h4 {
 
 @media (min-width: 1290px) and (max-width: 1600px) {
   .wrapper {
-    margin-top: 50px;
+    margin-top: 15%;
     height: 550px;
     width: 700px;
     min-width: 600px;
@@ -258,7 +259,7 @@ h4 {
   nav {
     padding-bottom: 0px;
   }
-  display: none;
+
   #my-chart {
     height: 100%;
     padding: 0;
