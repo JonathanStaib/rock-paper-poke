@@ -287,22 +287,31 @@ footer {
   #message-box {
     grid-row: 3/4;
     grid-column: 3/3;
-    height: 10%;
+    height: 14%;
     background-color: rgba(17, 211, 133, 0.549);
     border-radius: 25px;
     width: 500px;
-    margin-top: 8%;
+    margin-top: 0%;
     font-size: 2rem;
-    padding: 0;
+    padding: 5px;
   }
 
   #gameBall {
     width: 41%;
   }
+  li > figure > img {
+    width: 44%;
+    margin-bottom: 0;
+  }
 
   #message-box > p {
     padding-top: 10px;
-    padding-bottom: -20px;
+    padding-bottom: 20px;
+    margin-bottom: 9px;
+  }
+
+  #computer{
+    width: 34%;
   }
 
   h2 {
