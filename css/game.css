@@ -6,13 +6,7 @@ body {
   background-size: cover;
   height: 100vh;
 }
-/*
-header {
-  grid-area: header;
-  grid-column: 1/-1;
-  grid-row: 1/2;
-}
-*/
+
 main {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -32,7 +26,6 @@ main {
   width: 98vw;
 }
 
-/* *div housing all game play for grid layout applied to body*/
 .game-outer {
   grid-area: game-outer;
   grid-column: 1/-1;
@@ -40,7 +33,6 @@ main {
   object-fit: scale-down;
 }
 
-/* *div housing game play content with own grid */
 .game-inner {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -57,8 +49,6 @@ main {
   margin-right: 5px;
   padding-left: 10px;
   padding-right: 10px;
-  /*margin: 10px;
-  padding: 10px;*/
 }
 
 h2 {
@@ -71,9 +61,8 @@ h2 {
   padding-bottom: 10px;
 }
 
-/* *game play grid: opponents images  */
 #opponents {
-  /* *might have to adjust column to 2/3 and  */
+
   grid-column: 3/4;
   grid-row: 2/3;
   text-align: center;
@@ -169,8 +158,6 @@ button:hover {
   grid-row: 3/4;
 }
 
-/* *user image choice of 5  */
-
 #user-choice > ul {
   display: flex;
   flex-wrap: wrap;
@@ -188,7 +175,6 @@ button:hover {
 img {
   background-color: rgba(255, 192, 203, 0);
   border-radius: 15px;
-  /* background-color:   rgb(38, 92, 186, 0.8); */
   max-width: 80%;
 }
 
@@ -250,15 +236,10 @@ li figure img {
   100% {
     transform: translate(-1px, -2px) rotate(10deg);
   }
-  /* 100% { transform: translate(-1px, 2px) rotate(-1deg); } */
 }
 
 footer {
-  /*
-  grid-area: footer;
-  padding-top: 10px;
-  grid-column: 1/-1;
-  grid-row: 3/4; */
+ 
   text-align: center;
   align-items: center;
   padding-top: 15px;
