@@ -3,17 +3,12 @@
 body{
   color: whitesmoke;
   text-shadow: black 0px 0px 2px;
-  /* background-color: white; */
-  /* font-family: Arial, Helvetica, sans-serif; */
   /* background-color: rgb(52, 111, 213); */
-  
   /*font-family: 'Glegoo', sans-serif;*/
-
   /*font-family: 'Gemunu Libre', sans-serif;*/
   font-family: 'Patua One', cursive; 
   /*font-family: 'VT323', monospace;*/
   }
-  
   header{
     height: 6vh;
     display: flex;
@@ -79,4 +74,3 @@ body{
     text-align: center;
     font-family: "Silkscreen", Arial, Helvetica, sans-serif;
   }
-
