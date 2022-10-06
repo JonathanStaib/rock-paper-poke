@@ -214,9 +214,8 @@ h5 {
 
 li figure img {
   cursor: pointer;
-  transition: transform 1s linear;
+  transition: transform 0.5s linear;
 }
-
 
 li figure img:hover {
   transform: scale(1.3);
