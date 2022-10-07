@@ -39,7 +39,7 @@ function renderChart() {
   let myChartObj = {
     type: 'bar',
     data: {
-      labels: ['fire', 'ice', 'electric', 'grass', 'ground'],
+      labels: ['fire', 'ice', 'electric', 'ground', 'grass'],
       datasets: [
         {
           data: wins,
