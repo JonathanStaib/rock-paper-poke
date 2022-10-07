@@ -10,7 +10,7 @@ body {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;git 
+  background-size: cover; 
 }
 header {
   grid-area: header;
