@@ -26,7 +26,7 @@ if (localStorage.wins) {
 }
 if (localStorage.wins) {
   let { fireL, iceL, electricL, groundL, grassL } = JSON.parse(
-    localStorage.getItem('loss')
+    localStorage.getItem('losses')
   );
   loss.push(fireL, iceL, electricL, groundL, grassL);
 }
