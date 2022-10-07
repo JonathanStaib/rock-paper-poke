@@ -91,7 +91,8 @@ let opponentName = document.querySelector('#opponent-name');
 
 /* UTILITY FUNCTIONS */
 
-function randomPokemon(element) { // element is referring to the arrays on lines 36/40
+function randomPokemon(element) {
+  // element is referring to the arrays on lines 36/40
   return Math.floor(Math.random() * element.length);
 }
 function storeToLocal() {
@@ -99,11 +100,13 @@ function storeToLocal() {
   let uniquePokemonUrls = [];
   // the flat method grabs all arrays nested inside an array and turns them into 1 big array
   let uniquePokemonFlat = [...new Set(pokemonSpotted.flat())]; // remove duplicates from array
-  for (let i = 1; i < uniquePokemonFlat.length; i += 2) {// starting at index 1, grab all odd indexs and push into names
+  for (let i = 1; i < uniquePokemonFlat.length; i += 2) {
+    // starting at index 1, grab all odd indexs and push into names
     uniquePokemonNames.push(uniquePokemonFlat[i]);
   }
 
-  for (let i = 0; i < uniquePokemonFlat.length; i += 2) { // start at index 0 and grab all even indexes
+  for (let i = 0; i < uniquePokemonFlat.length; i += 2) {
+    // start at index 0 and grab all even indexes
     uniquePokemonUrls.push(uniquePokemonFlat[i]);
   }
 
@@ -114,7 +117,7 @@ function storeToLocal() {
   );
   localStorage.setItem('pokemonSpottedUrls', JSON.stringify(uniquePokemonUrls));
   localStorage.setItem('wins', JSON.stringify(wins));
-  localStorage.setItem('loss', JSON.stringify(losses));
+  localStorage.setItem('losses', JSON.stringify(losses));
 }
 
 /* GAME FUNCTIONS */
@@ -244,45 +247,45 @@ which element beats which */
 function winChecker(usersChoice) {
   computersType = computer.alt; //set computer type to whats stored in the pokemon img alt
   switch (computersType) {
-  case 'fire':
-    if (usersChoice === 'ground' || usersChoice === 'electric') {
-      playerWins(usersChoice);
-    } else {
-      playerLoss(usersChoice);
-    }
-    break;
+    case 'fire':
+      if (usersChoice === 'ground' || usersChoice === 'electric') {
+        playerWins(usersChoice);
+      } else {
+        playerLoss(usersChoice);
+      }
+      break;
 
-  case 'ground':
-    if (usersChoice === 'ice' || usersChoice === 'grass') {
-      playerWins(usersChoice);
-    } else {
-      playerLoss(usersChoice);
-    }
-    break;
-  case 'grass':
-    if (usersChoice === 'fire' || usersChoice === 'ice') {
-      playerWins(usersChoice);
-    } else {
-      playerLoss(usersChoice);
-    }
-    break;
+    case 'ground':
+      if (usersChoice === 'ice' || usersChoice === 'grass') {
+        playerWins(usersChoice);
+      } else {
+        playerLoss(usersChoice);
+      }
+      break;
+    case 'grass':
+      if (usersChoice === 'fire' || usersChoice === 'ice') {
+        playerWins(usersChoice);
+      } else {
+        playerLoss(usersChoice);
+      }
+      break;
 
-  case 'electric':
-    if (usersChoice === 'grass' || usersChoice === 'ground') {
-      playerWins(usersChoice);
-    } else {
-      playerLoss(usersChoice);
-    }
-    break;
-  case 'ice':
-    if (usersChoice === 'electric' || usersChoice === 'fire') {
-      playerWins(usersChoice);
-    } else {
-      playerLoss(usersChoice);
-    }
-    break;
-  default:
-    console.log('error');
+    case 'electric':
+      if (usersChoice === 'grass' || usersChoice === 'ground') {
+        playerWins(usersChoice);
+      } else {
+        playerLoss(usersChoice);
+      }
+      break;
+    case 'ice':
+      if (usersChoice === 'electric' || usersChoice === 'fire') {
+        playerWins(usersChoice);
+      } else {
+        playerLoss(usersChoice);
+      }
+      break;
+    default:
+      console.log('error');
   }
 }
 

@@ -26,7 +26,7 @@ if (localStorage.wins) {
 }
 if (localStorage.wins) {
   let { fireL, iceL, electricL, groundL, grassL } = JSON.parse(
-    localStorage.getItem('loss')
+    localStorage.getItem('losses')
   );
   loss.push(fireL, iceL, electricL, groundL, grassL);
 }
@@ -39,7 +39,7 @@ function renderChart() {
   let myChartObj = {
     type: 'bar',
     data: {
-      labels: ['fire', 'ice', 'electric', 'grass', 'ground'],
+      labels: ['fire', 'ice', 'electric', 'ground', 'grass'],
       datasets: [
         {
           data: wins,
@@ -70,7 +70,7 @@ function renderChart() {
   };
   new Chart(canvasElem, myChartObj, wins, loss);
 }
-renderChart();
+renderChart(); // Render Chart
 
 /* EVENT HANDLERS */
 function goNextPokemon() {
