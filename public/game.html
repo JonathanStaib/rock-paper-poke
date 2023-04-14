@@ -3,11 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Game</title>
     <link rel="stylesheet" href="../css/reset.css" />
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/game.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abel&family=Glegoo:wght@400;700&family=Silkscreen&display=swap"
+      rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@500&family=Patua+One&family=VT323&display=swap"
+      rel="stylesheet"/>
   </head>
   <body>
     <header>
@@ -15,67 +25,77 @@
       <nav>
         <ul>
           <li><a href="../index.html">Home</a></li>
-          <li><a href="pokedex.html">Pokedex</a></li>
+          <li><a href="game.html">Game</a></li>
+          <li><a href="pokedex.html">Pokédex</a></li>
           <li><a href="about.html">About</a></li>
         </ul>
       </nav>
     </header>
     <main>
-      <h2>Choose a Pokemon to battle!</h2>
-      <div id="opponents">
-        Opponent
-        <figure>
-          <img src="../assets/tcg-card-back.jpg" />
-
-          <img id="computer" src="" alt="" />
-        </figure>
-        <h5>Ivysaur</h5>
-      </div>
-
-      <div id="image-container">
-        <section id="user-choice">
-          <p>Select your Pokemon:</p>
-          <ul>
-            <li>
+      <div class="game-outer">
+        <div class="game-inner">
+          <h2>Choose a Pokemon to battle!</h2>
+          <div id="opponents">
+            <div class="opponents-inner">
+              <h3>Opponent</h3>
               <figure>
-                <img id="imgOne" src="" alt="" />
+                <img id="gameBall" src="../assets/tcg-card-back.png" />
+                <img id="computer" src="" alt="" />
               </figure>
-              <h5>Ivysaur</h5>
-            </li>
-
-            <li>
-              <figure>
-                <img id="imgTwo" src="" alt="" />
-              </figure>
-              <h5>Ivysaur</h5>
-            </li>
-
-            <li>
-              <figure>
-                <img id="imgThree" src="" alt="" />
-              </figure>
-              <h5>Caterpie</h5>
-            </li>
-
-            <li>
-              <figure>
-                <img id="imgFour" src="" alt="" />
-              </figure>
-              <h5>Squirttle</h5>
-            </li>
-
-            <li>
-              <figure>
-                <img id="imgFive" src="" alt="" />
-              </figure>
-              <h5>Pidgey</h5>
-            </li>
-          </ul>
-        </section>
-      </div>
-
-      <div id="game-rules">
-        <section>Game rules</section>
+              <h5 class="invisable" id="opponent-name">Ivysaur</h5>
+              <button id="reset-button" class="invisable"><p>Go again!</p></button>
+            </div>
+          </div>
+          <div id="image-container">
+            <section id="user-choice">
+              <p>Select your Pokemon:</p>
+              <ul>
+                <li>
+                  <figure>
+                    <img id="imgOne" src="" alt="" />
+                  </figure>
+                  <h5 id="fire">Charmander</h5>
+                </li>
+                <li>
+                  <figure>
+                    <img id="imgTwo" src="" alt="" />
+                  </figure>
+                  <h5 id="ice">Dewgong</h5>
+                </li>
+                <li>
+                  <figure>
+                    <img id="imgThree" src="" alt="" />
+                  </figure>
+                  <h5 id="electric">Pikachu</h5>
+                </li>
+                <li>
+                  <figure>
+                    <img id="imgFour" src="" alt="" />
+                  </figure>
+                  <h5 id="ground">Sandshrew</h5>
+                </li>
+                <li>
+                  <figure>
+                    <img id="imgFive" src="" alt="" />
+                  </figure>
+                  <h5 id="grass">Bulbasaur</h5>
+                </li>
+              </ul>
+            </section>
+          </div>
+          <div class="invisable" id="message-box"><p></p></div>
+          <div id="game-rules">
+            <section id="rule-section">
+              <h3>Game Rules</h3>
+              <br>
+              <p>
+                Pokemon! Gotta catch 'em all It's you and me I know it's my
+                destiny Pokemon! Oh, you're my best friend In a world we must
+                defend
+              </p>
+            </section>
+          </div>
+        </div>
       </div>
     </main>
     <footer>© The A Team</footer>
