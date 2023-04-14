@@ -16,6 +16,8 @@ header {
 }
 nav {
   padding-bottom: 10px;
+  /* position: relative;
+  right: 5px; */
 }
 #my-chart {
   height: 220px !important;
@@ -230,3 +232,4 @@ h4 {
     top: 161px;
   }
 }
+
